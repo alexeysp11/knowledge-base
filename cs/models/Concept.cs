@@ -16,6 +16,11 @@ namespace Concepts.Models
         /// Family of a concept (SOLID, GRASP, Design pattern etc)
         /// </summary>
         public string Family { get; set; }
+        
+        /// <summary>
+        /// Explanation of a concept 
+        /// </summary>
+        public string Explanation { get; set; }
 
         /// <summary>
         /// Status of execution 
