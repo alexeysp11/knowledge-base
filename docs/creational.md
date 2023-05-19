@@ -27,3 +27,47 @@ I suppose that you can **abstract factory principle** in a little bit different 
 For instance, if you assume that creating similar products (e.g. vihicle: truck, car etc) requires specific logic for each of the product, then **abstract factory** could be an excellent choice. 
 
 And if you need some more specific logic for creating a car (e.g. if BMW, Audi, Lamborghini could be created in their own way), then you can use **abstract factory** one more time to create more specific products on a lower level. 
+
+## Builder 
+
+The intent of the **Builder design pattern** is to separate the construction of a complex object from its representation. By doing so, the same construction process can create different representations.
+
+![builder](https://upload.wikimedia.org/wikipedia/commons/8/87/W3sDesign_Builder_Design_Pattern_UML.jpg)
+
+## Singleton
+
+**Singleton pattern** is a software design pattern that restricts the instantiation of a class to a singular instance. 
+
+![singleton](https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Singleton_UML_class_diagram.svg/330px-Singleton_UML_class_diagram.svg.png)
+
+## Protorype 
+
+**Prototype** is used when the type of objects to create is determined by a prototypical instance, which is cloned to produce new objects. 
+
+![prototype](https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Prototype_UML.svg/900px-Prototype_UML.svg.png)
+
+There's [C++ example](https://en.wikipedia.org/wiki/Prototype_pattern#Example) where concrete prototype has two types of constructors: 
+1. for creating by external classes; 
+2. for creating using `clone()` method. 
+
+```C++
+class Door : public MapSite {
+public:
+  Door(Room* r1 = nullptr, Room* r2 = nullptr)
+    :room1(r1), room2(r2) {}
+  Door(const Door& other)
+    :room1(other.room1), room2(other.room2) {}
+  virtual void enter() {}
+  virtual Door* clone() const {
+    return new Door(*this);
+  }
+  virtual void initialize(Room* r1, Room* r2) {
+    room1 = r1;
+    room2 = r2;
+  }
+  Door& operator=(const Door&) = delete;
+private:
+  Room* room1;
+  Room* room2;
+};
+```
