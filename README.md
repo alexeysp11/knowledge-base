@@ -1,6 +1,6 @@
 # concepts 
 
 This repository contains implementation of the following concepts: 
-- SOLID; 
+- SOLID: [link](docs/solid.md); 
 - GRASP; 
-- design patterns. 
+- design patterns: [creational](docs/creational.md), structural, behavioral, concurrency. 
