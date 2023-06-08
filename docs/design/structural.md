@@ -6,9 +6,15 @@ Adapter (wrapper/translator) allows to convert one interface to another, so that
 
 ![Adapter_Design_Pattern](https://upload.wikimedia.org/wikipedia/commons/e/e5/W3sDesign_Adapter_Design_Pattern_UML.jpg)
 
+For example, if a server returns *JSON* but a client needs to get *XML*, we can use **Adapter pattern** in order to convert one interface to another. 
+
+Effectively, the **Adapter pattern** is useful when you have existing code, be it third party, or in-house, but out of your control, or otherwise not changeable to quite meet the interface you need it to.
+
 ## Bridge 
 
-Bridge 
+The Bridge pattern is going to allow you to possibly have alternative implementations of an algorithm or system.
+
+![Bridge_Design_Pattern](https://upload.wikimedia.org/wikipedia/commons/f/fd/W3sDesign_Bridge_Design_Pattern_UML.jpg)
 
 ## Proxy 
 
