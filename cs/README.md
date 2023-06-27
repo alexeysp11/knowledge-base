@@ -47,6 +47,10 @@ Then test HTTP GET requests of your application by typing:
 ```
 curl --location --request GET http://localhost:5000/concept/solid/srp
 ```
+or 
+```
+curl --location --request GET https://localhost:5001/concept/solid/srp
+```
 
 According to [this source](https://gist.github.com/subfuzion/08c5d85437d5d4f00e58), you can test POST methods using the following command: 
 ```

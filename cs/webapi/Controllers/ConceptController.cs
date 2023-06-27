@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Concepts.Models;
+using Concepts.Core.Middlewares;
 
 namespace Concepts.WebApi.Controllers
 {
@@ -77,6 +78,31 @@ namespace Concepts.WebApi.Controllers
                 Family = "Design patterns",
                 IsExecuted = true,
                 Result = "result for " + name,
+                ExecSummary = "Executed"
+            };
+        }
+
+        [HttpGet("middlewares/{name}")]
+        public Concept GetMiddleware(string name)
+        {
+            string result = string.Empty; 
+            IMiddlewarePipe pipe = 
+                name == "MiddlewarePipeFunc" ? (IMiddlewarePipe)(new MiddlewarePipeFunc()) 
+                    : (IMiddlewarePipe)(new MiddlewarePipeDI()); 
+            try 
+            {
+                result = pipe.Execute();
+            }
+            catch (System.Exception ex)
+            {
+                result = "Unable to execute: " + ex.Message; 
+            }
+            return new Concept
+            {
+                Name = name, 
+                Family = "Middlewares",
+                IsExecuted = true,
+                Result = "result for " + name + ": " + result,
                 ExecSummary = "Executed"
             };
         }
