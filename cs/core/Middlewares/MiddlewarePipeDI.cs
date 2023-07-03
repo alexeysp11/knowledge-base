@@ -1,11 +1,12 @@
 using System.Collections.Generic; 
+using Concepts.Core.Interfaces; 
 
 namespace Concepts.Core.Middlewares
 {
     /// <summary>
     /// Uses ASP.NET Core-like approach 
     /// </summary>
-    public class MiddlewarePipeDI : IMiddlewarePipe
+    public class MiddlewarePipeDI : IConceptCore
     {
         public string Execute()
         {

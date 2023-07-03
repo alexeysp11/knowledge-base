@@ -1,9 +1,11 @@
+using Concepts.Core.Interfaces; 
+
 namespace Concepts.Core.Middlewares
 {
     /// <summary>
     /// Uses pointers to a function and creates a pipe of functions
     /// </summary>
-    public class MiddlewarePipeFunc : IMiddlewarePipe
+    public class MiddlewarePipeFunc : IConceptCore
     {
         public string Execute()
         {
