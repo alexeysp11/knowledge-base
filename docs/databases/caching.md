@@ -1,5 +1,7 @@
 # Caching in stored procedures
 
+Read this in other languages: [English](caching.md), [Russian/Русский](caching.ru.md). 
+
 ## Initial data
 
 - Stored procedure in the database:
