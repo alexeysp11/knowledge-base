@@ -165,6 +165,10 @@ CREATE TEMPORARY TABLE tmp_id1 (
 );
 ```
 
+## Alternative example of using caching
+
+If some (other) procedure uses a part of the code that takes a long time to calculate some metrics based on data that, according to business logic, should not change in the future (for example, contracts for which the approval process was carried out), then these metrics can be moved to a separate a table that caches these metrics, and update this table once a day and/or as data changes in the contract table.
+
 ## Conclusions
 
 The use of temporary tables is not due to the desire to complicate processes or "**just transfer data from one table to another in order to read them later**", but by the intention to reduce the load on RAM and reduce the number of repetitions aka identical operations (which is especially important when you need to perform several actions on the same data).
