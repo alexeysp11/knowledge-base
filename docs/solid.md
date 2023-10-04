@@ -28,6 +28,8 @@ Bad:
 
 ![lsp-bad](img/solid/lsp-bad.png)
 
+One of the possible options to solve the **LSP** problem is presented at [this link](https://github.com/alexeysp11/mindbox-lib).
+
 - **Interface segregation principle**: classes should not be forced to depend upon interfaces that they don't use. 
 
 Bad: 
