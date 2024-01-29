@@ -1,6 +1,6 @@
 # Caching in stored procedures
 
-Read this in other languages: [English](caching.md), [Russian/Русский](caching.ru.md). 
+[English](caching.md) | [Русский](caching.ru.md) 
 
 ## Initial data
 
@@ -168,6 +168,13 @@ CREATE TEMPORARY TABLE tmp_id1 (
 ## Alternative example of using caching
 
 If some (other) procedure uses a part of the code that takes a long time to calculate some metrics based on data that, according to business logic, should not change in the future (for example, contracts for which the approval process was carried out), then these metrics can be moved to a separate a table that caches these metrics, and update this table once a day and/or as data changes in the contract table.
+
+## Restrictions
+
+When working with queries that use temporary tables or stub tables, the following problems may occur:
+- Slowdown of processes due to the creation and removal of temporary tables.
+- Inefficient memory usage due to large amounts of data in temporary tables.
+- Problems with accessing data from different sessions.
 
 ## Conclusions
 
