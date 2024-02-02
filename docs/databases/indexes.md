@@ -31,6 +31,8 @@ Disadvantages of unique indexes:
 
 ## Restrictions
 
+### When using indexes
+
 Limits are placed on the number of indexes in a table, since each index takes up a certain amount of space in the database and slows down the processes of adding, updating and deleting data. Additionally, indexes can slow down data retrieval processes if they are not optimized correctly.
 
 The following problems may occur when using indexes:
@@ -39,29 +41,60 @@ The following problems may occur when using indexes:
 - Inefficient use of indexes due to improper query optimization.
 - Limits on the number of indexes in the table.
 - Increased query execution time due to a large number of indexes.
+#### Limits on the number of indexes
+
+In PostgreSQL, you cannot set a limit on the number of indexes per table and database.
+To find out if there is a limit on the number of indexes for a table and database, you need to check the PostgreSQL documentation and configuration files.
+
+To work around the issue of limiting the number of indexes on a table, you can use combination indexes or functional indexes.
+To get around the problem of limiting the number of indexes for a database, you can use partitioning or horizontal sharding.
+
+#### Inefficient use of indexes due to improper query optimization
+
+To prevent the problem of inefficient use of indexes due to poor query optimization, you need to design indexes and optimize queries correctly.
+
+### When updating or deleting data
+
+The database may need to delete old data, for example, to free up hard disk space or to comply with data storage requirements.
 
 When updating or deleting data from a table with an index, the following problems may occur:
 - Slowdown of processes due to the need to update indexes.
 - Violation of data integrity due to deletion of records that are referenced by other records.
 - Inefficient use of indexes due to improper query optimization.
 
+To free up hard disk space to optimize database performance without compromising data integrity by deleting records that are referenced by other records, you can use cascading deletes or temporary tables.
+
+### In distributed systems
+
 The following problems may arise when working with indexes in distributed systems:
 - Synchronization of indexes between distributed system nodes.
 - Slowdown of processes due to a large number of requests to remote nodes.
 - Inefficient use of indexes due to different types of databases on different nodes.
 
+To ensure synchronization of indexes between nodes in a distributed system, you can use data replication or data synchronization mechanisms.
+
 ## Monitoring
+
+### Problems when working with large amounts of data
 
 When working with large amounts of data in a database, the following problems may arise:
 - Slowdown of processes due to large amounts of data.
 - Inefficient use of indexes due to large amounts of data.
 - Problems with data storage and backup.
 
+To solve the problem of inefficient use of indexes due to a large amount of data, you can use partial index, sharding, highly selective indexes, indexes on frequently used queries, indexes on frequently updated columns, etc.
+
+To store and back up data in PostgreSQL, you can use backup mechanisms such as `pg_dump` and `pg_basebackup`, as well as data replication.
+
+### Methods for monitoring and optimizing indexes
+
 The following methods can be used to monitor and optimize indexes in a database:
 - Analyze queries and identify ineffective queries.
 - Using database performance monitoring tools such as SQL Server Profiler, Oracle Enterprise Manager, MySQL Workbench, etc.
 - Analyze index statistics and identify unused or duplicate indexes.
 - Using query performance analysis tools such as SQL Query Analyzer, Explain Plan, etc.
+
+### Tools for analyzing query performance
 
 You can use the following tools to analyze query performance:
 - SQL Server Management Studio.
