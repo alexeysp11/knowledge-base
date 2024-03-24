@@ -2,4 +2,7 @@ bin
 obj 
 publish
 
-concepts-cs/examples
+concepts-cs/examples/AbstractFactory
+concepts-cs/examples/ComplexSystems
+
+BenchmarkDotNet.Artifacts
