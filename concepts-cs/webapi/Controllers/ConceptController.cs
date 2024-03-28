@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Concepts.Models;
-using Concepts.Core.DependencyInjection; 
-using Concepts.Core.Interfaces; 
+using Concepts.Core.DataTypes.DataCollections;
+using Concepts.Core.DependencyInjection;
+using Concepts.Core.Interfaces;
 using Concepts.Core.Middlewares;
 
 namespace Concepts.WebApi.Controllers
@@ -88,11 +89,11 @@ namespace Concepts.WebApi.Controllers
         public Concept GetMiddleware(string name)
         {
             string result = string.Empty; 
-            IConceptCore implementation = 
-                name == "MiddlewarePipeFunc" ? (IConceptCore)(new MiddlewarePipeFunc()) 
-                    : (IConceptCore)(new MiddlewarePipeDI()); 
-            try 
+            try
             {
+                IConceptCore implementation = 
+                    name == "MiddlewarePipeFunc" ? (IConceptCore)(new MiddlewarePipeFunc()) 
+                        : (IConceptCore)(new MiddlewarePipeDI()); 
                 result = implementation.Execute();
             }
             catch (System.Exception ex)
@@ -113,11 +114,11 @@ namespace Concepts.WebApi.Controllers
         public Concept GetDependencyInjection(string name)
         {
             string result = string.Empty; 
-            IConceptCore implementation = 
-                name == "DIBuilderLifetime" ? (IConceptCore)(new DIBuilderLifetime()) 
-                    : (IConceptCore)(new DIBuilder()); 
-            try 
+            try
             {
+                IConceptCore implementation = 
+                    name == "DIBuilderLifetime" ? (IConceptCore)(new DIBuilderLifetime()) 
+                        : (IConceptCore)(new DIBuilder()); 
                 result = implementation.Execute();
             }
             catch (System.Exception ex)
@@ -128,6 +129,29 @@ namespace Concepts.WebApi.Controllers
             {
                 Name = name, 
                 Family = "Dependency injection",
+                IsExecuted = true,
+                Result = "result for " + name + ": " + result,
+                ExecSummary = "Executed"
+            };
+        }
+
+        [HttpGet("datatypes/datacollections/{name}")]
+        public Concept GetDataCollections(string name)
+        {
+            string result = string.Empty; 
+            try
+            {
+                IConceptCore implementation = new TestingArrays();
+                result = implementation.Execute();
+            }
+            catch (System.Exception ex)
+            {
+                result = "Unable to execute: " + ex.Message; 
+            }
+            return new Concept
+            {
+                Name = name, 
+                Family = "DataTypes/DataCollections",
                 IsExecuted = true,
                 Result = "result for " + name + ": " + result,
                 ExecSummary = "Executed"

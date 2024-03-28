@@ -1,5 +1,5 @@
 using System.Collections.Generic; 
-using Concepts.Core.Interfaces; 
+using Concepts.Core.Interfaces;
 
 namespace Concepts.Core.Middlewares
 {

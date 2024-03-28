@@ -1,6 +1,6 @@
 using System.Collections.Generic; 
 using System.Linq; 
-using Concepts.Core.Interfaces; 
+using Concepts.Core.Interfaces;
 
 namespace Concepts.Core.DependencyInjection
 {

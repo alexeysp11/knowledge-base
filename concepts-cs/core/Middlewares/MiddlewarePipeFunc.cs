@@ -1,4 +1,4 @@
-using Concepts.Core.Interfaces; 
+using Concepts.Core.Interfaces;
 
 namespace Concepts.Core.Middlewares
 {
