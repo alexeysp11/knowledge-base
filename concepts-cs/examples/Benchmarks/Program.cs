@@ -9,7 +9,11 @@ public class Program
 {
     public static void Main(string[] args)
     {
+        // Collections.
         // var summary = BenchmarkRunner.Run<ValueEntryPassAndSortBenchmark>();
-        var summary = BenchmarkRunner.Run<SynchronizationPrimitivesBenchmark>();
+        var summary = BenchmarkRunner.Run<ArrayInitialization>();
+
+        // Multithreading.
+        // var summary = BenchmarkRunner.Run<SynchronizationPrimitivesBenchmark>();
     }
 }
