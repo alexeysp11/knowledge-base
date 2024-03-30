@@ -35,26 +35,6 @@ public class StructureInitialization
     }
 
     [Benchmark]
-    public void InitializeObjectInitializer()
-    {
-        MyStruct myStruct = new MyStruct
-        {
-            Number = 10,
-            Value = 11
-        };
-    }
-
-    [Benchmark]
-    public void InitializeMethodInitializer()
-    {
-        MyStruct myStruct = new MyStruct
-        {
-            Number = 10,
-            Value = 11
-        };
-    }
-
-    [Benchmark]
     public void InitializeImplicitConstructor()
     {
         MyStruct myStruct;
