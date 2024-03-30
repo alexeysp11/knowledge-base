@@ -21,23 +21,35 @@ public class SynchronizationPromitives
             int taskNumber = i + 1;
             tasks[i] = Task.Run(() =>
             {
-                counterUnprotected++;
+                // Correct ways to increment. 
                 lock (lockObject)
                 {
                     counterLock++;
                 }
                 Interlocked.Increment(ref counterInterlocked);
+
+                // Incorrect ways to increment.
+                counterUnprotected++;
                 counterVolatileIncrement++;
-                Volatile.Write(ref counterVolatileClass, counterVolatileClass++);
+                Volatile.Write(ref counterVolatileClass, Volatile.Read(ref counterVolatileClass) + 1);
             });
         }
         Task.WaitAll(tasks);
 
         System.Console.WriteLine("All tasks are executed!!!");
-        System.Console.WriteLine($"counterUnprotected: {counterUnprotected}");
-        System.Console.WriteLine($"counterLock: {counterLock}");
+        System.Console.WriteLine();
+
+        // Correct values.
+        System.Console.WriteLine("Correct values");
         System.Console.WriteLine($"counterInterlocked: {counterInterlocked}");
+        System.Console.WriteLine($"counterLock: {counterLock}");
+        System.Console.WriteLine();
+
+        // Incorrect values.
+        System.Console.WriteLine("Incorrect values");
+        System.Console.WriteLine($"counterUnprotected: {counterUnprotected}");
         System.Console.WriteLine($"counterVolatileIncrement: {counterVolatileIncrement}");
         System.Console.WriteLine($"counterVolatileClass: {counterVolatileClass}");
+        System.Console.WriteLine();
     }
 }
