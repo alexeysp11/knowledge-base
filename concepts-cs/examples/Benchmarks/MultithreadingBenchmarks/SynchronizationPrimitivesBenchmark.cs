@@ -12,6 +12,7 @@ public class SynchronizationPrimitivesBenchmark
     private int counter = 0;
     private volatile int counterVolatile = 0;
     private object lockObject = new object();
+    private SpinLock spinLock = new SpinLock();
 
     [Benchmark]
     public void TestLock()
@@ -26,6 +27,15 @@ public class SynchronizationPrimitivesBenchmark
     public void TestInterlocked()
     {
         Interlocked.Increment(ref counter);
+    }
+
+    [Benchmark]
+    public void TestSpinLock()
+    {
+        bool lockTaken = false;
+        spinLock.Enter(ref lockTaken);
+        counter++;
+        spinLock.Exit();
     }
 
     [Benchmark]

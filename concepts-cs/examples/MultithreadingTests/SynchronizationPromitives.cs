@@ -7,9 +7,12 @@ public class SynchronizationPromitives
     private int counterUnprotected = 0;
     private int counterLock = 0;
     private int counterInterlocked = 0;
+    private int counterSpinLock = 0;
     private volatile int counterVolatileIncrement = 0;
     private volatile int counterVolatileClass = 0;
+
     private object lockObject = new object();
+    private SpinLock spinLock = new SpinLock();
 
     public void Execute()
     {
@@ -27,6 +30,7 @@ public class SynchronizationPromitives
                     counterLock++;
                 }
                 Interlocked.Increment(ref counterInterlocked);
+                IncrementSpinLock();
 
                 // Incorrect ways to increment.
                 counterUnprotected++;
@@ -41,8 +45,9 @@ public class SynchronizationPromitives
 
         // Correct values.
         System.Console.WriteLine("Correct values");
-        System.Console.WriteLine($"counterInterlocked: {counterInterlocked}");
         System.Console.WriteLine($"counterLock: {counterLock}");
+        System.Console.WriteLine($"counterInterlocked: {counterInterlocked}");
+        System.Console.WriteLine($"counterSpinLock: {counterSpinLock}");
         System.Console.WriteLine();
 
         // Incorrect values.
@@ -51,5 +56,13 @@ public class SynchronizationPromitives
         System.Console.WriteLine($"counterVolatileIncrement: {counterVolatileIncrement}");
         System.Console.WriteLine($"counterVolatileClass: {counterVolatileClass}");
         System.Console.WriteLine();
+    }
+
+    private void IncrementSpinLock()
+    {
+        bool lockTaken = false;
+        spinLock.Enter(ref lockTaken);
+        counterSpinLock++;
+        spinLock.Exit();
     }
 }
