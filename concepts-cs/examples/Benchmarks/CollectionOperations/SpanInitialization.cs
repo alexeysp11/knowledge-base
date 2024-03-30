@@ -37,4 +37,15 @@ public class SpanInitialization
         int[] array = { 1, 2, 3, 4, 5};
         Span<int> numbers = array;
     }
+
+    [Benchmark]
+    public void InitUsingArrayLoop_Benchmark()
+    {
+        int length = 5;
+        Span<int> numbers = new int[length];
+        for (var i = 0; i < length; i++)
+        {
+            numbers[i] = i;
+        }
+    }
 }
