@@ -26,7 +26,7 @@ public class SpanInitialization
     }
 
     [Benchmark]
-    public void InitUsingArray_Benchmark()
+    public void InitNewArray_Benchmark()
     {
         Span<int> numbers = new int[] { 1, 2, 3, 4, 5};
     }
@@ -39,10 +39,54 @@ public class SpanInitialization
     }
 
     [Benchmark]
-    public void InitUsingArrayLoop_Benchmark()
+    public void InitNewArrayLoop_Benchmark()
     {
         int length = 5;
         Span<int> numbers = new int[length];
+        for (var i = 0; i < length; i++)
+        {
+            numbers[i] = i;
+        }
+    }
+
+    [Benchmark]
+    public void InitUnsafeEmpty_Benchmark()
+    {
+        int length = 5;
+        Span<int> numbers;
+        unsafe
+        {
+            int* tmp = stackalloc int[length];
+            numbers = new Span<int>(tmp, length);
+        }
+    }
+
+    [Benchmark]
+    public void InitUnsafeLoopInside_Benchmark()
+    {
+        int length = 5;
+        Span<int> numbers;
+        unsafe
+        {
+            int* tmp = stackalloc int[length];
+            numbers = new Span<int>(tmp, length);
+            for (var i = 0; i < length; i++)
+            {
+                numbers[i] = i;
+            }
+        }
+    }
+
+    [Benchmark]
+    public void InitUnsafeLoopOutside_Benchmark()
+    {
+        int length = 5;
+        Span<int> numbers;
+        unsafe
+        {
+            int* tmp = stackalloc int[length];
+            numbers = new Span<int>(tmp, length);
+        }
         for (var i = 0; i < length; i++)
         {
             numbers[i] = i;
