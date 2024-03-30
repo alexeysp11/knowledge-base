@@ -12,9 +12,9 @@ public class Program
         // Collections.
         // var summary = BenchmarkRunner.Run<ValueEntryPassAndSortBenchmark>();
         // var summary = BenchmarkRunner.Run<ArrayInitialization>();
-        var summary = BenchmarkRunner.Run<SpanInitialization>();
+        // var summary = BenchmarkRunner.Run<SpanInitialization>();
 
         // Multithreading.
-        // var summary = BenchmarkRunner.Run<SynchronizationPrimitivesBenchmark>();
+        var summary = BenchmarkRunner.Run<SynchronizationPrimitivesBenchmark>();
     }
 }
