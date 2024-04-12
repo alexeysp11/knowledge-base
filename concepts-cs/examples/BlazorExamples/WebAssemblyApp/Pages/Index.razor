@@ -1,0 +1,20 @@
+﻿@page "/"
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, @userName! Welcome to our <b>Application</b></h1>
+
+Welcome to your new app.
+
+<button @onclick="ChangeName">Change name</button>
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+@code {
+    private string userName = "UserName";
+
+    private void ChangeName()
+    {
+        userName = "AnotherName";
+    }
+}
