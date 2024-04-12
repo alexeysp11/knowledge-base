@@ -1,5 +1,6 @@
 ﻿using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Running;
+using Concepts.Examples.Benchmarks.CodeStyleApproaches;
 using Concepts.Examples.Benchmarks.CollectionOperations;
 using Concepts.Examples.Benchmarks.MultithreadingBenchmarks;
 using Concepts.Examples.Benchmarks.StructureBenchmarks;
@@ -23,6 +24,9 @@ public class Program
         // var summary = BenchmarkRunner.Run<StructureInitialization>();
 
         // Text.
-        var summary = BenchmarkRunner.Run<StringBuilderConcatenation>();
+        // var summary = BenchmarkRunner.Run<StringBuilderConcatenation>();
+
+        // Code style approaches.
+        var summary = BenchmarkRunner.Run<WhileVsRecursion>();
     }
 }
