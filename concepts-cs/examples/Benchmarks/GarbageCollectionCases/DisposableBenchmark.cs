@@ -57,7 +57,7 @@ public class DisposableBenchmark
         {
             using (var person = new DisposablePerson())
             {
-                person.Name = $"DisposablePerson {i}";
+                person.Name = $"DPerson{i}";
             }
         }
         // GC.Collect(0);
@@ -70,7 +70,7 @@ public class DisposableBenchmark
         for (int i = 0; i < m_number; i++)
         {
             var person = new SimplePerson();
-            person.Name = $"SimplePerson {i}";
+            person.Name = $"SPerson{i}";
         }
         // GC.Collect(0);
     }
