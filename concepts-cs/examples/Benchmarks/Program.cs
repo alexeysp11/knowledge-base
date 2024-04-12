@@ -2,6 +2,7 @@
 using BenchmarkDotNet.Running;
 using Concepts.Examples.Benchmarks.CodeStyleApproaches;
 using Concepts.Examples.Benchmarks.CollectionOperations;
+using Concepts.Examples.Benchmarks.GarbageCollectionCases;
 using Concepts.Examples.Benchmarks.MultithreadingBenchmarks;
 using Concepts.Examples.Benchmarks.StructureBenchmarks;
 using Concepts.Examples.Benchmarks.TextOperations;
@@ -27,6 +28,9 @@ public class Program
         // var summary = BenchmarkRunner.Run<StringBuilderConcatenation>();
 
         // Code style approaches.
-        var summary = BenchmarkRunner.Run<WhileVsRecursion>();
+        // var summary = BenchmarkRunner.Run<WhileVsRecursion>();
+
+        // Garbage collection cases.
+        var summary = BenchmarkRunner.Run<DisposableBenchmark>();
     }
 }
