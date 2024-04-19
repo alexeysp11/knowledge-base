@@ -14,6 +14,6 @@ code {
 
 .wrapper {
   padding-top: 5rem;
-  margin: 0;
+  margin: 0 auto;
   width: 600px;
 }
