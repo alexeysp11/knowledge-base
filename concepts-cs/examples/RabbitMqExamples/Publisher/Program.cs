@@ -1,14 +1,57 @@
 ﻿using RabbitMQ.Client;
+using System;
 using System.Text;
 
 namespace Concepts.Examples.Publisher;
 
 public class Program
 {
+    private static readonly List<string> cars = new List<string> { "BMW", "Audi", "Tesla", "Mercedes" };
+    private static readonly List<string> colors = new List<string> { "red", "white", "black" };
+    private static readonly Random random = new Random();
+
     public static void Main()
     {
         //RunDefaultExchange();
-        RunDirectExchange();
+        //RunDirectExchange();
+        RunTopicExchange();
+    }
+
+    private static void RunTopicExchange()
+    {
+        var exchangeName = "topic_logs";
+        var counter = 0;
+        do
+        {
+            int timeToSleep = random.Next(1000, 2000);
+            Thread.Sleep(timeToSleep);
+
+            var factory = new ConnectionFactory() { HostName = "localhost" };
+            using (var connection = factory.CreateConnection())
+            using (var channel = connection.CreateModel())
+            {
+                channel.ExchangeDeclare(exchange: exchangeName, type: ExchangeType.Topic);
+
+                string routingKey = counter % 4 == 0
+                    ? "Tesla.red.fast.ecological"
+                    : counter % 5 == 0
+                        ? "Mercedes.exclusive.expensive.ecological"
+                        : GenerateRoutingKey();
+
+                string message = $"Message type [{routingKey}] from publisher N {counter}";
+
+                var body = Encoding.UTF8.GetBytes(message);
+
+                channel.BasicPublish(exchange: exchangeName,
+                                    routingKey: routingKey,
+                                    basicProperties: null,
+                                    body: body);
+
+                Console.WriteLine($"- Message is sent into Topic Exchange: \n\t exchangeName = '{exchangeName}', \n\t message = '{message}' \n\t routingKey = '{routingKey}' \n\t counter = {counter}");
+                
+                counter += 1;
+            }
+        } while (true);
     }
 
     private static void RunDirectExchange()
@@ -73,5 +116,10 @@ public class Program
                 body: Encoding.UTF8.GetBytes(message));
             Console.WriteLine($"Message is successfully sent to the RMQ server");
         }
+    }
+
+    private static string GenerateRoutingKey()
+    {
+        return $"{cars[random.Next(0, cars.Count)]}.{colors[random.Next(0, colors.Count)]}";
     }
 }
