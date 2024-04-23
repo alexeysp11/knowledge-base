@@ -6,17 +6,17 @@ namespace Concepts.Examples.Benchmarks.GarbageCollectionCases;
 
 public interface IPerson
 {
-    string Name { get; set; }
+    string? Name { get; set; }
 }
 
 public class SimplePerson : IPerson
 {
-    public string Name { get; set; }
+    public string? Name { get; set; }
 }
 
 public class DisposablePerson : IPerson, System.IDisposable
 {
-    public string Name { get; set; }
+    public string? Name { get; set; }
     
     private bool disposed = false;
 

@@ -31,6 +31,9 @@ public class Program
         // var summary = BenchmarkRunner.Run<WhileVsRecursion>();
 
         // Garbage collection cases.
-        var summary = BenchmarkRunner.Run<DisposableBenchmark>();
+        // var summary = BenchmarkRunner.Run<DisposableBenchmark>();
+
+        // Databases.
+        var summary = BenchmarkRunner.Run<CollectionDbOperations>();
     }
 }
