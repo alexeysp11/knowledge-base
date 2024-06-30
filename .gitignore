@@ -7,6 +7,8 @@ bin
 obj 
 publish
 
+data
+
 examples/AbstractFactory
 examples/ComplexSystems
 
