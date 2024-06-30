@@ -7,6 +7,8 @@ bin
 obj 
 publish
 
+node_modules
+
 data
 
 examples/AbstractFactory
