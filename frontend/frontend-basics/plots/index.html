@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://unpkg.com/papaparse@latest/papaparse.min.js"></script>
+    <title>Plotly charts</title>
+</head>
+<body>
+    <div id="div-plot-onevar">
+        <h2>Line plot (for only one variable)</h2>
+        <input type="file" name="uploadfile-line-onevar" id="uploadfile-line-onevar" accept=".csv">
+        <div id="staticchart-line-onevar"></div>
+    </div>
+    <div id="div-plot-twovars">
+        <h2>Line plot (for two variables)</h2>
+        <input type="file" name="uploadfile-line-twovar" id="uploadfile-line-twovar" accept=".csv">
+        <button id="uploadconfirm-line-twovar">Upload file</button>
+        <div id="plot-line-twovar"></div>
+    </div>
+    <div id="div-plot-piechart">
+        <h2>Pie chart</h2>
+        <div id="plot-piechart"></div>
+    </div>
+    <div id="div-plot-histogram">
+        <div id="plot-histogram"></div>
+    </div>
+    <div id="div-plot-scatterplot">
+
+    </div>
+    <div id="div-plot-barchart">
+
+    </div>
+</body>
+<script>
+    // One variable line 
+	Plotly.newPlot(
+        document.getElementById('staticchart-line-onevar'), 
+        [
+            {
+                x: [1, 2, 3, 4, 5],
+                y: [1, 2, 4, 8, 16] 
+            }
+        ], 
+        {title: 'Static Chart', showlegend: false}, 
+        {staticPlot: true}
+    );
+
+    // Two variables line 
+    const uploadconfirm = document.getElementById("uploadconfirm-line-twovar")
+        .addEventListener('click', () => {
+            Papa.parse(document.getElementById("uploadfile-line-twovar").files[0], 
+            {
+                download: true, 
+                header: true, 
+                skipEmptyLines: true, 
+                complete: function(results) {
+                    let x = []; 
+                    let y1 = []; 
+                    let y2 = []; 
+                    let row; 
+
+                    let i = 0; 
+                    while (i < results.data.length)
+                    {
+                        row = results.data[i]; 
+                        x.push(row["Date"]); 
+                        y1.push(row["A"]); 
+                        y2.push(row["B"]); 
+                        i += 1; 
+                    }
+                    let traces = [
+                        {
+                            x: x, 
+                            y: y1, 
+                            name: "A", 
+                            line: {
+                                color: "blue", 
+                                width: 3
+                            }
+                        },
+                        {
+                            x: x, 
+                            y: y2, 
+                            name: "B", 
+                            line: {
+                                color: "red", 
+                                width: 3
+                            }
+                        }
+                    ];
+                    var layout = {
+                        title: 'Basic Line Chart'
+                    };
+                    let config = {
+                        responsive: true, 
+                        staticPlot: true
+                    };
+                    Plotly.newPlot(document.getElementById('plot-line-twovar'), traces, layout, config);
+                }
+            })
+        }); 
+    
+    // pie chart 
+    var dataPieChart = [{
+        values: [19, 26, 55],
+        labels: ['Residential', 'Non-Residential', 'Utility'],
+        type: 'pie'
+    }];
+    var layoutPieChart = {
+        height: 400,
+        width: 500
+    };
+    Plotly.newPlot(document.getElementById('plot-piechart'), dataPieChart, layoutPieChart);
+</script>
+</html>

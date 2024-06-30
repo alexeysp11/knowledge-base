@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <title>Input validation</title>
+</head>
+<body>
+    <!-- Arrange the elements and make them automatically arranged depending on viewport size -->
+
+    <div>
+        Username: <input type="text" name="username-input" id="username-input">
+    </div>
+    <div>
+        Email: <input type="email" name="email-input" id="email-input">
+    </div>
+    <div>
+        Phone number: <input type="tel" name="phone-input" id="phone-input">
+    </div>
+    <div>
+        Favorite color: <input type="color" name="favorite-color-input" id="favorite-color-input">
+    </div>
+    <div>
+        <!-- Display the date input differently depending on the country -->
+        Birth date: <input type="date" name="birthdate-input" id="birthdate-input">
+    </div>
+    <div>
+        URL: <input type="url" name="url-input" id="url-input">
+    </div>
+    <div>
+        Password: <input type="password" name="password-input" id="password-input">
+    </div>
+    <div>
+        Remember me: <input type="checkbox" name="rememberme-input" id="rememberme-input">
+    </div>
+    <button>Validate</button>
+</body>
+<script>
+    const phoneInputField = document.querySelector("#phone-input");
+    const phoneInput = window.intlTelInput(phoneInputField, {
+      utilsScript:
+        "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    });
+  </script>
+</html>
