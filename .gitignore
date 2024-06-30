@@ -1,10 +1,13 @@
 .vs
+.vscode
+
+.github
 
 bin 
 obj 
 publish
 
-concepts-cs/examples/AbstractFactory
-concepts-cs/examples/ComplexSystems
+examples/AbstractFactory
+examples/ComplexSystems
 
 BenchmarkDotNet.Artifacts
