@@ -53,6 +53,53 @@ Active Directory использует LDAP для обеспечения дос�
 
 Можно использовать аккаунт Windows для аутентификации с помощью Active Directory и LDAP. Это самый простой способ использовать Active Directory для аутентификации.
 
+```C#
+using System;
+using System.DirectoryServices.AccountManagement;
+using System.Linq;
+
+public class AuthenticationService
+{
+    public UserPrincipal GetUserDetails(string username, string password)
+    {
+        try
+        {
+            using (var context = new PrincipalContext(ContextType.Domain, "yourdomain.onmicrosoft.com"))
+            {
+                // Проверка учетных данных
+                if (!context.ValidateCredentials(username, password, ContextOptions.Negotiate))
+                {
+                    return null;
+                }
+
+                // Поиск пользователя по имени
+                UserPrincipal user = UserPrincipal.FindByIdentity(context, IdentityType.SamAccountName, username);
+
+                if (user != null)
+                {
+                    // Получение дополнительной информации о пользователе
+                    Console.WriteLine($"Имя: {user.DisplayName}");
+                    Console.WriteLine($"Email: {user.EmailAddress}");
+                    Console.WriteLine($"Группа: {string.Join(", ", user.GetGroups().Select(g => g.Name))}");
+                    
+                    // Добавьте получение других данных, которые вам нужны
+                    // Например, отдел (user.Department), телефон (user.TelephoneNumber) и т. д.
+
+                    return user;
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            return null;
+        }
+
+        return null;
+    }
+}
+```
+
 ## Переход на серверы Linux
 
 В идеале, переход на серверы Linux должен быть плавным. Существует несколько способов использовать Active Directory с Linux:
