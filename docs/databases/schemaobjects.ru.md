@@ -1,6 +1,6 @@
 # schemaobjects
 
-Доступно на других языках: [English/Английский](schemaobjects.md), [Russian/Русский](schemaobjects.ru.md). 
+[English](schemaobjects.md) | [Русский](schemaobjects.ru.md)
 
 ## Объекты схем
 

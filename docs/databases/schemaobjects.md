@@ -1,6 +1,6 @@
 # schemaobjects
 
-Read this in other languages: [English](schemaobjects.md), [Russian/Русский](schemaobjects.ru.md). 
+[English](schemaobjects.md) | [Русский](schemaobjects.ru.md)
 
 ## Schema
 
