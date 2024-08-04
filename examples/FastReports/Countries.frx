@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report ScriptLanguage="CSharp" ReportInfo.Created="08/03/2024 23:40:08" ReportInfo.Modified="08/04/2024 13:07:25" ReportInfo.CreatorVersion="2024.2.0.0">
+<Report ScriptLanguage="CSharp" ReportInfo.Created="08/03/2024 23:40:08" ReportInfo.Modified="08/04/2024 13:19:05" ReportInfo.CreatorVersion="2024.2.0.0">
   <Dictionary>
-    <PostgresDataConnection Name="Connection" ConnectionString="rijcmlq8ZkN6qUj4G/zvKvLeJ9DDB6WCp22J48oQEWWvz8/J/MtOtO+35XJlfaOGGutBCOfLE/CkkWuWY0gHhIGVwBHvWsUw/hrm20BOFpUm9DNapM=">
+    <PostgresDataConnection Name="Connection" ConnectionString="rijcmlq8ZkN6qUj4G/zvKvLeJ9DDB6WCp22J48oQEWWvz8/J/MtOtO+35XJlfaOGGutBCOfLE/CkkWuWY0gHhIGVwBHvUkOnGzUK0VkSV2p2o00lfY=">
       <TableDataSource Name="public_leetcode_countries" DataType="System.Int32" Enabled="true" TableName="public.&quot;leetcode_countries&quot;">
         <Column Name="id" DataType="System.Int32"/>
         <Column Name="iso" DataType="System.String"/>
@@ -15,22 +15,22 @@
   </Dictionary>
   <ReportPage Name="Page1" Watermark.Font="Arial, 60pt">
     <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="37.8">
-      <TextObject Name="lblReportTitle" Left="292.95" Top="9.45" Width="94.5" Height="18.9" Text="COUNTRIES" Font="Arial, 10pt"/>
-      <TextObject Name="datCurrentDate" Left="595.35" Top="9.45" Width="94.5" Height="18.9" Text="[FormatDateTime(System.DateTime.Now, &quot;yyyy-MM-dd&quot;)]" Font="Arial, 10pt"/>
+      <TextObject Name="Text2" Left="292.95" Top="9.45" Width="94.5" Height="18.9" Text="COUNTRIES" Font="Arial, 10pt"/>
+      <TextObject Name="Text4" Left="595.35" Top="9.45" Width="94.5" Height="18.9" Text="[FormatDateTime(System.DateTime.Now, &quot;yyyy-MM-dd&quot;)]" Font="Arial, 10pt"/>
     </ReportTitleBand>
     <PageHeaderBand Name="PageHeader1" Top="41.8" Width="718.2" Height="28.35" Border.Lines="Bottom">
-      <TextObject Name="lblGeneralInfo" Left="18.9" Width="226.8" Height="18.9" Text="General information about countries" Font="Arial, 10pt"/>
+      <TextObject Name="Text3" Left="18.9" Width="226.8" Height="18.9" Text="General information about countries" Font="Arial, 10pt"/>
     </PageHeaderBand>
-    <DataBand Name="dataCountries" Top="74.15" Width="718.2" Height="151.2" DataSource="public_leetcode_countries">
-      <TextObject Name="lblCountryRepresent" Left="18.9" Top="9.45" Width="670.95" Height="18.9" Fill.Color="Chocolate" CanGrow="true" CanShrink="true" Text="#[public_leetcode_countries.id]. [public_leetcode_countries.name]" Font="Arial, 10pt"/>
-      <TextObject Name="lblCountryId" Left="18.9" Top="37.8" Width="94.5" Height="18.9" Text="ID:" Font="Arial, 10pt"/>
-      <TextObject Name="datCountryId" Left="122.85" Top="37.8" Width="217.35" Height="18.9" Text="[public_leetcode_countries.id]" Font="Arial, 10pt"/>
-      <TextObject Name="lblCountryName" Left="18.9" Top="66.15" Width="94.5" Height="18.9" Text="Name:" Font="Arial, 10pt"/>
-      <TextObject Name="datCountryName" Left="122.85" Top="66.15" Width="567" Height="18.9" Text="[public_leetcode_countries.nicename]" Font="Arial, 10pt"/>
-      <TextObject Name="lblCountryPhoneCode" Left="18.9" Top="122.85" Width="94.5" Height="18.9" Text="Phone code:" Font="Arial, 10pt"/>
-      <TextObject Name="datCountryPhoneCode" Left="122.85" Top="122.85" Width="217.35" Height="18.9" Text="[public_leetcode_countries.phonecode]" Font="Arial, 10pt"/>
-      <TextObject Name="lblCountryIso" Left="18.9" Top="94.5" Width="94.5" Height="18.9" Text="ISO:" Font="Arial, 10pt"/>
-      <TextObject Name="datCountryIso" Left="122.85" Top="94.5" Width="217.35" Height="18.9" Text="[public_leetcode_countries.iso3]" Font="Arial, 10pt"/>
+    <DataBand Name="Data1" Top="74.15" Width="718.2" Height="151.2" DataSource="public_leetcode_countries">
+      <TextObject Name="Text1" Left="18.9" Top="9.45" Width="670.95" Height="18.9" Fill.Color="Chocolate" CanGrow="true" CanShrink="true" Text="#[public_leetcode_countries.id]. [public_leetcode_countries.name]" Font="Arial, 10pt"/>
+      <TextObject Name="Text5" Left="18.9" Top="66.15" Width="94.5" Height="18.9" Text="Name:" Font="Arial, 10pt"/>
+      <TextObject Name="Text6" Left="18.9" Top="122.85" Width="94.5" Height="18.9" Text="Phone code:" Font="Arial, 10pt"/>
+      <TextObject Name="Text7" Left="122.85" Top="66.15" Width="567" Height="18.9" Text="[public_leetcode_countries.nicename]" Font="Arial, 10pt"/>
+      <TextObject Name="Text8" Left="122.85" Top="122.85" Width="217.35" Height="18.9" Text="[public_leetcode_countries.phonecode]" Font="Arial, 10pt"/>
+      <TextObject Name="Text11" Left="18.9" Top="94.5" Width="94.5" Height="18.9" Text="ISO:" Font="Arial, 10pt"/>
+      <TextObject Name="Text12" Left="122.85" Top="94.5" Width="217.35" Height="18.9" Text="[public_leetcode_countries.iso3]" Font="Arial, 10pt"/>
+      <TextObject Name="Text13" Left="18.9" Top="37.8" Width="94.5" Height="18.9" Text="ID:" Font="Arial, 10pt"/>
+      <TextObject Name="Text14" Left="122.85" Top="37.8" Width="217.35" Height="18.9" Text="[public_leetcode_countries.id]" Font="Arial, 10pt"/>
     </DataBand>
     <PageFooterBand Name="PageFooter1" Top="229.35" Width="718.2" Height="18.9"/>
   </ReportPage>
