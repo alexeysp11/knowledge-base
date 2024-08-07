@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="08/04/2024 13:19:58" ReportInfo.Modified="08/04/2024 16:37:20" ReportInfo.CreatorVersion="2024.2.0.0">
+  <Styles Name="Gray">
+    <Style Name="Title" Font="Arial, 12pt, style=Bold"/>
+    <Style Name="Header" Fill.Color="Gainsboro" Font="Arial, 10pt, style=Bold"/>
+    <Style Name="Group" Font="Arial, 10pt, style=Bold"/>
+    <Style Name="Data" Font="Arial, 10pt"/>
+    <Style Name="Footer" Fill.Color="Gainsboro" Font="Arial, 10pt"/>
+    <Style Name="EvenRows" Fill.Color="WhiteSmoke" Font="Arial, 10pt"/>
+  </Styles>
+  <Dictionary>
+    <PostgresDataConnection Name="Connection" ConnectionString="rijcmlq8ZkN6qUj4G/zvKvLeJ9DDB6WCp22J48oQEWWvz8/J/MtOtO+35XJlfaOGGutBCOfLE/CkkWuWY0gHhIGVwBHvQmd33U7IUJlq1ZQXlU+JvU=">
+      <TableDataSource Name="public_leetcode_salary" DataType="System.Int32" Enabled="true" TableName="public.&quot;leetcode_salary&quot;">
+        <Column Name="id" DataType="System.Int32"/>
+        <Column Name="employee_id" DataType="System.Int32"/>
+        <Column Name="amount" DataType="System.Int32"/>
+        <Column Name="pay_date" DataType="System.DateTime"/>
+      </TableDataSource>
+    </PostgresDataConnection>
+  </Dictionary>
+  <ReportPage Name="Page1" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="37.8">
+      <TextObject Name="Text1" Width="718.2" Height="37.8" Dock="Fill" Text="SALARY" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold" Style="Title"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="41.8" Width="718.2" Height="28.35">
+      <TextObject Name="Text3" Width="179.55" Height="18.9" Fill.Color="Gainsboro" Text="ID" Font="Arial, 10pt, style=Bold" Style="Header"/>
+      <TextObject Name="Text5" Left="179.55" Width="179.55" Height="18.9" Fill.Color="Gainsboro" Text="Employee ID" Font="Arial, 10pt, style=Bold" Style="Header"/>
+      <TextObject Name="Text7" Left="359.1" Width="179.55" Height="18.9" Fill.Color="Gainsboro" Text="Amount" Font="Arial, 10pt, style=Bold" Style="Header"/>
+      <TextObject Name="Text9" Left="538.65" Width="179.55" Height="18.9" Fill.Color="Gainsboro" Text="Pay Date" Font="Arial, 10pt, style=Bold" Style="Header"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="74.15" Width="718.2" Height="18.9" EvenStyle="EvenRows" DataSource="public_leetcode_salary">
+      <TextObject Name="Text2" Width="179.55" Height="18.9" Text="[public_leetcode_salary.id]" Font="Arial, 10pt" Style="Data"/>
+      <TextObject Name="Text4" Left="179.55" Width="179.55" Height="18.9" Text="[public_leetcode_salary.employee_id]" Font="Arial, 10pt" Style="Data"/>
+      <TextObject Name="Text6" Left="359.1" Width="179.55" Height="18.9" Text="[FormatNumber([public_leetcode_salary.amount], 2)]" Font="Arial, 10pt" Style="Data"/>
+      <TextObject Name="Text8" Left="538.65" Width="179.55" Height="18.9" Text="[FormatDateTime([public_leetcode_salary.pay_date], &quot;yyyy-MM-dd HH:mm&quot;)]" Font="Arial, 10pt" Style="Data"/>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="97.05" Width="718.2" Height="18.9">
+      <TextObject Name="Text10" Width="718.2" Height="18.9" Dock="Fill" Text="[PageN]" HorzAlign="Right" Font="Arial, 10pt"/>
+    </PageFooterBand>
+  </ReportPage>
+</Report>
