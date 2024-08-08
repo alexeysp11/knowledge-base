@@ -1,3 +1,1 @@
 # grasp
-
-**GRASP** is 
