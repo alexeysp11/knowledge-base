@@ -18,4 +18,4 @@ opendbtest.cmd
 
 Архитектура веб-сервера представлена ниже:
 
-![server-architecture](../../docs/img/examples/SimpleWebService/server-architecture.png)
+![server-architecture](../../../docs/img/examples/SimpleWebService/server-architecture.png)

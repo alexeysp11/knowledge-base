@@ -97,4 +97,4 @@ How it is implemented in ASP.NET Core
 
 ### Middleware pipe 
 
-![di_middleware](../img/design/di_middleware.png)
+![di_middleware](../../img/design/di_middleware.png)

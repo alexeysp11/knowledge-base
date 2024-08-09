@@ -15,11 +15,11 @@ A class should have only one reason to change.
 
 ### Bad
 
-![srp-bad](img/solid/srp-bad.png)
+![srp-bad](../img/solid/srp-bad.png)
 
 ### Better
 
-![srp-better](img/solid/srp-better.png)
+![srp-better](../img/solid/srp-better.png)
 
 ## Open-closed principle
 
@@ -27,11 +27,11 @@ A software entity should be open for extension but closed for modification.
 
 ### Bad
 
-![ocp-bad](img/solid/ocp-bad.png)
+![ocp-bad](../img/solid/ocp-bad.png)
 
 ### Better
 
-![ocp-better](img/solid/ocp-better.png)
+![ocp-better](../img/solid/ocp-better.png)
 
 ## Liskov substitution principle
 
@@ -39,7 +39,7 @@ Classes that use pointers or references to base class must be able to use object
 
 ### Bad
 
-![lsp-bad](img/solid/lsp-bad.png)
+![lsp-bad](../img/solid/lsp-bad.png)
 
 ### Better
 
@@ -51,11 +51,11 @@ Classes should not be forced to depend upon interfaces that they don't use.
 
 ### Bad
 
-![isp-bad](img/solid/isp-bad.png)
+![isp-bad](../img/solid/isp-bad.png)
 
 ### Better
 
-![isp-better](img/solid/isp-better.png)
+![isp-better](../img/solid/isp-better.png)
 
 ## Dependency-inversion principle
 
@@ -63,8 +63,8 @@ Depend upon abstractions, but not concretions.
 
 ### Bad
 
-![dip-bad](img/solid/dip-bad.png)
+![dip-bad](../img/solid/dip-bad.png)
 
 ### Better
 
-![dip-better](img/solid/dip-better.png)
+![dip-better](../img/solid/dip-better.png)

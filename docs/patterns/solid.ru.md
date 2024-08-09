@@ -16,11 +16,11 @@
 
 ### Плохо
 
-![srp-bad](img/solid/srp-bad.png)
+![srp-bad](../img/solid/srp-bad.png)
 
 ### Лучше
 
-![srp-better](img/solid/srp-better.png)
+![srp-better](../img/solid/srp-better.png)
 
 ## Open-closed principle
 
@@ -28,11 +28,11 @@
 
 ### Плохо
 
-![ocp-bad](img/solid/ocp-bad.png)
+![ocp-bad](../img/solid/ocp-bad.png)
 
 ### Лучше
 
-![ocp-better](img/solid/ocp-better.png)
+![ocp-better](../img/solid/ocp-better.png)
 
 ## Liskov substitution principle
 
@@ -40,7 +40,7 @@
 
 ### Плохо
 
-![lsp-bad](img/solid/lsp-bad.png)
+![lsp-bad](../img/solid/lsp-bad.png)
 
 ### Лучше
 
@@ -52,11 +52,11 @@
 
 ### Плохо
 
-![isp-bad](img/solid/isp-bad.png)
+![isp-bad](../img/solid/isp-bad.png)
 
 ### Лучше
 
-![isp-better](img/solid/isp-better.png)
+![isp-better](../img/solid/isp-better.png)
 
 ## Dependency-inversion principle
 
@@ -64,8 +64,8 @@
 
 ### Плохо
 
-![dip-bad](img/solid/dip-bad.png)
+![dip-bad](../img/solid/dip-bad.png)
 
 ### Лучше
 
-![dip-better](img/solid/dip-better.png)
+![dip-better](../img/solid/dip-better.png)
