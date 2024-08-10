@@ -1,1 +1,1 @@
-dotnet run --project webapi/Concepts.WebApi.csproj 
+dotnet run --project webapi/KnowledgeBase.Patterns.WebApi.csproj 

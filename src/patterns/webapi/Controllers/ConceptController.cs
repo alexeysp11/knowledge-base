@@ -4,13 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Concepts.Models;
-using Concepts.Core.DataTypes.DataCollections;
-using Concepts.Core.DependencyInjection;
-using Concepts.Core.Interfaces;
-using Concepts.Core.Middlewares;
+using KnowledgeBase.Patterns.Models;
+using KnowledgeBase.Patterns.Core.DataTypes.DataCollections;
+using KnowledgeBase.Patterns.Core.DependencyInjection;
+using KnowledgeBase.Patterns.Core.Interfaces;
+using KnowledgeBase.Patterns.Core.Middlewares;
 
-namespace Concepts.WebApi.Controllers
+namespace KnowledgeBase.Patterns.WebApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]

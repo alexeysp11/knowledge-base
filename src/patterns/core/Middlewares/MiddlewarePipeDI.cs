@@ -1,7 +1,7 @@
 using System.Collections.Generic; 
-using Concepts.Core.Interfaces;
+using KnowledgeBase.Patterns.Core.Interfaces;
 
-namespace Concepts.Core.Middlewares
+namespace KnowledgeBase.Patterns.Core.Middlewares
 {
     /// <summary>
     /// Uses ASP.NET Core-like approach 

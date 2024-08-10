@@ -1,4 +1,4 @@
-namespace Concepts.Core.Interfaces
+namespace KnowledgeBase.Patterns.Core.Interfaces
 {
     public interface IConceptCore
     {

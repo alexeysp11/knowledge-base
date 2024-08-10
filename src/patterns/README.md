@@ -9,7 +9,7 @@ run.cmd
 
 ## Deployment 
 
-Add the following package reference to the `Concepts.WebApi.csproj`:
+Add the following package reference to the `KnowledgeBase.Patterns.WebApi.csproj`:
 ```XML
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="3.1.0" />
@@ -34,7 +34,7 @@ So create a folder for your project inside the services' folder (e.g. `C:\Servic
 
 In order to deploy the application as a Windows Service, open CMD as adiministrator and execute: 
 ```
-sc create ConceptsService binPath=C:\Services\ConceptsService\Concepts.WebApi.exe
+sc create ConceptsService binPath=C:\Services\ConceptsService\KnowledgeBase.Patterns.WebApi.exe
 sc description ConceptsService "Windows service for studying programming concepts"
 ```
 

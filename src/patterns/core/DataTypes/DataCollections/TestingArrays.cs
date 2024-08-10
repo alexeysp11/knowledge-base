@@ -1,7 +1,7 @@
 using System.Text;
-using Concepts.Core.Interfaces;
+using KnowledgeBase.Patterns.Core.Interfaces;
 
-namespace Concepts.Core.DataTypes.DataCollections
+namespace KnowledgeBase.Patterns.Core.DataTypes.DataCollections
 {
     public class TestingArrays : IConceptCore
     {

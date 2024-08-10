@@ -1,6 +1,6 @@
-using Concepts.Core.Interfaces;
+using KnowledgeBase.Patterns.Core.Interfaces;
 
-namespace Concepts.Core.Middlewares
+namespace KnowledgeBase.Patterns.Core.Middlewares
 {
     /// <summary>
     /// Uses pointers to a function and creates a pipe of functions

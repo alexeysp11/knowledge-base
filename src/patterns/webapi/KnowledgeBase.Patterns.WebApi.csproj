@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../core/Concepts.Core.csproj" />
-    <ProjectReference Include="../models/Concepts.Models.csproj" />
+    <ProjectReference Include="../core/KnowledgeBase.Patterns.Core.csproj" />
+    <ProjectReference Include="../models/KnowledgeBase.Patterns.Models.csproj" />
   </ItemGroup>
 
   <ItemGroup>

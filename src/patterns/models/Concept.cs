@@ -1,6 +1,6 @@
 using System;
 
-namespace Concepts.Models
+namespace KnowledgeBase.Patterns.Models
 {
     /// <summary>
     /// Represents information about a programming concept 

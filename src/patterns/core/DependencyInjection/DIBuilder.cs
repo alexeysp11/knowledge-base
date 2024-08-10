@@ -1,8 +1,8 @@
 using System.Collections.Generic; 
 using System.Linq; 
-using Concepts.Core.Interfaces;
+using KnowledgeBase.Patterns.Core.Interfaces;
 
-namespace Concepts.Core.DependencyInjection
+namespace KnowledgeBase.Patterns.Core.DependencyInjection
 {
     public class DIBuilder : IConceptCore
     {
