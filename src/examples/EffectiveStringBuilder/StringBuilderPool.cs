@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 
-namespace Concepts.Examples.EffectiveStringBuilder;
+namespace KnowledgeBase.Examples.EffectiveStringBuilder;
 
 /// <summary>
 /// Implements the mechanism for pooling objects of type StringBuilder.

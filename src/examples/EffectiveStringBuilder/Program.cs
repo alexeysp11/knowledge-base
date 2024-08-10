@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Text;
 
-namespace Concepts.Examples.EffectiveStringBuilder;
+namespace KnowledgeBase.Examples.EffectiveStringBuilder;
 
 public class Program
 {
