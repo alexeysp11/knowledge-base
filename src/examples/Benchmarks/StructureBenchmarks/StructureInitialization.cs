@@ -2,7 +2,7 @@ using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Running;
 using System.Threading;
 
-namespace Concepts.Examples.Benchmarks.StructureBenchmarks;
+namespace KnowledgeBase.Examples.Benchmarks.StructureBenchmarks;
 
 internal struct MyStruct
 {

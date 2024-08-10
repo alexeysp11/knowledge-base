@@ -1,13 +1,13 @@
 ﻿using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Running;
-using Concepts.Examples.Benchmarks.CodeStyleApproaches;
-using Concepts.Examples.Benchmarks.CollectionOperations;
-using Concepts.Examples.Benchmarks.GarbageCollectionCases;
-using Concepts.Examples.Benchmarks.MultithreadingBenchmarks;
-using Concepts.Examples.Benchmarks.StructureBenchmarks;
-using Concepts.Examples.Benchmarks.TextOperations;
+using KnowledgeBase.Examples.Benchmarks.CodeStyleApproaches;
+using KnowledgeBase.Examples.Benchmarks.CollectionOperations;
+using KnowledgeBase.Examples.Benchmarks.GarbageCollectionCases;
+using KnowledgeBase.Examples.Benchmarks.MultithreadingBenchmarks;
+using KnowledgeBase.Examples.Benchmarks.StructureBenchmarks;
+using KnowledgeBase.Examples.Benchmarks.TextOperations;
 
-namespace Concepts.Examples.Benchmarks;
+namespace KnowledgeBase.Examples.Benchmarks;
 
 public class Program
 {

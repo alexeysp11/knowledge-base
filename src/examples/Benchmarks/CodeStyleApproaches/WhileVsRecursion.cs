@@ -1,7 +1,7 @@
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Running;
 
-namespace Concepts.Examples.Benchmarks.CodeStyleApproaches;
+namespace KnowledgeBase.Examples.Benchmarks.CodeStyleApproaches;
 
 /// <summary>
 /// A class for testing performance when using initializing structures.

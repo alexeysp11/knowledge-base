@@ -2,7 +2,7 @@ using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Running;
 using System.Threading;
 
-namespace Concepts.Examples.Benchmarks.MultithreadingBenchmarks;
+namespace KnowledgeBase.Examples.Benchmarks.MultithreadingBenchmarks;
 
 /// <summary>
 /// A class for testing performance when using synchronization primitives.

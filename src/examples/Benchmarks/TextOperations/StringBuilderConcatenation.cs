@@ -3,7 +3,7 @@ using System.Text;
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Running;
 
-namespace Concepts.Examples.Benchmarks.TextOperations;
+namespace KnowledgeBase.Examples.Benchmarks.TextOperations;
 
 [MemoryDiagnoser]
 public class StringBuilderConcatenation

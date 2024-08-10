@@ -1,3 +1,3 @@
-# Concepts.Examples.Benchmarks
+# KnowledgeBase.Examples.Benchmarks
 
 [English](README.md) | [Русский](README.ru.md)

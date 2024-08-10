@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Running;
 
-namespace Concepts.Examples.Benchmarks.CollectionOperations;
+namespace KnowledgeBase.Examples.Benchmarks.CollectionOperations;
 
 [MemoryDiagnoser]
 public class SpanInitialization

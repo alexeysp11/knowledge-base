@@ -6,7 +6,7 @@ using BenchmarkDotNet.Running;
 using Dapper;
 using Microsoft.EntityFrameworkCore;
 
-namespace Concepts.Examples.Benchmarks.GarbageCollectionCases;
+namespace KnowledgeBase.Examples.Benchmarks.GarbageCollectionCases;
 
 /// <summary>
 /// Class for testing perfomance of the operations with collections for different DB providers.
