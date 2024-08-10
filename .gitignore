@@ -17,9 +17,4 @@ node_modules
 data
 packages
 
-examples/AbstractFactory
-
 BenchmarkDotNet.Artifacts
-
-c
-java
