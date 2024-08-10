@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using Concepts.Examples.PgStoredFunctionsEfCore.Models;
+using KnowledgeBase.Examples.PgStoredFunctionsEfCore.Models;
 
-namespace Concepts.Examples.PgStoredFunctionsEfCore.Contexts;
+namespace KnowledgeBase.Examples.PgStoredFunctionsEfCore.Contexts;
 
 /// <summary>
 /// Represents the database context for Service Interaction in the application.

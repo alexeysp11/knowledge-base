@@ -1,6 +1,6 @@
-using Concepts.Examples.PgStoredFunctionsEfCore.DataProcessing;
+using KnowledgeBase.Examples.PgStoredFunctionsEfCore.DataProcessing;
 
-namespace Concepts.Examples.PgStoredFunctionsEfCore
+namespace KnowledgeBase.Examples.PgStoredFunctionsEfCore
 {
     /// <summary>
     /// The class that is responsible for initializing this example.

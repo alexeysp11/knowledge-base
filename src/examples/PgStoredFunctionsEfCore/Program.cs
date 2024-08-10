@@ -1,11 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Concepts.Examples.PgStoredFunctionsEfCore.Contexts;
-using Concepts.Examples.PgStoredFunctionsEfCore.DataProcessing;
-using Concepts.Examples.PgStoredFunctionsEfCore.Models;
+using KnowledgeBase.Examples.PgStoredFunctionsEfCore.Contexts;
+using KnowledgeBase.Examples.PgStoredFunctionsEfCore.DataProcessing;
+using KnowledgeBase.Examples.PgStoredFunctionsEfCore.Models;
 
-namespace Concepts.Examples.PgStoredFunctionsEfCore;
+namespace KnowledgeBase.Examples.PgStoredFunctionsEfCore;
 
 public class Program
 {

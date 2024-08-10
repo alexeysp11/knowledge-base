@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Concepts.Examples.PgStoredFunctionsEfCore.Models;
+namespace KnowledgeBase.Examples.PgStoredFunctionsEfCore.Models;
 
 [Table("table1")]
 public class Table1

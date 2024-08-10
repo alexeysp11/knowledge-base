@@ -2,10 +2,10 @@ using System;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
-using Concepts.Examples.PgStoredFunctionsEfCore.Contexts;
-using Concepts.Examples.PgStoredFunctionsEfCore.Models;
+using KnowledgeBase.Examples.PgStoredFunctionsEfCore.Contexts;
+using KnowledgeBase.Examples.PgStoredFunctionsEfCore.Models;
 
-namespace Concepts.Examples.PgStoredFunctionsEfCore.DataProcessing;
+namespace KnowledgeBase.Examples.PgStoredFunctionsEfCore.DataProcessing;
 
 public class DbDataProcessing
 {
