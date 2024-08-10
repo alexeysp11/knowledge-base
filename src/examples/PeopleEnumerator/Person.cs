@@ -1,4 +1,4 @@
-namespace Concepts.Examples.PeopleEnumerator;
+namespace KnowledgeBase.Examples.PeopleEnumerator;
 
 public class Person
 {

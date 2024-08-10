@@ -1,6 +1,6 @@
 using System.Collections;
 
-namespace Concepts.Examples.PeopleEnumerator;
+namespace KnowledgeBase.Examples.PeopleEnumerator;
 
 public class People : IEnumerable
 {
