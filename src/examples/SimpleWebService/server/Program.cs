@@ -1,11 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Concepts.Examples.SimpleWebService.Core.DAL;
-using Concepts.Examples.SimpleWebService.Core.Models;
-using Concepts.Examples.SimpleWebService.Server.Controllers;
+using KnowledgeBase.Examples.SimpleWebService.Core.DAL;
+using KnowledgeBase.Examples.SimpleWebService.Core.Models;
+using KnowledgeBase.Examples.SimpleWebService.Server.Controllers;
 
-namespace Concepts.Examples.SimpleWebService.Server;
+namespace KnowledgeBase.Examples.SimpleWebService.Server;
 
 /// <summary>
 /// Initializes the application.

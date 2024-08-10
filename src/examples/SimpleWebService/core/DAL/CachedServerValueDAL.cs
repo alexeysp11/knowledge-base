@@ -2,9 +2,9 @@ using System.Data;
 using System.Data.SQLite;
 using System.Text;
 using Dapper;
-using Concepts.Examples.SimpleWebService.Core.Models;
+using KnowledgeBase.Examples.SimpleWebService.Core.Models;
 
-namespace Concepts.Examples.SimpleWebService.Core.DAL;
+namespace KnowledgeBase.Examples.SimpleWebService.Core.DAL;
 
 /// <summary>
 /// Allows you to add information about cached values to the database.

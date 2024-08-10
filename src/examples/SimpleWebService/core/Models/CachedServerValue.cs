@@ -1,4 +1,4 @@
-﻿namespace Concepts.Examples.SimpleWebService.Core.Models;
+﻿namespace KnowledgeBase.Examples.SimpleWebService.Core.Models;
 
 /// <summary>
 /// 

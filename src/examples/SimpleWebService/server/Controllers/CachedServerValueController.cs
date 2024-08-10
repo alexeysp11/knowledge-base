@@ -1,9 +1,9 @@
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using Concepts.Examples.SimpleWebService.Core.DAL;
-using Concepts.Examples.SimpleWebService.Core.Models;
+using KnowledgeBase.Examples.SimpleWebService.Core.DAL;
+using KnowledgeBase.Examples.SimpleWebService.Core.Models;
 
-namespace Concepts.Examples.SimpleWebService.Server.Controllers;
+namespace KnowledgeBase.Examples.SimpleWebService.Server.Controllers;
 
 /// <summary>
 /// 
