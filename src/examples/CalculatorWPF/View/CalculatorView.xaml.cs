@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Concepts.Examples.CalculatorWPF.Views
+namespace KnowledgeBase.Examples.CalculatorWPF.Views
 {
     /// <summary>
     /// Interaction logic for CalculatorView.xaml

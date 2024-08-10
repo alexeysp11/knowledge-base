@@ -1,7 +1,7 @@
-﻿<Application x:Class="Concepts.Examples.CalculatorWPF.App"
+﻿<Application x:Class="KnowledgeBase.Examples.CalculatorWPF.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Concepts.Examples.CalculatorWPF"
+             xmlns:local="clr-namespace:KnowledgeBase.Examples.CalculatorWPF"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
          

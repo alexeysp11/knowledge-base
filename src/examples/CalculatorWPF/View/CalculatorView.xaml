@@ -1,9 +1,9 @@
-﻿<Window x:Class="Concepts.Examples.CalculatorWPF.Views.CalculatorView"
+﻿<Window x:Class="KnowledgeBase.Examples.CalculatorWPF.Views.CalculatorView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Concepts.Examples.CalculatorWPF.ViewModels"
+        xmlns:local="clr-namespace:KnowledgeBase.Examples.CalculatorWPF.ViewModels"
         mc:Ignorable="d"
         Title="CalculatorView" Height="450" Width="800">
     

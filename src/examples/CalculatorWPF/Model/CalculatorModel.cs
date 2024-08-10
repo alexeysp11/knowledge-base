@@ -1,6 +1,6 @@
 using System;
 
-namespace Concepts.Examples.CalculatorWPF.Models 
+namespace KnowledgeBase.Examples.CalculatorWPF.Models 
 {
     class CalculationModel
     {

@@ -3,9 +3,9 @@ using System.Diagnostics;
 using System.Windows;
 using System.ComponentModel;
 using System.Windows.Input;
-using Concepts.Examples.CalculatorWPF.Models;
+using KnowledgeBase.Examples.CalculatorWPF.Models;
 
-namespace Concepts.Examples.CalculatorWPF.ViewModels
+namespace KnowledgeBase.Examples.CalculatorWPF.ViewModels
 {
     public class CalculatorViewModel : INotifyPropertyChanged
     {
