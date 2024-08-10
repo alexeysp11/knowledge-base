@@ -1,9 +1,9 @@
 using System;
 using System.Linq;
 using Xunit;
-using Concepts.Examples.TrickyScheduler;
+using KnowledgeBase.Examples.TrickyScheduler;
 
-namespace Concepts.Examples.TrickyScheduler.Tests;
+namespace KnowledgeBase.Examples.TrickyScheduler.Tests;
 
 public class ScheduleTest
 {

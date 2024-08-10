@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 
-namespace Concepts.Examples.TrickyScheduler
+namespace KnowledgeBase.Examples.TrickyScheduler
 {
 	/// <summary>
 	/// Класс для хранения информации о точке в расписании.

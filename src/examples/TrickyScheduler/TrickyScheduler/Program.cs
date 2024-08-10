@@ -1,4 +1,4 @@
-﻿using Concepts.Examples.TrickyScheduler; 
+﻿using KnowledgeBase.Examples.TrickyScheduler; 
 
 Console.WriteLine("Schedule test");
 try

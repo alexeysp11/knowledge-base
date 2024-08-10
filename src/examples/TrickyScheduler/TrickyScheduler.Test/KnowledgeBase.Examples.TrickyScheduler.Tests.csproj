@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../TrickyScheduler/Concepts.Examples.TrickyScheduler.csproj" />
+    <ProjectReference Include="../TrickyScheduler/KnowledgeBase.Examples.TrickyScheduler.csproj" />
   </ItemGroup>
 
 </Project>
