@@ -2,7 +2,7 @@
 using System;
 using System.Text;
 
-namespace Concepts.Examples.Publisher;
+namespace KnowledgeBase.Examples.Publisher;
 
 public class Program
 {

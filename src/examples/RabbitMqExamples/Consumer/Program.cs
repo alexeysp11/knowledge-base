@@ -3,7 +3,7 @@ using RabbitMQ.Client.Events;
 using System.Text;
 using System.Threading.Channels;
 
-namespace Concepts.Examples.Consumer;
+namespace KnowledgeBase.Examples.Consumer;
 
 public class Program
 {
