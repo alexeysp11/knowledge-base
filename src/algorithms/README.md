@@ -1,4 +1,4 @@
-# leetcode 
+# algorithms
 
 This repository contains solutions for **leetcode** problems in C#, Go, Python, JS and plain SQL. 
 

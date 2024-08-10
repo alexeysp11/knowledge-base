@@ -1,4 +1,4 @@
-# concepts-cs 
+# patterns
 
 ## Running the application 
 
