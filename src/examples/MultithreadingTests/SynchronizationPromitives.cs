@@ -1,6 +1,6 @@
 using System.Threading;
 
-namespace Concepts.Examples.MultithreadingTests;
+namespace KnowledgeBase.Examples.MultithreadingTests;
 
 public class SynchronizationPromitives
 {

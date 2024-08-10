@@ -1,4 +1,4 @@
-﻿namespace Concepts.Examples.MultithreadingTests;
+﻿namespace KnowledgeBase.Examples.MultithreadingTests;
 
 public class Program
 {
