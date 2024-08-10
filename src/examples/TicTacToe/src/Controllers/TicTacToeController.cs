@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Encodings.Web;
-using Concepts.Examples.TicTacToe.Controllers;
+using KnowledgeBase.Examples.TicTacToe.Controllers;
 
-namespace Concepts.Examples.TicTacToe.Controllers
+namespace KnowledgeBase.Examples.TicTacToe.Controllers
 {
     public class TicTacToeController : Controller
     {

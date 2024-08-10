@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace Concepts.Examples.TicTacToe
+namespace KnowledgeBase.Examples.TicTacToe
 {
     public class Program
     {

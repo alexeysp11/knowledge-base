@@ -9,7 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace Concepts.Examples.TicTacToe
+namespace KnowledgeBase.Examples.TicTacToe
 {
     public class Startup
     {

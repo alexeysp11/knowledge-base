@@ -1,6 +1,6 @@
 using System;
 
-namespace Concepts.Examples.TicTacToe.Models
+namespace KnowledgeBase.Examples.TicTacToe.Models
 {
     public class ErrorViewModel
     {

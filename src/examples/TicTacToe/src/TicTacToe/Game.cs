@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.JSInterop;
 
-namespace Concepts.Examples.TicTacToe.TicTacToeGame
+namespace KnowledgeBase.Examples.TicTacToe.TicTacToeGame
 {
     public class JsMethods
     {
