@@ -2,7 +2,7 @@
 
 Задачи, направленные на закрепление практических навыков работы с представлениями.
 
-Конфигурация таблиц для закрепления практических навыков работы с PostgreSQL представлена в файле [Config_FinancialTransactions_FinancialTransactions_Products.sql](../../../sql/postgresql/Config_FinancialTransactions_FinancialTransactions_Products.sql). 
+Конфигурация таблиц для закрепления практических навыков работы с PostgreSQL представлена в файле [Config_FinancialTransactions_FinancialTransactions_Products.sql](../../../src/algorithms/sql/postgresql/Config.FinancialTransactions_Products.sql). 
 Аналогичную конфигурацию и определение таблиц можно использовать для других реляционных баз данных. 
 
 ## Задачи

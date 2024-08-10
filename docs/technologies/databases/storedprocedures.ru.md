@@ -141,7 +141,7 @@ public IEnumerable<OrganizationItem> GetUserDepartments(
 	User user
 )
 ```
-- на уровне БД: `getusersdepartments()` (актуально для PostgreSQL) - возвращает [таблицу ассоциаций]().
+- на уровне БД: `getusersdepartments()` (актуально для PostgreSQL) - возвращает [таблицу ассоциаций](https://en.wikipedia.org/wiki/Associative_entity).
 
 При работе с запросами, использующими хранимые процедуры или триггеры, могут возникнуть следующие проблемы:
 - Замедление процессов из-за необходимости выполнения хранимых процедур или триггеров.

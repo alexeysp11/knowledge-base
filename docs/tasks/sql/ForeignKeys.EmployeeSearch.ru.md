@@ -2,7 +2,7 @@
 
 Задачи, направленные на закрепление практических навыков работы с foreign key.
 
-Конфигурация таблиц для закрепления практических навыков работы с PostgreSQL представлена в файле [Config.EmployeeSearch.sql](../../../sql/postgresql/Config.EmployeeSearch.sql). 
+Конфигурация таблиц для закрепления практических навыков работы с PostgreSQL представлена в файле [Config.EmployeeSearch.sql](../../../src/algorithms/sql/postgresql/Config.EmployeeSearch.sql).
 Аналогичную конфигурацию и определение таблиц можно использовать для других реляционных баз данных. 
 
 ## Задачи
