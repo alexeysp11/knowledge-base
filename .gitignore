@@ -7,10 +7,14 @@ bin
 obj 
 publish
 
+*.exe
+*.dll
+
+__pycache__
+
 node_modules
 
 data
-
-examples/AbstractFactory
+packages
 
 BenchmarkDotNet.Artifacts

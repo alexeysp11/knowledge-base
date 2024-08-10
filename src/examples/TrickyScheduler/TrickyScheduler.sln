@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowledgeBase.Examples.TrickyScheduler", "TrickyScheduler\KnowledgeBase.Examples.TrickyScheduler.csproj", "{AD2DB482-B5EB-405D-AB11-F05FAEA1F37E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowledgeBase.Examples.TrickyScheduler.Tests", "TrickyScheduler.Test\KnowledgeBase.Examples.TrickyScheduler.Tests.csproj", "{DAF456B9-5115-4CF9-B0CF-FBB606DAF1EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AD2DB482-B5EB-405D-AB11-F05FAEA1F37E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD2DB482-B5EB-405D-AB11-F05FAEA1F37E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD2DB482-B5EB-405D-AB11-F05FAEA1F37E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD2DB482-B5EB-405D-AB11-F05FAEA1F37E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAF456B9-5115-4CF9-B0CF-FBB606DAF1EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAF456B9-5115-4CF9-B0CF-FBB606DAF1EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAF456B9-5115-4CF9-B0CF-FBB606DAF1EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAF456B9-5115-4CF9-B0CF-FBB606DAF1EE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
