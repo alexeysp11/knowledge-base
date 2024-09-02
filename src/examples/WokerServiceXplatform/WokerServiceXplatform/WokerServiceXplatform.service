@@ -1,0 +1,9 @@
+[Unit]
+Description=KnoledgeBase.Examples.WorkerServiceLogs
+ 
+[Service]
+Type=notify
+ExecStart=/usr/sbin/KnoledgeBase/WorkerServiceLogs --port=53
+ 
+[Install]
+WantedBy=multi-user.target
