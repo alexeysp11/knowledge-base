@@ -38,8 +38,8 @@ namespace MyWorkerServiceApp
 
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-                // Замена конфигурации для Linux
-                // Пример: 
+                // Configuration for Linux.
+                // Example: 
                 // builder.Services.AddHostedService<MyWorkerService>()
                 //     .Configure<HostOptions>(options => options.ShutdownTimeout = TimeSpan.FromSeconds(10));
             }
