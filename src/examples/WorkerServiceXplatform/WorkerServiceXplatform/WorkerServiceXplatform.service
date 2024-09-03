@@ -1,0 +1,9 @@
+[Unit]
+Description=KnowledgeBase.Examples.WorkerServiceXplatform
+ 
+[Service]
+Type=notify
+ExecStart=/usr/sbin/knowledge-base/WorkerServiceXplatform/KnowledgeBase.Examples.WorkerServiceXplatform --port=53
+ 
+[Install]
+WantedBy=multi-user.target
