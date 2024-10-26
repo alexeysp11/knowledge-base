@@ -1,3 +1,5 @@
+using Microsoft.Extensions.FileProviders;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -14,7 +16,14 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+var autoDocsStaticFiles = "C:\\Users\\User\\Documents\\auto-docs\\knowledge-base\\AutoDocsExamples\\_site";
 app.UseStaticFiles();
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(autoDocsStaticFiles),
+    RequestPath = "/docs/knowledge-base"
+});
 
 app.UseRouting();
 
