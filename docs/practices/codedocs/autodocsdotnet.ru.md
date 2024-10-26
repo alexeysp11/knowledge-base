@@ -43,6 +43,22 @@
 
 Для того, чтобы docfx сгенерировал PDF файл с документацией из командной строки, необходима установка chromium, который будет установлен в момент выполнения команды `docfx pdf` (без этого не будет произведена генерация PDF).
 
+#### Примеры использования
+
+Пример генерации документации из кода (yml, html, pdf):
+```C#
+var autoDocsStaticFiles = "path-to-docs/docfx.json";
+
+Console.WriteLine("docfx example: yml");
+await Docfx.Dotnet.DotnetApiCatalog.GenerateManagedReferenceYamlFiles(autoDocsStaticFiles);
+
+Console.WriteLine("docfx example: build");
+await Docfx.Docset.Build(autoDocsStaticFiles);
+
+Console.WriteLine("docfx example: pdf");
+await Docfx.Docset.Pdf(autoDocsStaticFiles);
+```
+
 ### Sandcastle Help File Builder
 
 Если нужна более традиционная документация в HTML, то SHFB может быть предпочтительным вариантом.
