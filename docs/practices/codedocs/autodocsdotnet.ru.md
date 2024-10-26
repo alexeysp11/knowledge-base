@@ -64,10 +64,10 @@
 <a href="/">Стартовая страница</a>: вернуться в основное приложение
 ```
 
-3. Изменить шаблон можно следуюим образом:
+3. Изменить шаблон можно следующим образом:
 
 - Выгрузить стандартный шаблон docfx, например, `docfx template export modern`.
-- В `_exported_templates/modern/layout/_master.tmpl` можно менять разметку или стандартные значения для контролов (например, `<meta name="loc:downloadPdf" content="Загрузить PDF">`).
+- В `_exported_templates/modern/layout/_master.tmpl` можно менять разметку или отображаемые значения для визуальных элементов (например, `<meta name="loc:downloadPdf" content="Загрузить PDF">` позволит отображать `"Загрузить PDF"` вместо `"Download PDF"`).
 - Перенесем `_exported_templates/modern` в `templates/modern-new` и выполним команду `docfx -t default,templates/modern-new` (команда позволяет сделать merge для шаблонов `default` и `modern-new`).
 
 #### Примеры использования
