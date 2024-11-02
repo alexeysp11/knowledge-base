@@ -10,7 +10,7 @@ namespace WorkflowLib.Examples.LibGit2SharpExample.UseCases;
 public class GeneralUseCases
 {
     /// <summary>
-    /// Gets the list of branches.
+    /// Gets the list of all branches.
     /// </summary>
     public static void GetBranches(string pathToRepo)
     {
@@ -19,13 +19,48 @@ public class GeneralUseCases
             var allRemotes = repo.Network.Remotes.ToList();
             foreach (var r in allRemotes)
             {
-                System.Console.WriteLine($"remote: {r.Name}    url: {r.Url}");
+                System.Console.WriteLine($"remote: {r.Name} \t url: {r.Url}");
             }
             var allBranches = repo.Branches.ToList();
             foreach (var b in allBranches)
             {
-                System.Console.WriteLine($"branch: {b.CanonicalName}    remote: {b.IsRemote}    head: {b.IsCurrentRepositoryHead}");
+                System.Console.WriteLine($"branch: {b.CanonicalName} \t FriendlyName: {b.FriendlyName} \t remote: {b.IsRemote} \t head: {b.IsCurrentRepositoryHead}");
             }
+        }
+    }
+
+    /// <summary>
+    /// Gets the list of local branches.
+    /// </summary>
+    public static void GetLocalBranches(string pathToRepo)
+    {
+        using (var repo = new Repository(pathToRepo))
+        {
+            var allBranches = repo.Branches.Where(x => !x.IsRemote).ToList();
+            foreach (var b in allBranches)
+            {
+                System.Console.WriteLine($"branch: {b.CanonicalName} \t FriendlyName: {b.FriendlyName} \t head: {b.IsCurrentRepositoryHead}");
+            }
+        }
+    }
+    
+    /// <summary>
+    /// Switch the currently active branch.
+    /// If the branch does not exist, create a new branch.
+    /// </summary>
+    public static void Checkout(string pathToRepo, string branchName)
+    {
+        using (var repo = new Repository(pathToRepo))
+        {
+            Branch branch = repo.Head;
+            Branch newBranch = repo.Branches[branchName];
+            if (newBranch == null)
+            {
+                newBranch = repo.CreateBranch(branchName);
+            }
+            newBranch = Commands.Checkout(repo, branchName);
+            System.Console.WriteLine($"git checkout {branch.FriendlyName}..{newBranch.FriendlyName}");
+            System.Console.WriteLine($"Switched successfully: {repo.Head.CanonicalName == newBranch.CanonicalName}");
         }
     }
 
@@ -46,8 +81,6 @@ public class GeneralUseCases
                 throw new System.Exception($"The specified romote '{remoteName}' is not found");
             }
             var refSpecs = remote.FetchRefSpecs.Select(x => x.Specification);
-
-            return;
 
             // Fetch changes.
             System.Console.WriteLine($"1. git fetch");
