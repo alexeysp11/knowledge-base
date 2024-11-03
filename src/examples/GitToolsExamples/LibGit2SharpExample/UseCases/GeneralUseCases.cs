@@ -45,22 +45,35 @@ public class GeneralUseCases
     }
     
     /// <summary>
+    /// Clones remote repository into local folder.
+    /// </summary>
+    public static void CloneRepo(string url, string pathToRepo)
+    {
+        string clonedRepoPath = Repository.Clone(url, pathToRepo);
+        System.Console.WriteLine($"input: '{pathToRepo}', output: '{clonedRepoPath}'");
+    }
+    
+    /// <summary>
     /// Switch the currently active branch.
     /// If the branch does not exist, create a new branch.
     /// </summary>
-    public static void Checkout(string pathToRepo, string branchName)
+    public static void Checkout(string pathToRepo, string branchNameFrom, string branchNameTo)
     {
         using (var repo = new Repository(pathToRepo))
         {
-            Branch branch = repo.Head;
-            Branch newBranch = repo.Branches[branchName];
-            if (newBranch == null)
+            Branch branchHead = repo.Head;
+            Branch branchFrom = branchHead.FriendlyName != branchNameFrom && branchHead.CanonicalName != branchNameFrom
+                ? Commands.Checkout(repo, branchNameFrom)
+                : branchHead;
+
+            Branch branchTo = repo.Branches[branchNameTo];
+            if (branchTo == null)
             {
-                newBranch = repo.CreateBranch(branchName);
+                branchTo = repo.CreateBranch(branchNameTo);
             }
-            newBranch = Commands.Checkout(repo, branchName);
-            System.Console.WriteLine($"git checkout {branch.FriendlyName}..{newBranch.FriendlyName}");
-            System.Console.WriteLine($"Switched successfully: {repo.Head.CanonicalName == newBranch.CanonicalName}");
+            branchTo = Commands.Checkout(repo, branchNameTo);
+            System.Console.WriteLine($"git checkout {branchFrom.FriendlyName}..{branchTo.FriendlyName}");
+            System.Console.WriteLine($"Switched successfully: {branchFrom.CanonicalName == branchTo.CanonicalName}");
         }
     }
 
@@ -68,6 +81,14 @@ public class GeneralUseCases
     /// Pulls changes from the remote repository.
     /// </summary>
     public static void PullChanges(string pathToRepo, string remoteName, string branchName)
+    {
+        // 
+    }
+
+    /// <summary>
+    /// Fetches and merges changes from the remote repository.
+    /// </summary>
+    public static void FetchAndMergeChanges(string pathToRepo, string remoteName, string branchName)
     {
         System.Console.WriteLine($"Imitate git pull");
 
@@ -111,5 +132,54 @@ public class GeneralUseCases
             System.Console.WriteLine($"merge status: {mergeResult.Status}");
         }
         Console.WriteLine(logMessage);
+    }
+    
+    /// <summary>
+    /// Stage specific changes made in the repository.
+    /// </summary>
+    public static void StageChanges(string pathToRepo, IEnumerable<string> files)
+    {
+        using (var repo = new Repository(pathToRepo))
+        {
+            foreach (var file in files)
+            {
+                repo.Index.Add(file);
+                repo.Index.Write();
+            }
+        }
+    }
+
+    /// <summary>
+    /// Stage all changes made in the repository.
+    /// </summary>
+    public static void StageAllChanges(string pathToRepo)
+    {
+        using (var repo = new Repository(pathToRepo))
+        {
+            Commands.Stage(repo, "*");
+        }
+    }
+
+    /// <summary>
+    /// Commite changes made in the repository.
+    /// </summary>
+    public static void CommitChanges(string pathToRepo, string message, Signature author, Signature committer)
+    {
+        using (var repo = new Repository(pathToRepo))
+        {
+            Commit commit = repo.Commit(message, author, committer);
+        }
+    }
+
+    /// <summary>
+    /// Push changes to the remote repository.
+    /// </summary>
+    public static void PushChanges(string pathToRepo, string pushRefSpec, PushOptions options)
+    {
+        using (var repo = new Repository(pathToRepo))
+        {
+            Remote remote = repo.Network.Remotes["origin"];
+            repo.Network.Push(remote, pushRefSpec, options);
+        }
     }
 }
