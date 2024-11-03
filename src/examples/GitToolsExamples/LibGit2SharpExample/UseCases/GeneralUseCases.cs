@@ -57,6 +57,25 @@ public class GeneralUseCases
     /// Switch the currently active branch.
     /// If the branch does not exist, create a new branch.
     /// </summary>
+    public static void Checkout(string pathToRepo, string branchName)
+    {
+        using (var repo = new Repository(pathToRepo))
+        {
+            Branch branchFrom = repo.Head;
+            Branch branchTo = repo.Branches[branchName];
+            if (branchTo == null)
+            {
+                branchTo = repo.CreateBranch(branchName);
+            }
+            branchTo = Commands.Checkout(repo, branchName);
+            System.Console.WriteLine($"git checkout {branchFrom.FriendlyName}..{branchTo.FriendlyName}");
+        }
+    }
+    
+    /// <summary>
+    /// Switch the currently active branch.
+    /// If the branch does not exist, create a new branch.
+    /// </summary>
     public static void Checkout(string pathToRepo, string branchNameFrom, string branchNameTo)
     {
         using (var repo = new Repository(pathToRepo))
@@ -73,7 +92,6 @@ public class GeneralUseCases
             }
             branchTo = Commands.Checkout(repo, branchNameTo);
             System.Console.WriteLine($"git checkout {branchFrom.FriendlyName}..{branchTo.FriendlyName}");
-            System.Console.WriteLine($"Switched successfully: {branchFrom.CanonicalName == branchTo.CanonicalName}");
         }
     }
 
@@ -180,6 +198,50 @@ public class GeneralUseCases
         {
             Remote remote = repo.Network.Remotes["origin"];
             repo.Network.Push(remote, pushRefSpec, options);
+        }
+    }
+
+    /// <summary>
+    /// Get changes made by the last commit.
+    /// </summary>
+    public static void GetLastCommitChanges(string pathToRepo)
+    {
+        using (var repo = new Repository(pathToRepo))
+        {
+            Tree commitTree = repo.Head.Tip.Tree;
+            Tree parentCommitTree = repo.Head.Tip.Parents.First().Tree;
+
+            var patch = repo.Diff.Compare<Patch>(parentCommitTree, commitTree);
+
+            foreach (var ptc in patch)
+            {
+                Console.WriteLine(ptc.Status + " : " + ptc.Path);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Compare branch Head and specified branch.
+    /// </summary>
+    public static void CompareBranchWithHead(string pathToRepo, string branchName)
+    {
+        using (var repo = new Repository(pathToRepo))
+        {
+            Branch branch = repo.Branches[branchName];
+            if (branch == null)
+            {
+                throw new System.Exception($"Specified branch '{branchName}' does not exist");
+            }
+
+            Tree commitTreeBranch = branch.Tip.Tree;
+            Tree commitTreeHead = repo.Head.Tip.Tree;
+
+            var patch = repo.Diff.Compare<Patch>(commitTreeBranch, commitTreeHead);
+
+            foreach (var ptc in patch)
+            {
+                Console.WriteLine(ptc.Status + " : " + ptc.Path);
+            }
         }
     }
 }
