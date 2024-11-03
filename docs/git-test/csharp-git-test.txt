@@ -1,0 +1,1 @@
+Some content of the file, specifically for the csharp-git-test-1 branch.
