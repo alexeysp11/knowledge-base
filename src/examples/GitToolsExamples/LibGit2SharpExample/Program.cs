@@ -17,11 +17,11 @@ var knowledgeBasePath = @"C:\Users\User\Documents\proj\git-examples\knowledge-ba
 //     new UsernamePasswordCredentials { Username = "", Password = "" };
 
 // Operations in the repository.
-// GeneralUseCases.CloneRepo(knowledgeBaseUrl, knowledgeBasePath);
-// GeneralUseCases.StageChanges(knowledgeBasePath, new string[] { "docs/git-test/csharp-git-test.txt" });
-// GeneralUseCases.CommitChanges(knowledgeBasePath, "message for the test commit", author, committer);
-// GeneralUseCases.PushChanges(knowledgeBasePath, @"refs/heads/csharp-git-test-1", pushOptions);
-// GeneralUseCases.Checkout(knowledgeBasePath, "main");
-// GeneralUseCases.PullChanges(knowledgeBasePath, "origin", "main");
-// GeneralUseCases.GetLocalBranches(knowledgeBasePath);
-GeneralUseCases.CompareBranchWithHead(knowledgeBasePath, "origin/main");
+// GeneralUseCasesConsole.CloneRepo(knowledgeBaseUrl, knowledgeBasePath);
+// GeneralUseCasesConsole.StageChanges(knowledgeBasePath, new string[] { "docs/git-test/csharp-git-test.txt" });
+// GeneralUseCasesConsole.CommitChanges(knowledgeBasePath, "message for the test commit", author, committer);
+// GeneralUseCasesConsole.PushChanges(knowledgeBasePath, @"refs/heads/csharp-git-test-1", pushOptions);
+// GeneralUseCasesConsole.Checkout(knowledgeBasePath, "main");
+// GeneralUseCasesConsole.PullChanges(knowledgeBasePath, "origin", "main");
+// GeneralUseCasesConsole.GetLocalBranches(knowledgeBasePath);
+GeneralUseCasesConsole.CompareBranchWithHead(knowledgeBasePath, "origin/main");
