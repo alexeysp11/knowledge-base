@@ -31,6 +31,14 @@ public class GeneralUseCasesConsole
         }
     }
 
+    public static void FetchChanges(string pathToRepo, string remoteName)
+    {
+        using (var repo = new Repository(pathToRepo))
+        {
+            GeneralGitOperations.FetchChanges(repo, remoteName);
+        }
+    }
+
     public static void CompareBranchWithHead(string pathToRepo, string branchName)
     {
         using (var repo = new Repository(pathToRepo))

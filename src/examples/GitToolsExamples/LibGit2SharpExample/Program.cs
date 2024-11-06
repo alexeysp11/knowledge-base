@@ -22,6 +22,7 @@ var knowledgeBasePath = @"C:\Users\User\Documents\proj\git-examples\knowledge-ba
 // GeneralUseCasesConsole.CommitChanges(knowledgeBasePath, "message for the test commit", author, committer);
 // GeneralUseCasesConsole.PushChanges(knowledgeBasePath, @"refs/heads/csharp-git-test-1", pushOptions);
 // GeneralUseCasesConsole.Checkout(knowledgeBasePath, "main");
+GeneralUseCasesConsole.FetchChanges(knowledgeBasePath, "origin");
 // GeneralUseCasesConsole.PullChanges(knowledgeBasePath, "origin", "main");
 // GeneralUseCasesConsole.GetLocalBranches(knowledgeBasePath);
 GeneralUseCasesConsole.CompareBranchWithHead(knowledgeBasePath, "origin/main");

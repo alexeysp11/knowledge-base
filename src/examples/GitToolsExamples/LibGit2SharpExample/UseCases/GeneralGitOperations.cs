@@ -1,6 +1,4 @@
 using LibGit2Sharp;
-using LibGit2Sharp.Core;
-using LibGit2Sharp.Handlers;
 
 namespace WorkflowLib.Examples.LibGit2SharpExample.UseCases;
 
