@@ -3,20 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibGit2SharpExample", "LibGit2SharpExample\LibGit2SharpExample.csproj", "{EA7AE006-19D3-4550-A092-B49BF8D8440A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkflowLib.Examples.LibGit2SharpExample", "LibGit2SharpExample\WorkflowLib.Examples.LibGit2SharpExample.csproj", "{EA7AE006-19D3-4550-A092-B49BF8D8440A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{EA7AE006-19D3-4550-A092-B49BF8D8440A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EA7AE006-19D3-4550-A092-B49BF8D8440A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA7AE006-19D3-4550-A092-B49BF8D8440A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA7AE006-19D3-4550-A092-B49BF8D8440A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B34FE435-4DC6-4547-AE40-74F6A5C4FAE6}
 	EndGlobalSection
 EndGlobal
