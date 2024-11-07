@@ -1,5 +1,5 @@
 ﻿using LibGit2Sharp;
-using WorkflowLib.Examples.LibGit2SharpExample.UseCases;
+using WorkflowLib.Examples.GitToolsExamples.LibGit2SharpExample.UseCases;
 
 Console.WriteLine("LibGit2Sharp example");
 

@@ -1,12 +1,13 @@
 using LibGit2Sharp;
 
-namespace WorkflowLib.Examples.LibGit2SharpExample.UseCases;
+namespace WorkflowLib.Examples.GitToolsExamples.LibGit2SharpExample.UseCases;
 
 public class GeneralUseCasesConsole
 {
     /// <summary>
-    /// 
+    /// Get the list of remote repositories.
     /// </summary>
+    /// <param name="pathToRepo">Path to the local repository</param>
     public static void GetRemotes(string pathToRepo)
     {
         using (var repo = new Repository(pathToRepo))
@@ -19,6 +20,10 @@ public class GeneralUseCasesConsole
         }
     }
 
+    /// <summary>
+    /// Get the list of branches.
+    /// </summary>
+    /// <param name="pathToRepo">Path to the local repository</param>
     public static void GetBranches(string pathToRepo)
     {
         using (var repo = new Repository(pathToRepo))
@@ -31,6 +36,11 @@ public class GeneralUseCasesConsole
         }
     }
 
+    /// <summary>
+    /// Fetch changes from the remote repository.
+    /// </summary>
+    /// <param name="pathToRepo">Path to the local repository</param>
+    /// <param name="remoteName">Name of the remote repository</param>
     public static void FetchChanges(string pathToRepo, string remoteName)
     {
         using (var repo = new Repository(pathToRepo))
@@ -39,6 +49,11 @@ public class GeneralUseCasesConsole
         }
     }
 
+    /// <summary>
+    /// Compare the specified branch with head.
+    /// </summary>
+    /// <param name="pathToRepo">Path to the local repository</param>
+    /// <param name="branchName">Name of the branch that is going to be compared with head</param>
     public static void CompareBranchWithHead(string pathToRepo, string branchName)
     {
         using (var repo = new Repository(pathToRepo))

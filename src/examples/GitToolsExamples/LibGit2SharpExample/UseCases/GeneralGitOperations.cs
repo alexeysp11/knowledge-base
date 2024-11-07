@@ -1,6 +1,6 @@
 using LibGit2Sharp;
 
-namespace WorkflowLib.Examples.LibGit2SharpExample.UseCases;
+namespace WorkflowLib.Examples.GitToolsExamples.LibGit2SharpExample.UseCases;
 
 /// <summary>
 /// This class includes general and atomic usage scenarios for the LibGit2Sharp library.
@@ -10,6 +10,7 @@ public class GeneralGitOperations
     /// <summary>
     /// Gets the list of all remotes.
     /// </summary>
+    /// <param name="repo">Instance of the local repository</param>
     public static IEnumerable<Remote> GetRemotes(Repository repo)
     {
         return repo.Network.Remotes.ToList();
@@ -18,6 +19,7 @@ public class GeneralGitOperations
     /// <summary>
     /// Gets the list of all branches.
     /// </summary>
+    /// <param name="repo">Instance of the local repository</param>
     public static IEnumerable<Branch> GetBranches(Repository repo)
     {
         return repo.Branches.ToList();
@@ -26,6 +28,7 @@ public class GeneralGitOperations
     /// <summary>
     /// Gets the list of local branches.
     /// </summary>
+    /// <param name="repo">Instance of the local repository</param>
     public static IEnumerable<Branch> GetLocalBranches(Repository repo)
     {
         IEnumerable<Branch> allBranches = GetBranches(repo);
@@ -48,6 +51,7 @@ public class GeneralGitOperations
     /// Switch the currently active branch.
     /// If the branch does not exist, create a new branch.
     /// </summary>
+    /// <param name="repo">Instance of the local repository</param>
     public static void Checkout(Repository repo, string branchName)
     {
         Branch branchFrom = repo.Head;
@@ -58,10 +62,11 @@ public class GeneralGitOperations
         }
         branchTo = Commands.Checkout(repo, branchName);
     }
-    
+
     /// <summary>
     /// Pulls changes from the remote repository.
     /// </summary>
+    /// <param name="repo">Instance of the local repository</param>
     public static void PullChanges(Repository repo, string remoteName, string branchName)
     {
         // 
@@ -70,6 +75,7 @@ public class GeneralGitOperations
     /// <summary>
     /// Fetches changes from the remote repository.
     /// </summary>
+    /// <param name="repo">Instance of the local repository</param>
     public static void FetchChanges(Repository repo, string remoteName)
     {
         string logMessage = string.Empty;
@@ -85,6 +91,9 @@ public class GeneralGitOperations
     /// <summary>
     /// Merges changes from the remote repository.
     /// </summary>
+    /// <param name="repo">Instance of the local repository</param>
+    /// <param name="branchName">Name of the branch that is going to be merged into head</param>
+    /// <param name="author">Author of the merge</param>
     public static MergeResult MergeBranch(Repository repo, string branchName, Signature author)
     {
         Branch branch = repo.Branches[branchName];
@@ -98,15 +107,21 @@ public class GeneralGitOperations
     /// <summary>
     /// Fetches and merges changes from the remote repository.
     /// </summary>
+    /// <param name="repo">Instance of the local repository</param>
+    /// <param name="remoteName">Name of the remote repository</param>
+    /// <param name="branchName">Name of the branch that is going to be merged into head</param>
+    /// <param name="author">Author of the merge</param>
     public static void FetchAndMergeChanges(Repository repo, string remoteName, string branchName, Signature author)
     {
         FetchChanges(repo, remoteName);
         MergeBranch(repo, branchName, author);
     }
-    
+
     /// <summary>
     /// Stage specific changes made in the repository.
     /// </summary>
+    /// <param name="repo">Instance of the local repository</param>
+    /// <param name="files">Collection of files that need to be staged</param>
     public static void StageChanges(Repository repo, IEnumerable<string> files)
     {
         foreach (var file in files)
@@ -119,22 +134,30 @@ public class GeneralGitOperations
     /// <summary>
     /// Stage all changes made in the repository.
     /// </summary>
+    /// <param name="repo">Instance of the local repository</param>
     public static void StageAllChanges(Repository repo)
     {
         Commands.Stage(repo, "*");
     }
 
     /// <summary>
-    /// Commit changes made in the repository.
+    /// Commit changes made in the local repository.
     /// </summary>
-    public static void CommitChanges(Repository repo, string message, Signature author, Signature committer)
+    /// <param name="repo">Instance of the local repository</param>
+    /// <param name="message">Message of the commit</param>
+    /// <param name="author">Author of the commit</param>
+    /// <param name="author">The person that is going to make commit</param>
+    public static Commit CommitChanges(Repository repo, string message, Signature author, Signature committer)
     {
-        Commit commit = repo.Commit(message, author, committer);
+        return repo.Commit(message, author, committer);
     }
 
     /// <summary>
     /// Push changes to the remote repository.
     /// </summary>
+    /// <param name="repo">Instance of the local repository</param>
+    /// <param name="pushRefSpec"></param>
+    /// <param name="options">Push options</param>
     public static void PushChanges(Repository repo, string pushRefSpec, PushOptions options)
     {
         Remote remote = repo.Network.Remotes["origin"];
@@ -144,6 +167,7 @@ public class GeneralGitOperations
     /// <summary>
     /// Get changes made by the last commit.
     /// </summary>
+    /// <param name="repo">Instance of the local repository</param>
     public static Patch GetLastCommitChanges(Repository repo)
     {
         Tree commitTree = repo.Head.Tip.Tree;
@@ -155,6 +179,8 @@ public class GeneralGitOperations
     /// <summary>
     /// Compare branch Head and specified branch.
     /// </summary>
+    /// <param name="repo">Instance of the local repository</param>
+    /// <param name="branchName">Name of the branch that is going to be compared with the head</param>
     public static Patch CompareBranchWithHead(Repository repo, string branchName)
     {
         Branch branch = repo.Branches[branchName];
