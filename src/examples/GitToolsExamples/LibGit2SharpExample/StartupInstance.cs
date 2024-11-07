@@ -42,14 +42,14 @@ public class StartupInstance : IStartupInstance
             new UsernamePasswordCredentials { Username = gitUser.Username, Password = gitUser.Password };
 
         // Operations in the repository.
-        // GeneralUseCasesConsole.CloneRepo(_settings.RepositoryUrl, _settings.RepositoryPath);
-        // GeneralUseCasesConsole.StageChanges(_settings.RepositoryPath, new string[] { "docs/git-test/csharp-git-test.txt" });
-        // GeneralUseCasesConsole.CommitChanges(_settings.RepositoryPath, "message for the test commit", author, committer);
-        // GeneralUseCasesConsole.PushChanges(_settings.RepositoryPath, @"refs/heads/csharp-git-test-1", pushOptions);
-        // GeneralUseCasesConsole.Checkout(_settings.RepositoryPath, "main");
-        GeneralUseCasesConsole.FetchChanges(_settings.RepositoryPath, "origin");
-        // GeneralUseCasesConsole.PullChanges(_settings.RepositoryPath, "origin", "main");
-        // GeneralUseCasesConsole.GetLocalBranches(_settings.RepositoryPath);
+        GeneralUseCasesConsole.CloneRepo(_settings.RepositoryUrl, _settings.RepositoryPath);
+        GeneralUseCasesConsole.StageChanges(_settings.RepositoryPath, _settings.FilePathsStage);
+        GeneralUseCasesConsole.CommitChanges(_settings.RepositoryPath, _settings.CommitMessage, author, committer);
+        GeneralUseCasesConsole.PushChanges(_settings.RepositoryPath, _settings.PushRefSpec, pushOptions);
+        GeneralUseCasesConsole.Checkout(_settings.RepositoryPath, _settings.CheckoutBranchName);
+        GeneralUseCasesConsole.FetchChanges(_settings.RepositoryPath, _settings.OriginName);
+        GeneralUseCasesConsole.PullChanges(_settings.RepositoryPath, _settings.OriginName, _settings.PullBranchName);
+        GeneralUseCasesConsole.GetLocalBranches(_settings.RepositoryPath);
         GeneralUseCasesConsole.CompareBranchWithHead(_settings.RepositoryPath, "origin/main");
     }
 }

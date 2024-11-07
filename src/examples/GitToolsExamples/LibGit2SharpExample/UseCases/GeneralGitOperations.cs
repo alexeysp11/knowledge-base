@@ -42,9 +42,9 @@ public class GeneralGitOperations
     /// <summary>
     /// Clones remote repository into local folder.
     /// </summary>
-    public static string CloneRepo(string url, string pathToRepo)
+    public static string CloneRepo(string url, string repositoryPath)
     {
-        return Repository.Clone(url, pathToRepo);
+        return Repository.Clone(url, repositoryPath);
     }
     
     /// <summary>
@@ -52,7 +52,8 @@ public class GeneralGitOperations
     /// If the branch does not exist, create a new branch.
     /// </summary>
     /// <param name="repo">Instance of the local repository</param>
-    public static void Checkout(Repository repo, string branchName)
+    /// <returns>The branch that was checked out</returns>
+    public static Branch Checkout(Repository repo, string branchName)
     {
         Branch branchFrom = repo.Head;
         Branch branchTo = repo.Branches[branchName];
@@ -61,6 +62,7 @@ public class GeneralGitOperations
             branchTo = repo.CreateBranch(branchName);
         }
         branchTo = Commands.Checkout(repo, branchName);
+        return branchTo;
     }
 
     /// <summary>
