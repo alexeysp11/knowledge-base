@@ -10,9 +10,9 @@
 
 ### План
 
-- <input type="checkbox" disabled /> Исследовать, как собрать код из git репозитория с использованием docker:
-    - <input type="checkbox" disabled /> локально.
-    - <input type="checkbox" disabled /> с помощью GitHub Actions.
-    - <input type="checkbox" disabled /> с помощью GitLab CI/CD.
-- <input type="checkbox" disabled /> Добавить команды для настройки переменных среды.
-- <input type="checkbox" disabled /> Добавить команды для установки утилит.
+- [ ] Исследовать, как собрать код из git репозитория с использованием docker:
+    - [ ] локально.
+    - [ ] с помощью GitHub Actions.
+    - [ ] с помощью GitLab CI/CD.
+- [ ] Добавить команды для настройки переменных среды.
+- [ ] Добавить команды для установки утилит.
