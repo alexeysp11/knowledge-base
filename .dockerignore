@@ -1,0 +1,10 @@
+.git
+
+bin
+obj
+node_modules
+
+*.bin
+*.dll
+*.pdb
+*.so
