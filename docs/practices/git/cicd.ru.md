@@ -87,3 +87,31 @@ CI/CD (Continuous Integration/Continuous Delivery or Continuous Deployment) - э
 
 - Используйте токены доступа для управления доступом к репозиторию пакета.
 - Регулярно обновляйте пакет.
+
+## Настройка CI/CD
+
+### GitLab CI/CD и ограничение времени выполнения джобы:
+
+GitLab CI/CD может ограничивать время выполнения джобы. Вы можете настроить таймаут для джобы в файле `.gitlab-ci.yml`. Например:
+
+```
+stages:
+  - build
+  - test
+
+build:
+  stage: build
+  image: alpine:latest
+  script:
+    - echo "Building..."
+  timeout: 10 minutes # Ограничение времени выполнения в 10 минут
+
+test:
+  stage: test
+  image: alpine:latest
+  script:
+    - echo "Testing..."
+  timeout: 5 minutes # Ограничение времени выполнения в 5 минут
+```
+
+В этом примере джобы build и test будут иметь лимит времени выполнения в 10 и 5 минут соответственно. 
