@@ -45,7 +45,7 @@
     - [x] локально.
     - [ ] с помощью GitHub Actions.
     - [ ] с помощью GitLab CI/CD.
-- [ ] Добавить команды для настройки переменных среды.
+- [x] Добавить команды для настройки переменных среды.
 - [ ] Добавить команды для установки утилит.
 
 ### Сборка проектов с помощью docker локально
@@ -59,4 +59,11 @@
 ```
 docker build -t knowledge-base .
 docker run -it knowledge-base
+```
+
+3. Команды для настройки переменных среды
+
+```
+docker build -f file_name -e MYSQL_ROOT_PASSWORD=root
+docker run -e "env_var_name=another_value"
 ```
