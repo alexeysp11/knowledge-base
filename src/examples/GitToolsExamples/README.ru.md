@@ -1,4 +1,4 @@
-# LibGit2SharpExample
+# GitToolsExamples
 
 [English](README.md) | [Русский](README.ru.md)
 
