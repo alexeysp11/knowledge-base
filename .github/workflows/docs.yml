@@ -21,8 +21,8 @@ jobs:
       - name: Download docfx
         run: dotnet tool install -g docfx
 
-      - name: Create metadata
-        run: docfx metadata ${{ runner.workspace }}/knowledge-base/docfx/WorkerServiceXplatform/docfx.json
+      - name: Check DocFX version
+        run: docfx --version
 
-      - name: Build docs
-        run: docfx build ${{ runner.workspace }}/knowledge-base/docfx/WorkerServiceXplatform/docfx.json
+      - name: List files
+        run: ls .
