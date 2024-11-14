@@ -19,10 +19,10 @@ jobs:
           dotnet-version: '8.0'
 
       - name: Download docfx
-        run: dotnet tool install docfx --tool-path "."
+        run: dotnet tool install -g docfx
 
       - name: Create metadata
-        run: docfx metadata ./knowledge-base/docfx/WorkerServiceXplatform/docfx.json
+        run: docfx metadata ${{ runner.workspace }}/knowledge-base/docfx/WorkerServiceXplatform/docfx.json
 
       - name: Build docs
-        run: docfx build ./knowledge-base/docfx/WorkerServiceXplatform/docfx.json
+        run: docfx build ${{ runner.workspace }}/knowledge-base/docfx/WorkerServiceXplatform/docfx.json
