@@ -19,7 +19,7 @@ jobs:
           dotnet-version: '8.0'
 
       - name: Download docfx
-        run: dotnet tool install -g docfx
+        run: dotnet tool install docfx --tool-path "."
 
       - name: Create metadata
         run: docfx metadata ./docfx/WorkerServiceXplatform/docfx.json
