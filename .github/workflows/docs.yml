@@ -13,16 +13,5 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Set up .NET
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: '8.0'
-
-      - name: Download docfx
-        run: dotnet tool install -g docfx
-
-      - name: Check DocFX version
-        run: docfx --version
-
       - name: List files
-        run: ls -l ./docfx
+        run: ls -l
