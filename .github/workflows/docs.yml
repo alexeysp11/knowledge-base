@@ -1,0 +1,28 @@
+name: Build Documentation
+
+on:
+  push:
+    branches:
+      - issue-83
+  pull_request:
+    branches:
+      - issue-83
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '8.0'
+
+      - name: Download docfx
+        run: dotnet tool install -g docfx
+
+      - name: Create metadata
+        run: docfx metadata docfx/WorkerServiceXplatform/docfx.json
+
+      - name: Build docs
+        run: docfx build docfx/WorkerServiceXplatform/docfx.json
