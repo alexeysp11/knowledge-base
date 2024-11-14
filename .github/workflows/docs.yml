@@ -22,7 +22,7 @@ jobs:
         run: dotnet tool install -g docfx
 
       - name: Create metadata
-        run: docfx metadata docfx/WorkerServiceXplatform/docfx.json
+        run: docfx metadata ./docfx/WorkerServiceXplatform/docfx.json
 
       - name: Build docs
-        run: docfx build docfx/WorkerServiceXplatform/docfx.json
+        run: docfx build ./docfx/WorkerServiceXplatform/docfx.json
