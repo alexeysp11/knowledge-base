@@ -25,4 +25,4 @@ jobs:
         run: docfx --version
 
       - name: List files
-        run: ls ./docfx
+        run: ls ${{ runner.workspace }}/knowledge-base
