@@ -13,5 +13,5 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: List files
-        run: ls -l
+      - name: List directory content
+        run: find . -print0 | xargs -0 echo
