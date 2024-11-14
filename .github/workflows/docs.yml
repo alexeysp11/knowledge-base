@@ -15,4 +15,4 @@ jobs:
     steps:
       - name: List directory content
         run: |
-         find ${{ runner.workspace }}/knowledge-base -print0 | xargs -0 echo
+         find ${{ runner.workspace }}/knowledge-base/src -print0 | xargs -0 echo
