@@ -94,7 +94,7 @@ CI/CD (Continuous Integration/Continuous Delivery or Continuous Deployment) - э
 
 GitLab CI/CD может ограничивать время выполнения джобы. Вы можете настроить таймаут для джобы в файле `.gitlab-ci.yml`. Например:
 
-```
+```yml
 stages:
   - build
   - test
