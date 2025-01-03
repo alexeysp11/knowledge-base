@@ -1,0 +1,42 @@
+@using KnowledgeBase.Examples.ManageTranslationsAspNetCore.Core
+
+@{
+    ViewData["Title"] = "CheckAuth";
+}
+
+@try
+{
+    Dictionary<string, string> translations = TranslationHelper.GetLanguageKvpByFormName(LanguageType.Russian);
+
+    <div class="text-center">
+        <h1 class="display-4">CheckAuth</h1>
+
+        <p>Application name: @translations["AppName"]</p>
+
+        @{
+            System.Console.WriteLine("Checkpoint #1");
+        }
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            <p>User authenticated</p>
+            <p>@translations["ForAuthenticatedOnly"]</p>
+            System.Console.WriteLine("Checkpoint #2 (authenticated)");
+        }
+        else
+        {
+            <p>User is not authenticated</p>
+            System.Console.WriteLine("Checkpoint #2 (not authenticated)");
+        }
+
+        @{
+            System.Console.WriteLine("Checkpoint #3");
+        }
+    </div>
+}
+catch (System.Exception ex)
+{
+    <div class="text-center">
+        <p class="text-danger">Error: @ex.Message</p>
+    </div>
+}

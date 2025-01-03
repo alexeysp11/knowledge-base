@@ -1,17 +1,28 @@
 ﻿namespace KnowledgeBase.Examples.ManageTranslationsAspNetCore.Core;
 
-public static class TranslationHelper
+public class TranslationHelper
 {
     /// <summary>
     /// Get a collection of labels for visual components from the database to implement language support.
     /// </summary>
     public static Dictionary<string, string> GetLanguageKvpByFormName(LanguageType languageType)
     {
-        List<LanguageKeyValuePair> languageKvpList;
+        List<LanguageKeyValuePair> languageKvpList = new TranslationHelper().GetTranslations(languageType);
+        
+        var result = new Dictionary<string, string>();
+        foreach (var kvp in languageKvpList)
+        {
+            result.Add(kvp.Key, kvp.Value);
+        }
+        return result;
+    }
+
+    internal List<LanguageKeyValuePair> GetTranslations(LanguageType languageType)
+    {
         switch (languageType)
         {
             case LanguageType.Russian:
-                languageKvpList = new List<LanguageKeyValuePair>
+                return new List<LanguageKeyValuePair>
                 {
                     new LanguageKeyValuePair
                     {
@@ -26,9 +37,8 @@ public static class TranslationHelper
                         Value = "Для авторизованного пользователя"
                     }
                 };
-                break;
             default:
-                languageKvpList = new List<LanguageKeyValuePair>
+                return new List<LanguageKeyValuePair>
                 {
                     new LanguageKeyValuePair
                     {
@@ -43,14 +53,6 @@ public static class TranslationHelper
                         Value = "For authenticated user"
                     }
                 };
-                break;
         }
-        
-        var result = new Dictionary<string, string>();
-        foreach (var kvp in languageKvpList)
-        {
-            result.Add(kvp.Key, kvp.Value);
-        }
-        return result;
     }
 }
