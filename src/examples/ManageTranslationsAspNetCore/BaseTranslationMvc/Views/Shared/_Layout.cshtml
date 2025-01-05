@@ -21,7 +21,7 @@
 
         //Dictionary<string, string> translations = TranslationHelper.GetLanguageKvpByFormName(LanguageType.Russian);
         Dictionary<string, string> translations = TranslationHelper.GetLanguageKvpByFormName(
-            _appSettings.ConnectionString,
+            _context,
             LanguageType.Russian,
             formName,
             applicationUid);

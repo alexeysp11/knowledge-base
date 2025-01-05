@@ -6,6 +6,11 @@ namespace KnowledgeBase.Examples.ManageTranslationsAspNetCore.Core;
 public class LanguageKeyValuePair
 {
     /// <summary>
+    /// ID of the business entity.
+    /// </summary>
+    public long Id { get; set; }
+    
+    /// <summary>
     /// Language type.
     /// </summary>
     public LanguageType LanguageType { get; set; }
