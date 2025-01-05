@@ -1,6 +1,14 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.EntityFrameworkCore;
+using KnowledgeBase.Examples.ManageTranslationsAspNetCore.Core;
+using Npgsql;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Get configurations.
+var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production";
+var configuration = new ConfigurationBuilder().AddJsonFile($"appsettings.{environment}.json").Build();
+var appsettings = configuration.GetSection("AppSettings").Get<AppSettings>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -11,6 +19,10 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.SlidingExpiration = true;
         options.LoginPath = "/Auth/SignIn";
     });
+
+// Add dependencies.
+builder.Services.AddSingleton(appsettings);
+builder.Services.AddDbContext<EmployeesMvcDbContext>(options => options.UseNpgsql(appsettings.ConnectionString));
 
 var app = builder.Build();
 
