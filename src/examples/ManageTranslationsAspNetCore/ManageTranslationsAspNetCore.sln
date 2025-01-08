@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowledgeBase.Examples.Mana
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowledgeBase.Examples.ManageTranslationsAspNetCore.BaseTranslationMvc", "BaseTranslationMvc\KnowledgeBase.Examples.ManageTranslationsAspNetCore.BaseTranslationMvc.csproj", "{02FEFDAE-5C31-4E6B-8BE8-803C3AA87EB8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowledgeBase.Examples.ManageTranslationsAspNetCore.ViewComponentTranslationMvc", "ViewComponentTranslationMvc\KnowledgeBase.Examples.ManageTranslationsAspNetCore.ViewComponentTranslationMvc.csproj", "{BB5B88D8-4571-4A5E-9811-D1DFB03A3930}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{02FEFDAE-5C31-4E6B-8BE8-803C3AA87EB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02FEFDAE-5C31-4E6B-8BE8-803C3AA87EB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02FEFDAE-5C31-4E6B-8BE8-803C3AA87EB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB5B88D8-4571-4A5E-9811-D1DFB03A3930}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB5B88D8-4571-4A5E-9811-D1DFB03A3930}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB5B88D8-4571-4A5E-9811-D1DFB03A3930}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB5B88D8-4571-4A5E-9811-D1DFB03A3930}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
