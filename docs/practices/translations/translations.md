@@ -11,5 +11,6 @@
     - [ ] **Второе**: Выполнить переводы в `_Layout.csthml` с помощью `ViewComponent`.
     - [ ] **Третье**: Выполнить переводы в `_Layout.csthml` с помощью Base Controller.
 - [ ] Научиться обрабатывать исключения.
+    - [ ] Binding.
     - [ ] Фильтры: https://learn.microsoft.com/en-us/aspnet/core/mvc/controllers/filters
     - [ ] Обработка исключений: https://learn.microsoft.com/en-us/aspnet/core/fundamentals/error-handling
