@@ -38,15 +38,18 @@ public class TcpServerService : IHostedService
         {
             NetworkStream stream = client.GetStream();
             System.Console.WriteLine("Client connected");
+            
+            while (true)
+            {
+                byte[] responseData = new byte[256];
+                int bytesRead = await stream.ReadAsync(responseData, 0, responseData.Length);
+                string responseMessage = Encoding.UTF8.GetString(responseData, 0, bytesRead);
+                Console.WriteLine($"Received: {responseMessage}");
 
-            byte[] responseData = new byte[256];
-            int bytesRead = await stream.ReadAsync(responseData, 0, responseData.Length);
-            string responseMessage = Encoding.UTF8.GetString(responseData, 0, bytesRead);
-            Console.WriteLine($"Received: {responseMessage}");
-
-            string requestMessage = $"Received: {responseMessage}";
-            byte[] requestData = Encoding.UTF8.GetBytes(requestMessage);
-            await stream.WriteAsync(requestData, 0, requestData.Length);
+                string requestMessage = $"Received: {responseMessage}";
+                byte[] requestData = Encoding.UTF8.GetBytes(requestMessage);
+                await stream.WriteAsync(requestData, 0, requestData.Length);
+            }
         }
     }
 
