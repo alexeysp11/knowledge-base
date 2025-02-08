@@ -5,6 +5,7 @@ namespace TcpServiceNetCore.ServiceEngine.Forms;
 public abstract class BaseForm
 {
     public string Name { get; set; }
+    public string MenuCode { get; set; }
     public int Height { get; set; }
     public int Width { get; set; }
 
@@ -18,9 +19,15 @@ public abstract class BaseForm
     public BaseForm()
     {
         Name = "";
+        MenuCode = "";
         Height = 0;
         Width = 0;
         Controls = new List<TextControl>();
+    }
+
+    public virtual void Init()
+    {
+        InitializeComponent();
     }
 
     public virtual void Show()
@@ -80,6 +87,11 @@ public abstract class BaseForm
             throw new Exception($"Failed to show form '{Name}': parameter {nameof(Width)} should be greater than zero");
         }
         return true;
+    }
+
+    public void FillFormAttributes(string menuCode)
+    {
+        MenuCode = menuCode;
     }
 
     protected abstract void InitializeComponent();
