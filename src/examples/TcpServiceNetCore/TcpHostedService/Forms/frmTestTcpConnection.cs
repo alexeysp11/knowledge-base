@@ -55,6 +55,7 @@ public class frmTestTcpConnection : BaseForm
         lblRequestBody.Top = 4;
         lblRequestBody.Left = 0;
         lblRequestBody.EntireLine = true;
+        lblRequestBody.Value = "REQUEST BODY:";
         Controls.Add(lblRequestBody);
 
         lblResponseBody = new TextControl();
@@ -62,6 +63,7 @@ public class frmTestTcpConnection : BaseForm
         lblResponseBody.Top = 10;
         lblResponseBody.Left = 0;
         lblResponseBody.EntireLine = true;
+        lblResponseBody.Value = "RESPONSE BODY:";
         Controls.Add(lblResponseBody);
     }
 }
