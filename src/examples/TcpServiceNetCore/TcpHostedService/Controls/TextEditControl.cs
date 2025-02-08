@@ -3,37 +3,64 @@ using System;
 public class TextEditControl : TextControl
 {
     public bool Required { get; set; }
+    public string EmptyEnterSymbol { get; set; }
     public string? Hint { get; set; }
-    public Action? RequireValidation { get; set; }
-    public Action? EnterValidation { get; set; }
+    public Func<bool>? EnterValidation { get; set; }
 
     public TextEditControl() : base()
     {
         Required = true;
+        EmptyEnterSymbol = ".";
     }
 
-    public override void OnShowValidation()
+    public override void Show()
     {
-        // Show hint.
-        
-        base.OnShowValidation();
-    }
-
-    public virtual void OnRequireValidation()
-    {
-        // Check if required.
-
-        if (RequireValidation != null)
+        if (!OnShowValidation())
         {
-            RequireValidation();
+            return;
+        }
+
+        if (HorizontalAlignment != HorizontalAlignment.Left)
+        {
+            // Align the control, pass EmptyEnterSymbol.
+        }
+
+        if (!string.IsNullOrEmpty(Hint))
+        {
+            // Display Hint.
         }
     }
 
-    public virtual void OnEnterValidation()
+    public override bool OnShowValidation()
+    {
+        if (!base.OnShowValidation())
+        {
+            return false;
+        }
+        return Required;
+    }
+
+    public virtual bool OnEnterValidation()
     {
         if (EnterValidation != null)
         {
-            EnterValidation();
+            return EnterValidation();
         }
+        return true;
+    }
+
+    public void GetUserInput()
+    {
+        // Get value from user.
+
+        // Validate user input.
+        if (OnEnterValidation())
+        {
+            return;
+        }
+        
+        Value = "";
+
+        GetUserInput();
     }
 }
