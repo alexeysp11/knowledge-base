@@ -1,3 +1,8 @@
+using TcpServiceNetCore.ServiceEngine.Forms;
+using TcpServiceNetCore.ServiceEngine.Controls;
+
+namespace TcpServiceNetCore.TcpHostedService.Controls;
+
 public class frmTestTcpConnection : BaseForm
 {
     private TextControl? lblHeader;

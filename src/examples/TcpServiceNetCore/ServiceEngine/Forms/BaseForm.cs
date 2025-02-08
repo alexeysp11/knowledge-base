@@ -1,3 +1,7 @@
+using TcpServiceNetCore.ServiceEngine.Controls;
+
+namespace TcpServiceNetCore.ServiceEngine.Forms;
+
 public abstract class BaseForm
 {
     public string Name { get; set; }

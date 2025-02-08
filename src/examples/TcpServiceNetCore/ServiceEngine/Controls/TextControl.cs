@@ -1,4 +1,7 @@
 using System;
+using TcpServiceNetCore.ServiceEngine.Forms;
+
+namespace TcpServiceNetCore.ServiceEngine.Controls;
 
 public class TextControl
 {

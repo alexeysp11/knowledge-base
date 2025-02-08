@@ -1,5 +1,7 @@
 using System;
 
+namespace TcpServiceNetCore.ServiceEngine.Controls;
+
 public class TextEditControl : TextControl
 {
     public bool Required { get; set; }

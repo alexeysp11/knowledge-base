@@ -14,13 +14,13 @@ class Program
         {
             NetworkStream stream = client.GetStream();
 
-            // Пример запроса
+            // Request.
             string requestMessage = "Hello Server!!!!!";
             byte[] requestData = Encoding.UTF8.GetBytes(requestMessage);
             await stream.WriteAsync(requestData, 0, requestData.Length);
             Console.WriteLine($"Sent: {requestMessage}");
 
-            // Чтение ответа
+            // Response.
             byte[] responseData = new byte[256];
             int bytesRead = await stream.ReadAsync(responseData, 0, responseData.Length);
             string responseMessage = Encoding.UTF8.GetString(responseData, 0, bytesRead);
