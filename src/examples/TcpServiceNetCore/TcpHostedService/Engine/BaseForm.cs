@@ -33,7 +33,8 @@ public abstract class BaseForm
                 .ThenBy(x => x.Left)
                 .ToList();
 
-            SetPreviousControls(sortedControls);
+            ConfigureControls(sortedControls);
+
             ShowTextControls();
 
             TextEditControl firstEditControl = sortedControls
@@ -77,7 +78,9 @@ public abstract class BaseForm
         return true;
     }
 
-    private void SetPreviousControls(List<TextControl> sortedControls)
+    protected abstract void InitializeComponent();
+
+    private void ConfigureControls(List<TextControl> sortedControls)
     {
         if (sortedControls == null)
             throw new Exception("Sorted list of controls was not assigned");
