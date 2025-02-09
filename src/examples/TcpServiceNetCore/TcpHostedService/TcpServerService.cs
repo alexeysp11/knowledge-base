@@ -3,6 +3,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using TcpServiceNetCore.ServiceEngine.Resolvers;
 
 namespace TcpHostedService;
 
@@ -36,19 +37,32 @@ public class TcpServerService : IHostedService
     {
         using (client)
         {
-            NetworkStream stream = client.GetStream();
-            System.Console.WriteLine("Client connected");
-            
-            while (true)
-            {
-                byte[] responseData = new byte[256];
-                int bytesRead = await stream.ReadAsync(responseData, 0, responseData.Length);
-                string responseMessage = Encoding.UTF8.GetString(responseData, 0, bytesRead);
-                Console.WriteLine($"Received: {responseMessage}");
 
-                string requestMessage = $"Received: {responseMessage}";
-                byte[] requestData = Encoding.UTF8.GetBytes(requestMessage);
-                await stream.WriteAsync(requestData, 0, requestData.Length);
+            try
+            {
+                NetworkStream stream = client.GetStream();
+                System.Console.WriteLine("Client connected");
+                
+                var menuFormResolver = new MenuFormResolver();
+                SessionInfo sessionInfo = menuFormResolver.InitSession();
+                menuFormResolver.DisplayMenu();
+                menuFormResolver.StartMenu("1");
+
+                while (true)
+                {
+                    byte[] responseData = new byte[256];
+                    int bytesRead = await stream.ReadAsync(responseData, 0, responseData.Length);
+                    string responseMessage = Encoding.UTF8.GetString(responseData, 0, bytesRead);
+                    Console.WriteLine($"Received: {responseMessage}");
+
+                    string requestMessage = $"Received: {responseMessage}";
+                    byte[] requestData = Encoding.UTF8.GetBytes(requestMessage);
+                    await stream.WriteAsync(requestData, 0, requestData.Length);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
     }

@@ -14,17 +14,22 @@ class Program
         {
             NetworkStream stream = client.GetStream();
 
-            // Request.
-            string requestMessage = "Hello Server!!!!!";
-            byte[] requestData = Encoding.UTF8.GetBytes(requestMessage);
-            await stream.WriteAsync(requestData, 0, requestData.Length);
-            Console.WriteLine($"Sent: {requestMessage}");
+            while (true)
+            {
+                Console.WriteLine("Enter data:");
+                string input = Console.ReadLine();
 
-            // Response.
-            byte[] responseData = new byte[256];
-            int bytesRead = await stream.ReadAsync(responseData, 0, responseData.Length);
-            string responseMessage = Encoding.UTF8.GetString(responseData, 0, bytesRead);
-            Console.WriteLine($"Received: {responseMessage}");
+                // Request.
+                string requestMessage = input;
+                byte[] requestData = Encoding.UTF8.GetBytes(requestMessage);
+                await stream.WriteAsync(requestData, 0, requestData.Length);
+
+                // Response.
+                byte[] responseData = new byte[256];
+                int bytesRead = await stream.ReadAsync(responseData, 0, responseData.Length);
+                string responseMessage = Encoding.UTF8.GetString(responseData, 0, bytesRead);
+                Console.WriteLine(responseMessage);
+            }
         }
     }
 }

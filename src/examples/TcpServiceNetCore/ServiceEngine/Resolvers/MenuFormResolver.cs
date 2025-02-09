@@ -4,21 +4,49 @@ namespace TcpServiceNetCore.ServiceEngine.Resolvers;
 
 public class MenuFormResolver
 {
-    public void Start(string menuCode)
+    public SessionInfo SessionInfo;
+
+    public SessionInfo InitSession()
     {
-        BaseForm form = CreateForm(menuCode);
-        form.FillFormAttributes(menuCode);
-        form.Init();
-        form.Show();
+        SessionInfo = new SessionInfo();
+        SessionInfo.SessionId = 1;
+        return SessionInfo;
+    }
+
+    public void ProcessUserInput(string userInput)
+    {
+        // 
+    }
+
+    public void DisplayMenu(string? menuCode = null)
+    {
+        // 
+    }
+    
+    public void StartMenu(string menuCode)
+    {
+        try
+        {
+            BaseForm form = CreateForm(menuCode);
+            form.FillFormAttributes(menuCode);
+            form.Init();
+            form.Show();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
     }
 
     private BaseForm CreateForm(string menuCode)
     {
+        string assemblyName = "";
         string typeName = "";
         switch (menuCode)
         {
-            case "0-0-1":
-                typeName = "";
+            case "1":
+                assemblyName = "TcpServiceNetCore.TcpHostedService";
+                typeName = "TcpServiceNetCore.TcpHostedService.Controls.frmTestTcpConnection, TcpServiceNetCore.TcpHostedService";
                 break;
             
             default:

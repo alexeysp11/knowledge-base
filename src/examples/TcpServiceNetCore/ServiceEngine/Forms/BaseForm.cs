@@ -59,7 +59,9 @@ public abstract class BaseForm
         }
         catch (Exception ex)
         {
-            // Display error.
+            Console.WriteLine(ex);
+
+            // Display error for client.
         }
     }
     
@@ -104,7 +106,10 @@ public abstract class BaseForm
         TextControl? previousControl = null;
         foreach (TextControl control in sortedControls)
         {
-            previousControl.NextControl = control;
+            if (previousControl != null)
+            {
+                previousControl.NextControl = control;
+            }
             control.PreviousControl = previousControl;
             control.Form = this;
             previousControl = control;

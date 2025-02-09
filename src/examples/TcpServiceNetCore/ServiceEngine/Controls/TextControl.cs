@@ -45,6 +45,8 @@ public class TextControl
             return;
         }
 
+        Console.WriteLine(Value);
+
         if (HorizontalAlignment != HorizontalAlignment.Left)
         {
             // Align the control.
