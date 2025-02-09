@@ -83,6 +83,10 @@ public class TextControl
         {
             throw new Exception($"Failed to show control '{Name}': parameter {nameof(Width)} should not be negative");
         }
+        if (Width > Form.Width)
+        {
+            throw new Exception($"Failed to show control '{Name}': parameter {nameof(Width)} could not be greater than {nameof(Form.Width)}");
+        }
         if (!Visible)
         {
             return false;
@@ -92,19 +96,33 @@ public class TextControl
 
     public void AddControlToForm()
     {
-        int formHeight = Form.Height;
-        int formWidth = Form.Width;
+        int width = 0;
+        int left = Left;
+        int top = Top;
 
         if (EntireLine)
         {
             Width = SessionInfo.FormWidth;
+            if (HorizontalAlignment == HorizontalAlignment.Center)
+            {
+                int start = (Width - Value.Length) / 2;
+                if (start < 0)
+                {
+                    start = 0;
+                }
+                left = start;
+            }
+            else if (HorizontalAlignment == HorizontalAlignment.Right)
+            {
+                int start = Width - Value.Length;
+                if (start < 0)
+                {
+                    start = 0;
+                }
+                left = start;
+            }
         }
 
-        // Console.WriteLine(Value);
-
-        int width = 0;
-        int left = Left;
-        int top = Top;
         foreach (char ch in Value)
         {
             if (width >= Width)
@@ -115,18 +133,11 @@ public class TextControl
             {
                 break;
             }
+
             SessionInfo.DisplayedInfo[top, left] = $"{ch}";
 
             left += 1;
             width += 1;
-        }
-
-        if (EntireLine)
-        {
-            if (HorizontalAlignment != HorizontalAlignment.Left)
-            {
-                // Align the control.
-            }
         }
     }
 }
