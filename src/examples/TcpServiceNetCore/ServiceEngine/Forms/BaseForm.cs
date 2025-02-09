@@ -1,4 +1,6 @@
 using TcpServiceNetCore.ServiceEngine.Controls;
+using TcpServiceNetCore.ServiceEngine.Helpers;
+using TcpServiceNetCore.ServiceEngine.Resolvers;
 
 namespace TcpServiceNetCore.ServiceEngine.Forms;
 
@@ -8,6 +10,8 @@ public abstract class BaseForm
     public string MenuCode { get; set; }
     public int Height { get; set; }
     public int Width { get; set; }
+
+    public SessionInfo? SessionInfo { get; set; }
 
     public BaseForm? ParentForm { get; set; }
 
@@ -27,6 +31,9 @@ public abstract class BaseForm
 
     public virtual void Init()
     {
+        Height = SessionInfo?.FormHeight ?? 0;
+        Width = SessionInfo?.FormWidth ?? 0;
+
         InitializeComponent();
     }
 
@@ -75,6 +82,10 @@ public abstract class BaseForm
         if (string.IsNullOrEmpty(Name))
         {
             throw new Exception($"Failed to show form: parameter {nameof(Name)} should be assigned");
+        }
+        if (SessionInfo == null)
+        {
+            throw new Exception($"Failed to show form '{Name}': parameter '{nameof(SessionInfo)}' should be assigned");
         }
         if (Controls == null || !Controls.Any())
         {
@@ -127,6 +138,8 @@ public abstract class BaseForm
         {
             control.Show();
         }
+
+        ServiceEngineHelper.LogForm(SessionInfo);
     }
 
     private void ShowTextEditControl(TextControl control)

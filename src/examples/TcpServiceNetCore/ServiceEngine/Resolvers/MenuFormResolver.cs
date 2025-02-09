@@ -4,12 +4,18 @@ namespace TcpServiceNetCore.ServiceEngine.Resolvers;
 
 public class MenuFormResolver
 {
-    public SessionInfo SessionInfo;
+    public SessionInfo SessionInfo { get; set; }
 
     public SessionInfo InitSession()
     {
+        int formHeight = 18;
+        int formWidth = 26;
+
         SessionInfo = new SessionInfo();
         SessionInfo.SessionId = 1;
+        SessionInfo.FormHeight = formHeight;
+        SessionInfo.FormWidth = formWidth;
+        SessionInfo.DisplayedInfo = new string[formHeight, formWidth];
         return SessionInfo;
     }
 
@@ -28,6 +34,9 @@ public class MenuFormResolver
         try
         {
             BaseForm form = CreateForm(menuCode);
+
+            form.SessionInfo = SessionInfo;
+
             form.FillFormAttributes(menuCode);
             form.Init();
             form.Show();

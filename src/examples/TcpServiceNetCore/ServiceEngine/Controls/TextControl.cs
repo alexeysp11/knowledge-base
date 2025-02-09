@@ -1,5 +1,7 @@
 using System;
 using TcpServiceNetCore.ServiceEngine.Forms;
+using TcpServiceNetCore.ServiceEngine.Helpers;
+using TcpServiceNetCore.ServiceEngine.Resolvers;
 
 namespace TcpServiceNetCore.ServiceEngine.Controls;
 
@@ -20,6 +22,8 @@ public class TextControl
     public Func<bool>? ShowValidation { get; set; }
 
     public BaseForm? Form { get; set; }
+    
+    public SessionInfo? SessionInfo => Form?.SessionInfo;
 
     public TextControl? PreviousControl { get; set; }
     public TextControl? NextControl { get; set; }
@@ -45,12 +49,7 @@ public class TextControl
             return;
         }
 
-        Console.WriteLine(Value);
-
-        if (HorizontalAlignment != HorizontalAlignment.Left)
-        {
-            // Align the control.
-        }
+        AddControlToForm();
     }
 
     public virtual bool OnShowValidation()
@@ -64,9 +63,13 @@ public class TextControl
         {
             throw new Exception($"Failed to show control: parameter {nameof(Name)} should be assigned");
         }
-        if (!Visible)
+        if (Form == null)
         {
-            return false;
+            throw new Exception($"Failed to show control '{Name}': parameter {nameof(Form)} should be assigned");
+        }
+        if (SessionInfo == null)
+        {
+            throw new Exception($"Failed to show control '{Name}': parameter {nameof(SessionInfo)} should be assigned");
         }
         if (Left < 0)
         {
@@ -80,6 +83,50 @@ public class TextControl
         {
             throw new Exception($"Failed to show control '{Name}': parameter {nameof(Width)} should not be negative");
         }
+        if (!Visible)
+        {
+            return false;
+        }
         return true;
+    }
+
+    public void AddControlToForm()
+    {
+        int formHeight = Form.Height;
+        int formWidth = Form.Width;
+
+        if (EntireLine)
+        {
+            Width = SessionInfo.FormWidth;
+        }
+
+        // Console.WriteLine(Value);
+
+        int width = 0;
+        int left = Left;
+        int top = Top;
+        foreach (char ch in Value)
+        {
+            if (width >= Width)
+            {
+                break;
+            }
+            if (top >= SessionInfo.DisplayedInfo.GetLength(0) || left >= SessionInfo.DisplayedInfo.GetLength(1))
+            {
+                break;
+            }
+            SessionInfo.DisplayedInfo[top, left] = $"{ch}";
+
+            left += 1;
+            width += 1;
+        }
+
+        if (EntireLine)
+        {
+            if (HorizontalAlignment != HorizontalAlignment.Left)
+            {
+                // Align the control.
+            }
+        }
     }
 }

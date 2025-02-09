@@ -15,8 +15,6 @@ public class frmTestTcpConnection : BaseForm
     public frmTestTcpConnection() : base()
     {
         Name = nameof(frmTestTcpConnection);
-        Height = 18;
-        Width = 26;
     }
 
     protected override void InitializeComponent()
