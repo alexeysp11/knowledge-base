@@ -14,13 +14,21 @@ public static class ConsoleHelper
             throw new Exception($"Parameter '{nameof(displayedInfo)}' could not be null");
         }
 
+        string result = GetDisplayedInfoString(displayedInfo);
+        Console.WriteLine(result);
+    }
+
+    public static string GetDisplayedInfoString(string[,] displayedInfo)
+    {
+        string result = string.Empty;
         for (int i = 0; i < displayedInfo.GetLength(0); i++)
         {
             for (int j = 0; j < displayedInfo.GetLength(1); j++)
             {
-                Console.Write(displayedInfo[i, j]);
+                result += displayedInfo[i, j];
             }
-            Console.WriteLine();
+            result += "\n";
         }
+        return result;
     }
 }

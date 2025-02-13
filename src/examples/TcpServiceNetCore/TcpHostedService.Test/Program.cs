@@ -16,6 +16,12 @@ class Program
 
             while (true)
             {
+                // Response.
+                byte[] responseData = new byte[1024];
+                int bytesRead = await stream.ReadAsync(responseData, 0, responseData.Length);
+                string responseMessage = Encoding.UTF8.GetString(responseData, 0, bytesRead);
+                Console.WriteLine(responseMessage);
+
                 Console.WriteLine("Enter data:");
                 string input = Console.ReadLine();
 
@@ -23,12 +29,6 @@ class Program
                 string requestMessage = input;
                 byte[] requestData = Encoding.UTF8.GetBytes(requestMessage);
                 await stream.WriteAsync(requestData, 0, requestData.Length);
-
-                // Response.
-                byte[] responseData = new byte[256];
-                int bytesRead = await stream.ReadAsync(responseData, 0, responseData.Length);
-                string responseMessage = Encoding.UTF8.GetString(responseData, 0, bytesRead);
-                Console.WriteLine(responseMessage);
             }
         }
     }

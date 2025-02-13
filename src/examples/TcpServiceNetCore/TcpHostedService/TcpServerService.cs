@@ -3,6 +3,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using TcpServiceNetCore.ServiceEngine.Helpers;
 using TcpServiceNetCore.ServiceEngine.Resolvers;
 
 namespace TcpHostedService;
@@ -50,14 +51,12 @@ public class TcpServerService : IHostedService
 
                 while (true)
                 {
+                    await ServiceEngineHelper.SendFormAsync(stream, sessionInfo);
+
                     byte[] responseData = new byte[256];
                     int bytesRead = await stream.ReadAsync(responseData, 0, responseData.Length);
                     string responseMessage = Encoding.UTF8.GetString(responseData, 0, bytesRead);
                     Console.WriteLine($"Received: {responseMessage}");
-
-                    string requestMessage = $"Received: {responseMessage}";
-                    byte[] requestData = Encoding.UTF8.GetBytes(requestMessage);
-                    await stream.WriteAsync(requestData, 0, requestData.Length);
                 }
             }
             catch (Exception ex)
