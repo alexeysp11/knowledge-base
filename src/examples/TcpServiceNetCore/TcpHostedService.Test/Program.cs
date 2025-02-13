@@ -2,6 +2,7 @@
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using TcpServiceNetCore.ConsoleAdapter;
 
 class Program
 {
@@ -22,11 +23,8 @@ class Program
                 string responseMessage = Encoding.UTF8.GetString(responseData, 0, bytesRead);
                 Console.WriteLine(responseMessage);
 
-                Console.WriteLine("Enter data:");
-                string input = Console.ReadLine();
-
                 // Request.
-                string requestMessage = input;
+                string requestMessage = ConsoleHelper.EnterLine(hint: "Enter data:", emptyStringReplacement: "-n");
                 byte[] requestData = Encoding.UTF8.GetBytes(requestMessage);
                 await stream.WriteAsync(requestData, 0, requestData.Length);
             }

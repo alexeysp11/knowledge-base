@@ -31,4 +31,36 @@ public static class ConsoleHelper
         }
         return result;
     }
+
+    public static string EnterLine(
+        string? hint = null,
+        bool allowEmptyString = false,
+        string emptyStringReplacement = null)
+    {
+        string result = string.Empty;
+        while (true)
+        {
+            if (!string.IsNullOrEmpty(hint))
+            {
+                Console.WriteLine(hint);
+            }
+
+            string input = Console.ReadLine();
+            if (!string.IsNullOrEmpty(emptyStringReplacement) && string.IsNullOrEmpty(input))
+            {
+                input = emptyStringReplacement;
+            }
+            if (!string.IsNullOrEmpty(input))
+            {
+                result = input;
+                break;
+            }
+            if (allowEmptyString)
+            {
+                result = input;
+                break;
+            }
+        }
+        return result;
+    }
 }
