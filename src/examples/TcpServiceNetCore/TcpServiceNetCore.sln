@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpServiceNetCore.ServiceEn
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpServiceNetCore.TcpHostedService", "TcpHostedService\TcpServiceNetCore.TcpHostedService.csproj", "{093D91BF-6592-4A0F-86C5-E58D4885CF77}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpServiceNetCore.TcpHostedService.Test", "TcpHostedService.Test\TcpServiceNetCore.TcpHostedService.Test.csproj", "{564F1ED4-C83F-4CD4-8622-FCC90B5277F3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpServiceNetCore.TcpHostedService.Client", "TcpHostedService.Client\TcpServiceNetCore.TcpHostedService.Client.csproj", "{564F1ED4-C83F-4CD4-8622-FCC90B5277F3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpServiceNetCore.ConsoleAdapter", "ConsoleAdapter\TcpServiceNetCore.ConsoleAdapter.csproj", "{973EBE90-4B2A-4931-9A2D-0F2A5DD9E19A}"
 EndProject
