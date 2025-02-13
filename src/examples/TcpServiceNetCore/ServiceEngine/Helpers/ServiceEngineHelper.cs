@@ -1,15 +1,16 @@
 using System.Net.Sockets;
 using System.Text;
-using TcpServiceNetCore.ConsoleAdapter;
+using TcpServiceNetCore.ConsoleAdapter.Helpers;
 using TcpServiceNetCore.ServiceEngine.Resolvers;
 
 namespace TcpServiceNetCore.ServiceEngine.Helpers;
 
 public static class ServiceEngineHelper
 {
-    public static void SendMessage(string message)
+    public static async Task SendMessageAsync(NetworkStream stream, string message)
     {
-        // 
+        byte[] resultBytes = Encoding.UTF8.GetBytes(message);
+        await stream.WriteAsync(resultBytes, 0, resultBytes.Length);
     }
 
     public static void LogForm(SessionInfo sessionInfo, bool displayBorders = false)
@@ -37,9 +38,8 @@ public static class ServiceEngineHelper
             throw new ArgumentNullException($"Parameter '{nameof(sessionInfo.DisplayedInfo)}' could not be null");
         }
 
-        string result = ConsoleHelper.GetDisplayedInfoString(sessionInfo.DisplayedInfo, displayBorders);
-        byte[] resultBytes = Encoding.UTF8.GetBytes(result);
-        await stream.WriteAsync(resultBytes, 0, resultBytes.Length);
+        string message = ConsoleHelper.GetDisplayedInfoString(sessionInfo.DisplayedInfo, displayBorders);
+        await SendMessageAsync(stream, message);
     }
 
     public static void SaveForm(SessionInfo sessionInfo)

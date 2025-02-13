@@ -1,4 +1,4 @@
-﻿namespace TcpServiceNetCore.ConsoleAdapter;
+﻿namespace TcpServiceNetCore.ConsoleAdapter.Helpers;
 
 public static class ConsoleHelper
 {

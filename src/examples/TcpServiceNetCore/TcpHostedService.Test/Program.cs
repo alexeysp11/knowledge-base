@@ -2,7 +2,7 @@
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
-using TcpServiceNetCore.ConsoleAdapter;
+using TcpServiceNetCore.ConsoleAdapter.Helpers;
 
 class Program
 {
