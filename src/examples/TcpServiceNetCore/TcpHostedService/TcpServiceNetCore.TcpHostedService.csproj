@@ -13,6 +13,7 @@
   
   <ItemGroup>
     <ProjectReference Include="../ServiceEngine/TcpServiceNetCore.ServiceEngine.csproj" />
+    <ProjectReference Include="../ServiceVisuals/TcpServiceNetCore.ServiceVisuals.csproj" />
   </ItemGroup>
 
 </Project>

@@ -49,13 +49,11 @@ public class MenuFormResolver
 
     private BaseForm CreateForm(string menuCode)
     {
-        string assemblyName = "";
         string typeName = "";
         switch (menuCode)
         {
             case "1":
-                assemblyName = "TcpServiceNetCore.TcpHostedService";
-                typeName = "TcpServiceNetCore.TcpHostedService.Controls.frmTestTcpConnection, TcpServiceNetCore.TcpHostedService";
+                typeName = "TcpServiceNetCore.ServiceVisuals.Forms.frmTestTcpConnection, TcpServiceNetCore.ServiceVisuals";
                 break;
             
             default:

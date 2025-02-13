@@ -1,7 +1,7 @@
 using TcpServiceNetCore.ServiceEngine.Forms;
 using TcpServiceNetCore.ServiceEngine.Controls;
 
-namespace TcpServiceNetCore.TcpHostedService.Controls;
+namespace TcpServiceNetCore.ServiceVisuals.Forms;
 
 public class frmTestTcpConnection : BaseForm
 {

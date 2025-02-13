@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpServiceNetCore.TcpHosted
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpServiceNetCore.ConsoleAdapter", "ConsoleAdapter\TcpServiceNetCore.ConsoleAdapter.csproj", "{973EBE90-4B2A-4931-9A2D-0F2A5DD9E19A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpServiceNetCore.ServiceVisuals", "ServiceVisuals\TcpServiceNetCore.ServiceVisuals.csproj", "{737B4008-748E-4013-8672-BA8AAB865772}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{973EBE90-4B2A-4931-9A2D-0F2A5DD9E19A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{973EBE90-4B2A-4931-9A2D-0F2A5DD9E19A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{973EBE90-4B2A-4931-9A2D-0F2A5DD9E19A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{737B4008-748E-4013-8672-BA8AAB865772}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{737B4008-748E-4013-8672-BA8AAB865772}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{737B4008-748E-4013-8672-BA8AAB865772}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{737B4008-748E-4013-8672-BA8AAB865772}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
