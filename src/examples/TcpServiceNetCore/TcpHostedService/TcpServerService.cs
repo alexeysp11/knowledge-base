@@ -51,7 +51,7 @@ public class TcpServerService : IHostedService
 
                 while (true)
                 {
-                    await ServiceEngineHelper.SendFormAsync(stream, sessionInfo);
+                    await ServiceEngineHelper.SendFormAsync(stream, sessionInfo, displayBorders: true);
 
                     byte[] responseData = new byte[256];
                     int bytesRead = await stream.ReadAsync(responseData, 0, responseData.Length);

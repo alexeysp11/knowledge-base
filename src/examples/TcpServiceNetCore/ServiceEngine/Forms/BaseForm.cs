@@ -16,6 +16,7 @@ public abstract class BaseForm
     public BaseForm? ParentForm { get; set; }
 
     public List<TextControl> Controls { get; set; }
+    public TextEditControl FocusedEditControl { get; set; }
 
     public Func<bool>? ShowValidation { get; set; }
     public Func<bool>? FormValidation { get; set; }
@@ -55,13 +56,13 @@ public abstract class BaseForm
 
             ShowTextControls();
 
-            TextEditControl firstEditControl = sortedControls
+            TextEditControl FocusedEditControl = sortedControls
                 .Where(x => x is TextEditControl && x.Editable)
                 .Cast<TextEditControl>()
                 .FirstOrDefault();
-            if (firstEditControl != null)
+            if (FocusedEditControl != null)
             {
-                ShowTextEditControl(firstEditControl);
+                ShowTextEditControl(FocusedEditControl);
             }
         }
         catch (Exception ex)
@@ -138,8 +139,6 @@ public abstract class BaseForm
         {
             control.Show();
         }
-
-        ServiceEngineHelper.LogForm(SessionInfo);
     }
 
     private void ShowTextEditControl(TextControl control)

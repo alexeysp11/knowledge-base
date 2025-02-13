@@ -7,28 +7,48 @@ public static class ConsoleHelper
         // 
     }
 
-    public static void PrintDisplayedInfo(string[,] displayedInfo)
+    public static void PrintDisplayedInfo(string[,] displayedInfo, bool displayBorders = false)
     {
         if (displayedInfo == null)
         {
             throw new Exception($"Parameter '{nameof(displayedInfo)}' could not be null");
         }
 
-        string result = GetDisplayedInfoString(displayedInfo);
+        string result = GetDisplayedInfoString(displayedInfo, displayBorders);
         Console.WriteLine(result);
     }
 
-    public static string GetDisplayedInfoString(string[,] displayedInfo)
+    public static string GetDisplayedInfoString(string[,] displayedInfo, bool displayBorders = false)
     {
         string result = string.Empty;
-        for (int i = 0; i < displayedInfo.GetLength(0); i++)
+
+        int qtyRows = displayedInfo.GetLength(0);
+        int qtyColumns = displayedInfo.GetLength(1);
+
+        if (displayBorders)
         {
-            for (int j = 0; j < displayedInfo.GetLength(1); j++)
+            result += new String('-', qtyColumns);
+            result += "\n";
+        }
+
+        for (int i = 0; i < qtyRows; i++)
+        {
+            for (int j = 0; j < qtyColumns; j++)
             {
                 result += displayedInfo[i, j];
             }
+            if (displayBorders)
+            {
+                result += "|";
+            }
             result += "\n";
         }
+
+        if (displayBorders)
+        {
+            result += new String('-', qtyColumns);
+        }
+
         return result;
     }
 

@@ -12,17 +12,17 @@ public static class ServiceEngineHelper
         // 
     }
 
-    public static void LogForm(SessionInfo sessionInfo)
+    public static void LogForm(SessionInfo sessionInfo, bool displayBorders = false)
     {
         if (sessionInfo == null)
         {
             throw new ArgumentNullException($"Parameter '{nameof(sessionInfo)}' could not be null");
         }
 
-        ConsoleHelper.PrintDisplayedInfo(sessionInfo.DisplayedInfo);
+        ConsoleHelper.PrintDisplayedInfo(sessionInfo.DisplayedInfo, displayBorders);
     }
 
-    public static async Task SendFormAsync(NetworkStream stream, SessionInfo sessionInfo)
+    public static async Task SendFormAsync(NetworkStream stream, SessionInfo sessionInfo, bool displayBorders = false)
     {
         if (stream == null)
         {
@@ -37,7 +37,7 @@ public static class ServiceEngineHelper
             throw new ArgumentNullException($"Parameter '{nameof(sessionInfo.DisplayedInfo)}' could not be null");
         }
 
-        string result = ConsoleHelper.GetDisplayedInfoString(sessionInfo.DisplayedInfo);
+        string result = ConsoleHelper.GetDisplayedInfoString(sessionInfo.DisplayedInfo, displayBorders);
         byte[] resultBytes = Encoding.UTF8.GetBytes(result);
         await stream.WriteAsync(resultBytes, 0, resultBytes.Length);
     }
