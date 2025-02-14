@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpServiceNetCore.TcpHosted
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpServiceNetCore.ConsoleAdapter", "ConsoleAdapter\TcpServiceNetCore.ConsoleAdapter.csproj", "{973EBE90-4B2A-4931-9A2D-0F2A5DD9E19A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpServiceNetCore.ServiceVisuals", "ServiceVisuals\TcpServiceNetCore.ServiceVisuals.csproj", "{737B4008-748E-4013-8672-BA8AAB865772}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpServiceNetCore.BusinessVisuals", "BusinessVisuals\TcpServiceNetCore.BusinessVisuals.csproj", "{737B4008-748E-4013-8672-BA8AAB865772}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

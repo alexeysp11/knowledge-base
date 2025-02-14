@@ -53,7 +53,7 @@ public class MenuFormResolver
         switch (menuCode)
         {
             case "1":
-                typeName = "TcpServiceNetCore.ServiceVisuals.Forms.frmTestTcpConnection, TcpServiceNetCore.ServiceVisuals";
+                typeName = "TcpServiceNetCore.BusinessVisuals.Forms.frmTestTcpConnection, TcpServiceNetCore.BusinessVisuals";
                 break;
             
             default:
