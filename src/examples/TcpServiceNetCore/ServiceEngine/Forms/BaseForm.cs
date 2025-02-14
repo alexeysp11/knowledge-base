@@ -29,6 +29,7 @@ public abstract class BaseForm
         MenuCode = "";
         Height = 0;
         Width = 0;
+        ValidateResultType = ValidateResultType.Show;
         Controls = new List<TextControl>();
     }
 
@@ -75,6 +76,16 @@ public abstract class BaseForm
             if (FocusedEditControl != null)
             {
                 ShowTextEditControl(FocusedEditControl);
+            }
+            else
+            {
+                if (FormValidation != null)
+                {
+                    if (FormValidation())
+                    {
+                        return;
+                    }
+                }
             }
         }
         catch (Exception ex)

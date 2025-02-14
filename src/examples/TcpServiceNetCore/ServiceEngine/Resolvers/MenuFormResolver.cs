@@ -11,7 +11,7 @@ public class MenuFormResolver
     public SessionInfo InitSession()
     {
         int formHeight = 18;
-        int formWidth = 26;
+        int formWidth = 36;
 
         SessionInfo = new SessionInfo();
         SessionInfo.SessionId = 1;
@@ -23,17 +23,11 @@ public class MenuFormResolver
 
     public void ProcessUserInput(string userInput)
     {
-        // Commands:
-        // -n = next/enter
-        // -b = back/escape
-        // -h = help
-        // -i = info
-
         Console.WriteLine($"Received: {userInput}");
         CurrentForm.Show();
     }
 
-    public void StartMenu(string? menuCode = null)
+    public void Start(string? menuCode = null)
     {
         try
         {
@@ -61,10 +55,6 @@ public class MenuFormResolver
             case null:
             case "":
                 typeName = "TcpServiceNetCore.BusinessVisuals.Forms.frmMenu, TcpServiceNetCore.BusinessVisuals";
-                break;
-
-            case "1":
-                typeName = "TcpServiceNetCore.BusinessVisuals.Forms.frmTestTcpConnection, TcpServiceNetCore.BusinessVisuals";
                 break;
 
             default:
