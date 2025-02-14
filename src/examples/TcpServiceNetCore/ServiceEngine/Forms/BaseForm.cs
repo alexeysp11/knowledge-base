@@ -47,19 +47,29 @@ public abstract class BaseForm
                 return;
             }
 
+            SessionInfo.AssignEmptyDisplayedInfo();
+
             List<TextControl> sortedControls = Controls
                 .OrderBy(x => x.Top)
                 .ThenBy(x => x.Left)
                 .ToList();
+            List<TextEditControl> sortedEditControls = sortedControls
+                .Where(x => x is TextEditControl && x.Editable)
+                .Cast<TextEditControl>()
+                .ToList();
 
             ConfigureControls(sortedControls);
+            ConfigureEditControls(sortedEditControls);
 
             ShowTextControls();
 
-            TextEditControl FocusedEditControl = sortedControls
-                .Where(x => x is TextEditControl && x.Editable)
-                .Cast<TextEditControl>()
-                .FirstOrDefault();
+            if (FocusedEditControl == null)
+            {
+                FocusedEditControl = sortedControls
+                    .Where(x => x is TextEditControl && x.Editable)
+                    .Cast<TextEditControl>()
+                    .FirstOrDefault();
+            }
             if (FocusedEditControl != null)
             {
                 ShowTextEditControl(FocusedEditControl);
@@ -129,6 +139,25 @@ public abstract class BaseForm
         previousControl = null;
     }
 
+    private void ConfigureEditControls(List<TextEditControl> sortedControls)
+    {
+        if (sortedControls == null)
+            throw new Exception("Sorted list of controls was not assigned");
+        
+        TextEditControl? previousControl = null;
+        foreach (TextEditControl control in sortedControls)
+        {
+            if (previousControl != null)
+            {
+                previousControl.NextEditControl = control;
+            }
+            control.PreviousEditControl = previousControl;
+            control.Form = this;
+            previousControl = control;
+        }
+        previousControl = null;
+    }
+
     private void ShowTextControls()
     {
         List<TextControl> textControls = Controls
@@ -141,21 +170,24 @@ public abstract class BaseForm
         }
     }
 
-    private void ShowTextEditControl(TextControl control)
+    private void ShowTextEditControl(TextEditControl control)
     {
         if (control == null)
         {
             throw new Exception("Control is not found");
         }
+        
+        Console.WriteLine(control.Name);
 
-        if (control.Editable && control is TextEditControl)
-        {
-            TextEditControl editControl = (TextEditControl)control;
-            editControl.Show();
-            editControl.GetUserInput();
-        }
+        // if (control != FocusedEditControl)
+        // {
+        //     FocusedEditControl = control;
+        //     return;
+        // }
+        control.Show();
+        control.GetUserInput();
 
-        if (control.NextControl == null)
+        if (control.NextEditControl == null)
         {
             if (FormValidation != null)
             {
@@ -171,9 +203,7 @@ public abstract class BaseForm
         }
         else
         {
-            control = control.NextControl;
+            control = control.NextEditControl;
         }
-
-        ShowTextEditControl(control);
     }
 }

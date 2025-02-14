@@ -5,6 +5,7 @@ namespace TcpServiceNetCore.ServiceEngine.Resolvers;
 public class MenuFormResolver
 {
     public SessionInfo SessionInfo { get; set; }
+    public BaseForm CurrentForm { get; set; }
 
     public SessionInfo InitSession()
     {
@@ -21,7 +22,14 @@ public class MenuFormResolver
 
     public void ProcessUserInput(string userInput)
     {
-        // 
+        // Commands:
+        // -n = next/enter
+        // -b = back/escape
+        // -h = help
+        // -i = info
+
+        Console.WriteLine($"Received: {userInput}");
+        CurrentForm.Show();
     }
 
     public void DisplayMenu(string? menuCode = null)
@@ -40,6 +48,8 @@ public class MenuFormResolver
             form.FillFormAttributes(menuCode);
             form.Init();
             form.Show();
+
+            CurrentForm = form;
         }
         catch (Exception ex)
         {

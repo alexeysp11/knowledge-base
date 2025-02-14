@@ -9,8 +9,12 @@ public class TextEditControl : TextControl
     public string? Hint { get; set; }
     public Func<bool>? EnterValidation { get; set; }
 
+    public TextEditControl? NextEditControl { get; set; }
+    public TextEditControl? PreviousEditControl { get; set; }
+
     public TextEditControl() : base()
     {
+        Editable = true;
         Required = true;
         EmptyEnterSymbol = ".";
     }

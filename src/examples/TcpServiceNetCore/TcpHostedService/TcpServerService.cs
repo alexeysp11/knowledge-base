@@ -38,7 +38,6 @@ public class TcpServerService : IHostedService
     {
         using (client)
         {
-
             try
             {
                 NetworkStream stream = client.GetStream();
@@ -53,8 +52,8 @@ public class TcpServerService : IHostedService
                 {
                     await ServiceEngineHelper.SendFormAsync(stream, sessionInfo, displayBorders: true);
 
-                    string requestMessage = await ServiceEngineHelper.ReadMessageAsync(stream);
-                    Console.WriteLine($"Received: {requestMessage}");
+                    string userInput = await ServiceEngineHelper.ReadMessageAsync(stream);
+                    menuFormResolver.ProcessUserInput(userInput);
                 }
             }
             catch (Exception ex)

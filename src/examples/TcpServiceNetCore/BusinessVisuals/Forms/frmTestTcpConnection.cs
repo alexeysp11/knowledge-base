@@ -12,6 +12,8 @@ public class frmTestTcpConnection : BaseForm
     private TextControl? lblRequestBody;
     private TextControl? lblResponseBody;
 
+    private TextEditControl? txtRequestBody;
+
     public frmTestTcpConnection() : base()
     {
         Name = nameof(frmTestTcpConnection);
@@ -60,6 +62,13 @@ public class frmTestTcpConnection : BaseForm
         lblRequestBody.EntireLine = true;
         lblRequestBody.Value = "REQUEST BODY:";
         Controls.Add(lblRequestBody);
+
+        txtRequestBody = new TextEditControl();
+        txtRequestBody.Name = nameof(txtRequestBody);
+        txtRequestBody.Top = 5;
+        txtRequestBody.Left = 0;
+        txtRequestBody.EntireLine = true;
+        Controls.Add(txtRequestBody);
 
         lblResponseBody = new TextControl();
         lblResponseBody.Name = nameof(lblResponseBody);
