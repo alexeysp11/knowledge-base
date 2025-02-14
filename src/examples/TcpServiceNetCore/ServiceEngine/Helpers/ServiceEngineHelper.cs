@@ -7,6 +7,13 @@ namespace TcpServiceNetCore.ServiceEngine.Helpers;
 
 public static class ServiceEngineHelper
 {
+    public static async Task<string> ReadMessageAsync(NetworkStream stream)
+    {
+        byte[] messageData = new byte[256];
+        int bytesRead = await stream.ReadAsync(messageData, 0, messageData.Length);
+        return Encoding.UTF8.GetString(messageData, 0, bytesRead);
+    }
+
     public static async Task SendMessageAsync(NetworkStream stream, string message)
     {
         byte[] resultBytes = Encoding.UTF8.GetBytes(message);

@@ -53,10 +53,8 @@ public class TcpServerService : IHostedService
                 {
                     await ServiceEngineHelper.SendFormAsync(stream, sessionInfo, displayBorders: true);
 
-                    byte[] responseData = new byte[256];
-                    int bytesRead = await stream.ReadAsync(responseData, 0, responseData.Length);
-                    string responseMessage = Encoding.UTF8.GetString(responseData, 0, bytesRead);
-                    Console.WriteLine($"Received: {responseMessage}");
+                    string requestMessage = await ServiceEngineHelper.ReadMessageAsync(stream);
+                    Console.WriteLine($"Received: {requestMessage}");
                 }
             }
             catch (Exception ex)
