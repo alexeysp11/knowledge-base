@@ -11,6 +11,7 @@ public class TextControl
     public int Left { get; set; }
     public int Top { get; set; }
     public int Width { get; set; }
+    public int Height { get; set; }
     public bool EntireLine { get; set; }
     public string Value { get; set; }
     public bool Visible { get; set; }
@@ -34,6 +35,7 @@ public class TextControl
         Left = 0;
         Top = 0;
         Width = 0;
+        Height = 1;
         EntireLine = false;
         Value = "";
         Visible = true;
@@ -82,6 +84,10 @@ public class TextControl
         if (Width < 0)
         {
             throw new Exception($"Failed to show control '{Name}': parameter {nameof(Width)} should not be negative");
+        }
+        if (Height < 0)
+        {
+            throw new Exception($"Failed to show control '{Name}': parameter {nameof(Height)} should not be negative");
         }
         if (Width > Form.Width)
         {
