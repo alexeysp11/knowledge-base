@@ -16,5 +16,10 @@ public enum ValidateResultType
     /// Display current form or control one more time.
     /// </summary>
     /// <remarks>Could be used when errors occured</remarks>
-    Repeat = 2
+    Repeat = 2,
+
+    /// <summary>
+    /// Display current form or control.
+    /// </summary>
+    Show = 3
 }

@@ -46,7 +46,6 @@ public class TcpServerService : IHostedService
                 
                 var menuFormResolver = new MenuFormResolver();
                 SessionInfo sessionInfo = menuFormResolver.InitSession();
-                menuFormResolver.DisplayMenu();
                 menuFormResolver.StartMenu("1");
 
                 while (true)

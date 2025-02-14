@@ -1,5 +1,5 @@
-using TcpServiceNetCore.ServiceEngine.Forms;
 using TcpServiceNetCore.ServiceEngine.Controls;
+using TcpServiceNetCore.ServiceEngine.Forms;
 
 namespace TcpServiceNetCore.BusinessVisuals.Forms;
 
@@ -69,6 +69,7 @@ public class frmTestTcpConnection : BaseForm
         txtRequestBody.Top = 5;
         txtRequestBody.Left = 0;
         txtRequestBody.EntireLine = true;
+        txtRequestBody.Hint = "ENTER REQUEST BODY";
         Controls.Add(txtRequestBody);
 
         lblResponseBody = new TextControl();
@@ -84,6 +85,7 @@ public class frmTestTcpConnection : BaseForm
         txtResponseBody.Top = 11;
         txtResponseBody.Left = 0;
         txtResponseBody.EntireLine = true;
+        txtResponseBody.Hint = "ENTER RESPONSE BODY";
         Controls.Add(txtResponseBody);
     }
 }

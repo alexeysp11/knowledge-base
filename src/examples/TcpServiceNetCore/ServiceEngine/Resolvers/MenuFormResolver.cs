@@ -33,12 +33,7 @@ public class MenuFormResolver
         CurrentForm.Show();
     }
 
-    public void DisplayMenu(string? menuCode = null)
-    {
-        // 
-    }
-    
-    public void StartMenu(string menuCode)
+    public void StartMenu(string? menuCode = null)
     {
         try
         {
@@ -58,15 +53,20 @@ public class MenuFormResolver
         }
     }
 
-    private BaseForm CreateForm(string menuCode)
+    private BaseForm CreateForm(string? menuCode = null)
     {
         string typeName = "";
         switch (menuCode)
         {
+            case null:
+            case "":
+                typeName = "TcpServiceNetCore.BusinessVisuals.Forms.frmMenu, TcpServiceNetCore.BusinessVisuals";
+                break;
+
             case "1":
                 typeName = "TcpServiceNetCore.BusinessVisuals.Forms.frmTestTcpConnection, TcpServiceNetCore.BusinessVisuals";
                 break;
-            
+
             default:
                 throw new Exception("Menu could not be resolved");
         }

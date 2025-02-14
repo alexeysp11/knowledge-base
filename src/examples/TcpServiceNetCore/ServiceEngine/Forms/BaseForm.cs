@@ -13,6 +13,8 @@ public abstract class BaseForm
 
     public SessionInfo? SessionInfo { get; set; }
 
+    public ValidateResultType ValidateResultType { get; set; }
+
     public BaseForm? ParentForm { get; set; }
 
     public List<TextControl> Controls { get; set; }
@@ -179,17 +181,24 @@ public abstract class BaseForm
         
         Console.WriteLine(control.Name);
 
-        // if (control != FocusedEditControl)
-        // {
-        //     FocusedEditControl = control;
-        //     return;
-        // }
         control.Show();
         control.GetUserInput();
 
-        if (control.NextEditControl == null)
+        if (ValidateResultType == ValidateResultType.Next)
         {
-            if (FormValidation != null)
+            MoveEditControl(control.NextEditControl);
+        }
+        else if (ValidateResultType == ValidateResultType.Back)
+        {
+            MoveEditControl(control.PreviousEditControl);
+        }
+    }
+
+    private void MoveEditControl(TextEditControl control)
+    {
+        if (control == null)
+        {
+            if (ValidateResultType == ValidateResultType.Next && FormValidation != null)
             {
                 if (FormValidation())
                 {
@@ -203,7 +212,7 @@ public abstract class BaseForm
         }
         else
         {
-            FocusedEditControl = control.NextEditControl;
+            FocusedEditControl = control;
         }
     }
 }
