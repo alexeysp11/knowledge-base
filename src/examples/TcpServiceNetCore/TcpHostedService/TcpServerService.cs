@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using TcpServiceNetCore.ServiceEngine.Helpers;
+using TcpServiceNetCore.ServiceEngine.Models;
 using TcpServiceNetCore.ServiceEngine.Resolvers;
 
 namespace TcpHostedService;

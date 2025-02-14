@@ -1,7 +1,7 @@
 using System.Net.Sockets;
 using System.Text;
 using TcpServiceNetCore.ConsoleAdapter.Helpers;
-using TcpServiceNetCore.ServiceEngine.Resolvers;
+using TcpServiceNetCore.ServiceEngine.Models;
 
 namespace TcpServiceNetCore.ServiceEngine.Helpers;
 

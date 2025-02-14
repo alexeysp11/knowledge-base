@@ -1,4 +1,4 @@
-namespace TcpServiceNetCore.ServiceEngine.Resolvers;
+namespace TcpServiceNetCore.ServiceEngine.Models;
 
 public class SessionInfo
 {

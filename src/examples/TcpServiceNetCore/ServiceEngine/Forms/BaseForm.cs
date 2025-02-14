@@ -1,6 +1,6 @@
 using TcpServiceNetCore.ServiceEngine.Controls;
 using TcpServiceNetCore.ServiceEngine.Helpers;
-using TcpServiceNetCore.ServiceEngine.Resolvers;
+using TcpServiceNetCore.ServiceEngine.Models;
 
 namespace TcpServiceNetCore.ServiceEngine.Forms;
 
@@ -203,7 +203,7 @@ public abstract class BaseForm
         }
         else
         {
-            control = control.NextEditControl;
+            FocusedEditControl = control.NextEditControl;
         }
     }
 }

@@ -13,6 +13,7 @@ public class frmTestTcpConnection : BaseForm
     private TextControl? lblResponseBody;
 
     private TextEditControl? txtRequestBody;
+    private TextEditControl? txtResponseBody;
 
     public frmTestTcpConnection() : base()
     {
@@ -77,5 +78,12 @@ public class frmTestTcpConnection : BaseForm
         lblResponseBody.EntireLine = true;
         lblResponseBody.Value = "RESPONSE BODY:";
         Controls.Add(lblResponseBody);
+
+        txtResponseBody = new TextEditControl();
+        txtResponseBody.Name = nameof(txtResponseBody);
+        txtResponseBody.Top = 11;
+        txtResponseBody.Left = 0;
+        txtResponseBody.EntireLine = true;
+        Controls.Add(txtResponseBody);
     }
 }
