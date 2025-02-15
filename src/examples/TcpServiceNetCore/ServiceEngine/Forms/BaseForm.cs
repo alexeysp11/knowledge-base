@@ -38,6 +38,8 @@ public abstract class BaseForm
         Height = SessionInfo?.FormHeight ?? 0;
         Width = SessionInfo?.FormWidth ?? 0;
 
+        SessionInfo?.AssignEmptyDisplayedInfo();
+
         InitializeComponent();
     }
 
@@ -192,8 +194,8 @@ public abstract class BaseForm
         
         Console.WriteLine(control.Name);
 
-        control.Show();
         control.GetUserInput();
+        control.Show();
 
         if (ValidateResultType == ValidateResultType.Next)
         {
@@ -215,6 +217,10 @@ public abstract class BaseForm
                 {
                     return;
                 }
+            }
+            else if (ValidateResultType == ValidateResultType.Back && ParentForm != null)
+            {
+                // 
             }
             else
             {

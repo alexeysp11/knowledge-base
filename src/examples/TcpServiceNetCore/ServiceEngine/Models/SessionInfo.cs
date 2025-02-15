@@ -8,6 +8,7 @@ public class SessionInfo
     public long? MenuId { get; set; }
     public string? MenuCode { get; set; }
     public string[,] DisplayedInfo { get; set; }
+    public string? UserInput { get; set; }
 
     public void AssignEmptyDisplayedInfo()
     {

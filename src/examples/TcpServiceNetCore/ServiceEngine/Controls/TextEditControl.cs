@@ -49,17 +49,17 @@ public class TextEditControl : TextControl
 
     public void GetUserInput()
     {
-        // Get value from user.
+        string userInput = SessionInfo?.UserInput ?? "";
+        Value = userInput;
+        if (SessionInfo != null)
+        {
+            SessionInfo.UserInput = null;
+        }
 
-        // Validate user input.
         if (OnEnterValidation())
         {
             return;
         }
-        
-        Value = "";
-
-        GetUserInput();
     }
 
     public void AddControlToForm()

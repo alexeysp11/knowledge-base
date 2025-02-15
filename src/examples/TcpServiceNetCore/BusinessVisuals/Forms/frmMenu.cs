@@ -50,6 +50,26 @@ public class frmMenu : BaseForm
         txtUserInput.Left = 0;
         txtUserInput.EntireLine = true;
         txtUserInput.Hint = "ENTER MENU";
+        txtUserInput.EnterValidation = txtUserInput_EnterValidation;
         Controls.Add(txtUserInput);
+    }
+
+    private bool txtUserInput_EnterValidation()
+    {
+        switch (txtUserInput.Value)
+        {
+            case "1":
+                var frmTestTcpConnection = new frmTestTcpConnection();
+                frmTestTcpConnection.SessionInfo = SessionInfo;
+                frmTestTcpConnection.ParentForm = this;
+                frmTestTcpConnection.Init();
+                frmTestTcpConnection.Show();
+                break;
+            
+            default:
+                FocusedEditControl = txtUserInput;
+                break;
+        }
+        return true;
     }
 }

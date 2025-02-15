@@ -23,7 +23,7 @@ public class MenuFormResolver
 
     public void ProcessUserInput(string userInput)
     {
-        Console.WriteLine($"Received: {userInput}");
+        SessionInfo.UserInput = userInput;
         CurrentForm.Show();
     }
 
