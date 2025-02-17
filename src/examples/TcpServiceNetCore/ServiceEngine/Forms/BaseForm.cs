@@ -52,6 +52,8 @@ public abstract class BaseForm
                 return;
             }
 
+            SessionInfo.CurrentForm = this;
+
             SessionInfo.AssignEmptyDisplayedInfo();
 
             List<TextControl> sortedControls = Controls
@@ -85,6 +87,7 @@ public abstract class BaseForm
                 {
                     if (FormValidation())
                     {
+                        SessionInfo.CurrentForm = ParentForm;
                         return;
                     }
                 }
@@ -195,7 +198,10 @@ public abstract class BaseForm
         Console.WriteLine(control.Name);
 
         control.GetUserInput();
-        control.Show();
+        if (SessionInfo.CurrentForm == this)
+        {
+            control.Show();
+        }
 
         if (ValidateResultType == ValidateResultType.Next)
         {
@@ -215,6 +221,7 @@ public abstract class BaseForm
             {
                 if (FormValidation())
                 {
+                    SessionInfo.CurrentForm = ParentForm;
                     return;
                 }
             }

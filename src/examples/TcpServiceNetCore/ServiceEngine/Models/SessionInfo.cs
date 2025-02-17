@@ -1,3 +1,5 @@
+using TcpServiceNetCore.ServiceEngine.Forms;
+
 namespace TcpServiceNetCore.ServiceEngine.Models;
 
 public class SessionInfo
@@ -9,6 +11,8 @@ public class SessionInfo
     public string? MenuCode { get; set; }
     public string[,] DisplayedInfo { get; set; }
     public string? UserInput { get; set; }
+
+    public BaseForm? CurrentForm { get; set; }
 
     public void AssignEmptyDisplayedInfo()
     {
