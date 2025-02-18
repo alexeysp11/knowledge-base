@@ -194,8 +194,6 @@ public abstract class BaseForm
         {
             throw new Exception("Control is not found");
         }
-        
-        Console.WriteLine(control.Name);
 
         control.GetUserInput();
         if (SessionInfo.CurrentForm == this)

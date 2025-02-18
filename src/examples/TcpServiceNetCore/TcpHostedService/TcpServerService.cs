@@ -14,6 +14,12 @@ public class TcpServerService : IHostedService
     private TcpListener _listener;
     private readonly int _port = 5000;
     private CancellationTokenSource _cts;
+    private AppSettings _appSettings;
+
+    public TcpServerService(AppSettings appSettings)
+    {
+        _appSettings = appSettings;
+    }
 
     public Task StartAsync(CancellationToken cancellationToken)
     {
@@ -44,7 +50,7 @@ public class TcpServerService : IHostedService
                 NetworkStream stream = client.GetStream();
                 System.Console.WriteLine("Client connected");
                 
-                var menuFormResolver = new MenuFormResolver();
+                var menuFormResolver = new MenuFormResolver(_appSettings);
                 SessionInfo sessionInfo = menuFormResolver.InitSession();
                 menuFormResolver.Start();
 

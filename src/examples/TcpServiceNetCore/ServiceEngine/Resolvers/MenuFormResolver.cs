@@ -7,6 +7,13 @@ public class MenuFormResolver
 {
     public SessionInfo SessionInfo { get; set; }
     public BaseForm CurrentForm { get; set; }
+    
+    private AppSettings _appSettings;
+
+    public MenuFormResolver(AppSettings appSettings)
+    {
+        _appSettings = appSettings;
+    }
 
     public SessionInfo InitSession()
     {
@@ -27,15 +34,15 @@ public class MenuFormResolver
         CurrentForm.Show();
     }
 
-    public void Start(string? menuCode = null)
+    public void Start()
     {
         try
         {
-            BaseForm form = CreateForm(menuCode);
+            BaseForm form = CreateForm();
 
             form.SessionInfo = SessionInfo;
 
-            form.FillFormAttributes(menuCode);
+            form.FillFormAttributes(_appSettings?.MenuCode);
             form.Init();
             form.Show();
 
@@ -47,29 +54,24 @@ public class MenuFormResolver
         }
     }
 
-    private BaseForm CreateForm(string? menuCode = null)
+    private BaseForm CreateForm()
     {
-        string typeName = "";
-        switch (menuCode)
-        {
-            case null:
-            case "":
-                typeName = "TcpServiceNetCore.BusinessVisuals.Forms.frmMenu, TcpServiceNetCore.BusinessVisuals";
-                break;
+        string typeName = _appSettings?.InitialFormTypeName;
 
-            default:
-                throw new Exception("Menu could not be resolved");
+        if (string.IsNullOrEmpty(typeName))
+        {
+            throw new Exception($"Could not create the form of type '{typeName}': type name is not specified in the appsettings");
         }
 
         Type type = Type.GetType(typeName, true);
         object instance = Activator.CreateInstance(type);
         if (instance == null)
         {
-            throw new Exception($"Could not create the form '{menuCode}: type name is not found for the selected menu");
+            throw new Exception($"Could not create the form of type '{typeName}': type name is not found for the selected menu");
         }
         if (instance is not BaseForm)
         {
-            throw new Exception($"Could not create the form '{menuCode}: not derived from {nameof(BaseForm)}");
+            throw new Exception($"Could not create the form of type '{typeName}': not derived from {nameof(BaseForm)}");
         }
 
         return (BaseForm)instance;
