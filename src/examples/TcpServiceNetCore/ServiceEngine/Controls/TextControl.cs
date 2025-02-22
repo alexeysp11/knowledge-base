@@ -140,7 +140,8 @@ public class TextControl
                 break;
             }
 
-            SessionInfo.DisplayedInfo[top, left] = $"{ch}";
+            string charToInsert = (Inverted ? "[" : "") + ch + (Inverted ? "]" : "");
+            SessionInfo.DisplayedInfo[top, left] = charToInsert;
 
             left += 1;
             width += 1;

@@ -21,7 +21,7 @@ class Program
                 byte[] responseData = new byte[1024];
                 int bytesRead = await stream.ReadAsync(responseData, 0, responseData.Length);
                 string responseMessage = Encoding.UTF8.GetString(responseData, 0, bytesRead);
-                Console.WriteLine(responseMessage);
+                ConsoleHelper.WriteStringInColor(responseMessage);
 
                 // Request.
                 string requestMessage = ConsoleHelper.EnterLine(hint: "Enter data:", emptyStringReplacement: "-n");

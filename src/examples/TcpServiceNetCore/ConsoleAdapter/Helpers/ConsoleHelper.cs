@@ -1,10 +1,46 @@
-﻿namespace TcpServiceNetCore.ConsoleAdapter.Helpers;
+﻿using System.Text.RegularExpressions;
+
+namespace TcpServiceNetCore.ConsoleAdapter.Helpers;
 
 public static class ConsoleHelper
 {
     public static void ClearDisplayedInfo()
     {
         // 
+    }
+
+    /// <summary>
+    /// Usage: ConsoleHelper.WriteStringInColor("[String to be inverted]");
+    /// </summary>
+    public static void WriteStringInColor(string message)
+    {
+        var pieces = Regex.Split(message, @"(\[[^\]]*\])");
+
+        for (int i = 0; i < pieces.Length; i++)
+        {
+            string piece = pieces[i];
+            if (piece.StartsWith("[") && piece.EndsWith("]"))
+            {
+                piece = piece.Substring(1, piece.Length - 2);
+                InvertString(piece);
+                continue;
+            }
+            Console.Write(piece);
+        }
+        Console.WriteLine();
+    }
+
+    public static void InvertString(string message)
+    {
+        var foregroundColor = Console.BackgroundColor;
+        var backgroundColor = Console.ForegroundColor;
+
+        Console.BackgroundColor = backgroundColor;
+        Console.ForegroundColor = foregroundColor;
+
+        Console.Write(message);
+
+        Console.ResetColor();
     }
 
     public static void PrintDisplayedInfo(string[,] displayedInfo, bool displayBorders = false)
