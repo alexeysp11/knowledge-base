@@ -11,6 +11,8 @@ public class SessionInfo
     public string? MenuCode { get; set; }
     public string[,] DisplayedInfo { get; set; }
     public string[,] SavedDisplayedInfo { get; set; }
+    public long UserId { get; set; }
+    public string UserLogin { get; set; }
     public string? UserInput { get; set; }
 
     public BaseForm? CurrentForm { get; set; }
