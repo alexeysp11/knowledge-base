@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PixelTerminalUI.ConsoleAdap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PixelTerminalUI.BusinessVisuals", "PixelTerminalUI.BusinessVisuals\PixelTerminalUI.BusinessVisuals.csproj", "{737B4008-748E-4013-8672-BA8AAB865772}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PixelTerminalUI.WebApiServer", "PixelTerminalUI.WebApiServer\PixelTerminalUI.WebApiServer.csproj", "{3E3269EB-CD71-4318-A9E3-BC07CB12D81D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +44,9 @@ Global
 		{737B4008-748E-4013-8672-BA8AAB865772}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{737B4008-748E-4013-8672-BA8AAB865772}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{737B4008-748E-4013-8672-BA8AAB865772}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E3269EB-CD71-4318-A9E3-BC07CB12D81D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E3269EB-CD71-4318-A9E3-BC07CB12D81D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E3269EB-CD71-4318-A9E3-BC07CB12D81D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E3269EB-CD71-4318-A9E3-BC07CB12D81D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
