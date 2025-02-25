@@ -3,15 +3,57 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using PixelTerminalUI.ConsoleAdapter.Helpers;
+using PixelTerminalUI.ConsoleClient.Models;
 
 class Program
 {
     static async Task Main(string[] args)
     {
-        string server = "127.0.0.1";
-        int port = 5000;
+        try
+        {
+            string serverIp = ConsoleHelper.EnterLine(hint: "Enter server IP (e.g. 127.0.0.1):", beforeInputString: ">>>");
+            int port = GetPort("Enter port (e.g. 5000):");
 
-        using (TcpClient client = new TcpClient(server, port))
+            var communicationType = TerminalCommunicationType.Tcp;
+            switch (communicationType)
+            {
+                case TerminalCommunicationType.Tcp:
+                    await RunTcpAsync(serverIp, port);
+                    break;
+                
+                case TerminalCommunicationType.Http:
+                    //await RunHttpAsync(serverIp, port);
+                    break;
+                
+                case TerminalCommunicationType.Grpc:
+                    //await RunGrpcAsync(serverIp, port);
+                    break;
+                
+                default:
+                    throw new Exception("Communication type is not implemented");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+
+    static int GetPort(string hint, ConsoleColor? hintForegroundColor = null)
+    {
+        while (true)
+        {
+            string portString = ConsoleHelper.EnterLine(hint: hint, hintForegroundColor: hintForegroundColor, beforeInputString: ">>>");
+            if (int.TryParse(portString, out int port))
+            {
+                return port;
+            }
+        }
+    }
+
+    static async Task RunTcpAsync(string serverIp, int port)
+    {
+        using (TcpClient client = new TcpClient(serverIp, port))
         {
             NetworkStream stream = client.GetStream();
 

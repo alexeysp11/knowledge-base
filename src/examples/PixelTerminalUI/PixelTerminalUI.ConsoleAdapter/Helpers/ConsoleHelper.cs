@@ -91,14 +91,27 @@ public static class ConsoleHelper
     public static string EnterLine(
         string? hint = null,
         bool allowEmptyString = false,
-        string emptyStringReplacement = null)
+        string emptyStringReplacement = null,
+        ConsoleColor? hintForegroundColor = null,
+        string? beforeInputString = null)
     {
         string result = string.Empty;
         while (true)
         {
             if (!string.IsNullOrEmpty(hint))
             {
+                ConsoleColor currentForeground = Console.ForegroundColor;
+                if (hintForegroundColor != null)
+                {
+                    Console.ForegroundColor = hintForegroundColor.Value;
+                }
                 Console.WriteLine(hint);
+                Console.ForegroundColor = currentForeground;
+            }
+
+            if (!string.IsNullOrEmpty(beforeInputString))
+            {
+                Console.Write($"{beforeInputString} ");
             }
 
             string input = Console.ReadLine();
@@ -111,10 +124,13 @@ public static class ConsoleHelper
                 result = input;
                 break;
             }
-            if (allowEmptyString)
+            else
             {
-                result = input;
-                break;
+                if (allowEmptyString)
+                {
+                    result = input;
+                    break;
+                }
             }
         }
         return result;
