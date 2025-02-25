@@ -7,9 +7,9 @@ namespace PixelTerminalUI.ServiceEngine.Helpers;
 
 public static class ServiceEngineHelper
 {
-    public static async Task<string> ReadMessageTcpAsync(NetworkStream stream)
+    public static async Task<string> ReadMessageTcpAsync(NetworkStream stream, int inputByteArraySize = 256)
     {
-        byte[] messageData = new byte[256];
+        byte[] messageData = new byte[inputByteArraySize];
         int bytesRead = await stream.ReadAsync(messageData, 0, messageData.Length);
         return Encoding.UTF8.GetString(messageData, 0, bytesRead);
     }
