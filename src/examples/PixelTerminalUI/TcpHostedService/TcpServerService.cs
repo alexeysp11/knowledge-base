@@ -56,9 +56,9 @@ public class TcpServerService : IHostedService
 
                 while (true)
                 {
-                    await ServiceEngineHelper.SendFormAsync(stream, sessionInfo, displayBorders: true);
+                    await ServiceEngineHelper.SendFormTcpAsync(stream, sessionInfo, displayBorders: true);
 
-                    string userInput = await ServiceEngineHelper.ReadMessageAsync(stream);
+                    string userInput = await ServiceEngineHelper.ReadMessageTcpAsync(stream);
                     menuFormResolver.ProcessUserInput(userInput);
                 }
             }

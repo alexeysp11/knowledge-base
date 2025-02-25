@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-    <ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="../ConsoleAdapter/PixelTerminalUI.ConsoleAdapter.csproj" />
   </ItemGroup>
 

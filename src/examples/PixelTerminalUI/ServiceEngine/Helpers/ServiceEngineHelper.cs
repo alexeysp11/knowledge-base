@@ -7,14 +7,14 @@ namespace PixelTerminalUI.ServiceEngine.Helpers;
 
 public static class ServiceEngineHelper
 {
-    public static async Task<string> ReadMessageAsync(NetworkStream stream)
+    public static async Task<string> ReadMessageTcpAsync(NetworkStream stream)
     {
         byte[] messageData = new byte[256];
         int bytesRead = await stream.ReadAsync(messageData, 0, messageData.Length);
         return Encoding.UTF8.GetString(messageData, 0, bytesRead);
     }
 
-    public static async Task SendMessageAsync(NetworkStream stream, string message)
+    public static async Task SendMessageTcpAsync(NetworkStream stream, string message)
     {
         byte[] resultBytes = Encoding.UTF8.GetBytes(message);
         await stream.WriteAsync(resultBytes, 0, resultBytes.Length);
@@ -30,7 +30,7 @@ public static class ServiceEngineHelper
         ConsoleHelper.PrintDisplayedInfo(sessionInfo.DisplayedInfo, displayBorders);
     }
 
-    public static async Task SendFormAsync(NetworkStream stream, SessionInfo sessionInfo, bool displayBorders = false)
+    public static async Task SendFormTcpAsync(NetworkStream stream, SessionInfo sessionInfo, bool displayBorders = false)
     {
         if (stream == null)
         {
@@ -46,7 +46,7 @@ public static class ServiceEngineHelper
         }
 
         string message = ConsoleHelper.GetDisplayedInfoString(sessionInfo.DisplayedInfo, displayBorders);
-        await SendMessageAsync(stream, message);
+        await SendMessageTcpAsync(stream, message);
     }
 
     public static void SaveForm(SessionInfo sessionInfo)
