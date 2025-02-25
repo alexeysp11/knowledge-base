@@ -12,8 +12,8 @@
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="../ServiceEngine/PixelTerminalUI.ServiceEngine.csproj" />
-    <ProjectReference Include="../BusinessVisuals/PixelTerminalUI.BusinessVisuals.csproj" />
+    <ProjectReference Include="../PixelTerminalUI.ServiceEngine/PixelTerminalUI.ServiceEngine.csproj" />
+    <ProjectReference Include="../PixelTerminalUI.BusinessVisuals/PixelTerminalUI.BusinessVisuals.csproj" />
   </ItemGroup>
 
 </Project>
