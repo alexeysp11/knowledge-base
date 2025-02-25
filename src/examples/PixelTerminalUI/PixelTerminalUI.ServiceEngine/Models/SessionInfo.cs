@@ -5,6 +5,7 @@ namespace PixelTerminalUI.ServiceEngine.Models;
 public class SessionInfo
 {
     public long SessionId { get; set; }
+    public long SessionUid { get; set; }
     public int FormHeight { get; set; }
     public int FormWidth { get; set; }
     public long? MenuId { get; set; }
