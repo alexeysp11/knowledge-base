@@ -10,7 +10,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.1" />
   </ItemGroup>
-  
+
   <ItemGroup>
     <ProjectReference Include="../PixelTerminalUI.ServiceEngine/PixelTerminalUI.ServiceEngine.csproj" />
     <ProjectReference Include="../PixelTerminalUI.BusinessVisuals/PixelTerminalUI.BusinessVisuals.csproj" />

@@ -14,6 +14,10 @@ public class SessionInfoDto
     public string UserLogin { get; set; }
     public string? UserInput { get; set; }
 
+    public SessionInfoDto()
+    {
+    }
+
     public SessionInfoDto(SessionInfo sessionInfo)
     {
         if (sessionInfo == null)

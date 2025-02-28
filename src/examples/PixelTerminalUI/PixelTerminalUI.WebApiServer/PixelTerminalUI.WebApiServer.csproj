@@ -11,4 +11,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="../PixelTerminalUI.ConsoleAdapter/PixelTerminalUI.ConsoleAdapter.csproj" />
+    <ProjectReference Include="../PixelTerminalUI.ServiceEngine/PixelTerminalUI.ServiceEngine.csproj" />
+    <ProjectReference Include="../PixelTerminalUI.BusinessVisuals/PixelTerminalUI.BusinessVisuals.csproj" />
+  </ItemGroup>
+
 </Project>
