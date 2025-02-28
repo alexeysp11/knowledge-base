@@ -10,6 +10,7 @@ public class SessionInfo
     public int FormWidth { get; set; }
     public long? MenuId { get; set; }
     public string? MenuCode { get; set; }
+    public bool DisplayBorders { get; set; }
     public string[,] DisplayedInfo { get; set; }
     public string[,] SavedDisplayedInfo { get; set; }
     public long UserId { get; set; }
