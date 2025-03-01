@@ -1,6 +1,0 @@
-@PixelTerminalUI.WebApiServer_HostAddress = http://localhost:5096
-
-GET {{PixelTerminalUI.WebApiServer_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

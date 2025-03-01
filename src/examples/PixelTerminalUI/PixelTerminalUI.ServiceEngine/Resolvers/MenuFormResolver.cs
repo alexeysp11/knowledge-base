@@ -22,6 +22,7 @@ public class MenuFormResolver
 
         SessionInfo = new SessionInfo();
         SessionInfo.SessionId = 1;
+        SessionInfo.SessionUid = Guid.NewGuid().ToString();
         SessionInfo.FormHeight = formHeight;
         SessionInfo.FormWidth = formWidth;
         SessionInfo.DisplayBorders = true;

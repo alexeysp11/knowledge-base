@@ -1,10 +1,17 @@
+using Microsoft.AspNetCore.Mvc;
 using PixelTerminalUI.ServiceEngine.Dto;
 using PixelTerminalUI.ServiceEngine.Models;
+using PixelTerminalUI.ServiceEngine.Resolvers;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+// Get configurations.
+var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production";
+var configuration = new ConfigurationBuilder().AddJsonFile($"appsettings.{environment}.json").Build();
+var appsettings = configuration.GetSection("AppSettings").Get<AppSettings>() ?? new AppSettings();
+
+// Add dependencies.
+builder.Services.AddSingleton(appsettings);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -19,9 +26,29 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapPost("/pixelterminalui/go", (SessionInfoDto? sessionInfo) =>
+app.MapPost("/pixelterminalui/go", (SessionInfoDto? sessionInfoDto, [FromServices] AppSettings appSettings) =>
 {
-    return sessionInfo ?? new SessionInfoDto();
+    MenuFormResolver menuFormResolver = null;
+
+    // Session check.
+    if (sessionInfoDto == null
+        || (menuFormResolver = MemoryResolver.GetMenuFormResolver(sessionInfoDto?.SessionUid)) == null)
+    {
+        // Create resolver and session.
+        menuFormResolver = new MenuFormResolver(appSettings);
+        SessionInfo sessionInfo = menuFormResolver.InitSession();
+        menuFormResolver.Start();
+        MemoryResolver.SaveMenuFormResolver(sessionInfo.SessionUid, menuFormResolver);
+        return new SessionInfoDto(sessionInfo);
+    }
+
+    // Authentication check.
+
+    // Process user input.
+    string userInput = sessionInfoDto?.UserInput ?? "-n";
+    menuFormResolver.ProcessUserInput(userInput);
+
+    return new SessionInfoDto(menuFormResolver.SessionInfo);
 });
 
 app.Run();
