@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="../PixelTerminalUI.ConsoleAdapter/PixelTerminalUI.ConsoleAdapter.csproj" />
+    <ProjectReference Include="../PixelTerminalUI.ServiceEngine/PixelTerminalUI.ServiceEngine.csproj" />
   </ItemGroup>
 
 </Project>

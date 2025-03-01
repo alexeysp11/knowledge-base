@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Net.Http;
+using System.Net.Http.Json;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using PixelTerminalUI.ConsoleAdapter.Helpers;
 using PixelTerminalUI.ConsoleClient.Models;
+using PixelTerminalUI.ServiceEngine.Dto;
 
 class Program
 {
@@ -14,7 +17,7 @@ class Program
             string serverIp = ConsoleHelper.EnterLine(hint: "Enter server IP (e.g. 127.0.0.1):", beforeInputString: ">>>");
             int port = GetPort("Enter port (e.g. 5000):");
 
-            var communicationType = TerminalCommunicationType.Tcp;
+            var communicationType = TerminalCommunicationType.Http;
             switch (communicationType)
             {
                 case TerminalCommunicationType.Tcp:
@@ -22,7 +25,7 @@ class Program
                     break;
                 
                 case TerminalCommunicationType.Http:
-                    //await RunHttpAsync(serverIp, port);
+                    await RunHttpAsync(serverIp, port);
                     break;
                 
                 case TerminalCommunicationType.Grpc:
@@ -69,6 +72,35 @@ class Program
                 string requestMessage = ConsoleHelper.EnterLine(hint: "Enter data:", emptyStringReplacement: "-n");
                 byte[] requestData = Encoding.UTF8.GetBytes(requestMessage);
                 await stream.WriteAsync(requestData, 0, requestData.Length);
+            }
+        }
+    }
+
+    static async Task RunHttpAsync(string serverIp, int port)
+    {
+        var handler = new SocketsHttpHandler
+        {
+            PooledConnectionLifetime = TimeSpan.FromMinutes(15)
+        };
+        using (var httpClient = new HttpClient(handler))
+        {
+            SessionInfoDto? sessionInfoDto = null;
+            while (true)
+            {
+                // Request.
+                if (sessionInfoDto != null)
+                {
+                    string userInput = ConsoleHelper.EnterLine(hint: "Enter data:", emptyStringReplacement: "-n");
+                    sessionInfoDto.UserInput = userInput;
+                    sessionInfoDto.DisplayedInfo = null;
+                    sessionInfoDto.SavedDisplayedInfo = null;
+                }
+                using HttpResponseMessage response = await httpClient.PostAsJsonAsync($"http://{serverIp}:{port}/pixelterminalui/go", sessionInfoDto);
+
+                // // Response.
+                response.EnsureSuccessStatusCode();
+                sessionInfoDto = await response.Content.ReadFromJsonAsync<SessionInfoDto>();
+                ConsoleHelper.WriteStringInColor(sessionInfoDto?.DisplayedInfo);
             }
         }
     }
