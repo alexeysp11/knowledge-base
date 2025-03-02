@@ -19,7 +19,7 @@ public class frmStart : BaseForm
         lblHeader.Left = 0;
         lblHeader.EntireLine = true;
         lblHeader.HorizontalAlignment = HorizontalAlignment.Center;
-        lblHeader.Value = "TCP SERVICE";
+        lblHeader.Value = "PIXEL TERMINAL UI";
         lblHeader.Inverted = true;
         Controls.Add(lblHeader);
     }

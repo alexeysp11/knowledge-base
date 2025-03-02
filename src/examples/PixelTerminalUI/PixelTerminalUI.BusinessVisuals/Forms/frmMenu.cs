@@ -24,7 +24,7 @@ public class frmMenu : BaseForm
         lblHeader.Left = 0;
         lblHeader.EntireLine = true;
         lblHeader.HorizontalAlignment = HorizontalAlignment.Center;
-        lblHeader.Value = "TCP SERVICE";
+        lblHeader.Value = "PIXEL TERMINAL UI";
         lblHeader.Inverted = true;
         Controls.Add(lblHeader);
         
@@ -41,7 +41,7 @@ public class frmMenu : BaseForm
         lblMenu01.Top = 3;
         lblMenu01.Left = 0;
         lblMenu01.EntireLine = true;
-        lblMenu01.Value = "1. TEST TCP CONNECTION";
+        lblMenu01.Value = "1. TEST FORM";
         Controls.Add(lblMenu01);
         
         txtUserInput = new TextEditControl();
@@ -59,11 +59,11 @@ public class frmMenu : BaseForm
         switch (txtUserInput.Value)
         {
             case "1":
-                var frmTestTcpConnection = new frmTestTcpConnection();
-                frmTestTcpConnection.SessionInfo = SessionInfo;
-                frmTestTcpConnection.ParentForm = this;
-                frmTestTcpConnection.Init();
-                frmTestTcpConnection.Show();
+                var frmTestForm = new frmTestForm();
+                frmTestForm.SessionInfo = SessionInfo;
+                frmTestForm.ParentForm = this;
+                frmTestForm.Init();
+                frmTestForm.Show();
                 break;
             
             default:

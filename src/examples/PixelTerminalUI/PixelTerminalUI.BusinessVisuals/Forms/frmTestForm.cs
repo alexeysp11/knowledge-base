@@ -3,7 +3,7 @@ using PixelTerminalUI.ServiceEngine.Forms;
 
 namespace PixelTerminalUI.BusinessVisuals.Forms;
 
-public class frmTestTcpConnection : BaseForm
+public class frmTestForm : BaseForm
 {
     private TextControl? lblHeader;
     private TextControl? lblOperationName;
@@ -15,9 +15,9 @@ public class frmTestTcpConnection : BaseForm
     private TextEditControl? txtRequestBody;
     private TextEditControl? txtResponseBody;
 
-    public frmTestTcpConnection() : base()
+    public frmTestForm() : base()
     {
-        Name = nameof(frmTestTcpConnection);
+        Name = nameof(frmTestForm);
     }
 
     protected override void InitializeComponent()
@@ -28,7 +28,7 @@ public class frmTestTcpConnection : BaseForm
         lblHeader.Left = 0;
         lblHeader.EntireLine = true;
         lblHeader.HorizontalAlignment = HorizontalAlignment.Center;
-        lblHeader.Value = "TCP SERVICE";
+        lblHeader.Value = "PIXEL TERMINAL UI";
         lblHeader.Inverted = true;
         Controls.Add(lblHeader);
 
@@ -37,7 +37,7 @@ public class frmTestTcpConnection : BaseForm
         lblOperationName.Top = 1;
         lblOperationName.Left = 0;
         lblOperationName.EntireLine = true;
-        lblOperationName.Value = "TEST TCP CONNECTION";
+        lblOperationName.Value = "TEST FORM";
         Controls.Add(lblOperationName);
 
         lblRequestNumber = new TextControl();
@@ -45,7 +45,7 @@ public class frmTestTcpConnection : BaseForm
         lblRequestNumber.Top = 3;
         lblRequestNumber.Left = 0;
         lblRequestNumber.Width = 18;
-        lblRequestNumber.Value = "REQUEST NUMBER:";
+        lblRequestNumber.Value = "COUNTER:";
         Controls.Add(lblRequestNumber);
 
         lblRequestNumberCount = new TextControl();
@@ -58,34 +58,34 @@ public class frmTestTcpConnection : BaseForm
 
         lblRequestBody = new TextControl();
         lblRequestBody.Name = nameof(lblRequestBody);
-        lblRequestBody.Top = 4;
+        lblRequestBody.Top = 5;
         lblRequestBody.Left = 0;
         lblRequestBody.EntireLine = true;
-        lblRequestBody.Value = "REQUEST BODY:";
+        lblRequestBody.Value = "VALUE 1:";
         Controls.Add(lblRequestBody);
 
         txtRequestBody = new TextEditControl();
         txtRequestBody.Name = nameof(txtRequestBody);
-        txtRequestBody.Top = 5;
+        txtRequestBody.Top = 6;
         txtRequestBody.Left = 0;
         txtRequestBody.EntireLine = true;
-        txtRequestBody.Hint = "ENTER REQUEST BODY";
+        txtRequestBody.Hint = "ENTER VALUE 1";
         Controls.Add(txtRequestBody);
 
         lblResponseBody = new TextControl();
         lblResponseBody.Name = nameof(lblResponseBody);
-        lblResponseBody.Top = 10;
+        lblResponseBody.Top = 8;
         lblResponseBody.Left = 0;
         lblResponseBody.EntireLine = true;
-        lblResponseBody.Value = "RESPONSE BODY:";
+        lblResponseBody.Value = "VALUE 2:";
         Controls.Add(lblResponseBody);
 
         txtResponseBody = new TextEditControl();
         txtResponseBody.Name = nameof(txtResponseBody);
-        txtResponseBody.Top = 11;
+        txtResponseBody.Top = 9;
         txtResponseBody.Left = 0;
         txtResponseBody.EntireLine = true;
-        txtResponseBody.Hint = "ENTER RESPONSE BODY";
+        txtResponseBody.Hint = "ENTER VALUE 2";
         Controls.Add(txtResponseBody);
     }
 }
