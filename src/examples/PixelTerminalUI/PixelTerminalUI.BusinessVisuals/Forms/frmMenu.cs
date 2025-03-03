@@ -60,6 +60,7 @@ public class frmMenu : BaseForm
         {
             case "1":
                 var frmTestForm = new frmTestForm();
+                SessionInfo.CurrentForm = frmTestForm;
                 frmTestForm.SessionInfo = SessionInfo;
                 frmTestForm.ParentForm = this;
                 frmTestForm.Init();

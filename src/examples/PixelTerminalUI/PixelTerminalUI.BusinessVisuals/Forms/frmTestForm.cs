@@ -70,6 +70,7 @@ public class frmTestForm : BaseForm
         txtRequestBody.Left = 0;
         txtRequestBody.EntireLine = true;
         txtRequestBody.Hint = "ENTER VALUE 1";
+        txtRequestBody.EnterValidation = txtRequestBody_EnterValidation;
         Controls.Add(txtRequestBody);
 
         lblResponseBody = new TextControl();
@@ -86,6 +87,30 @@ public class frmTestForm : BaseForm
         txtResponseBody.Left = 0;
         txtResponseBody.EntireLine = true;
         txtResponseBody.Hint = "ENTER VALUE 2";
+        txtResponseBody.EnterValidation = txtResponseBody_EnterValidation;
         Controls.Add(txtResponseBody);
+    }
+
+    private bool txtRequestBody_EnterValidation()
+    {
+        Console.WriteLine($"txtRequestBody.Value: '{txtRequestBody.Value}'");
+        if (txtRequestBody.Value == "-n")
+        {
+            txtRequestBody.Value = "";
+            return false;
+        }
+        FocusedEditControl = txtResponseBody;
+        return true;
+    }
+
+    private bool txtResponseBody_EnterValidation()
+    {
+        if (txtResponseBody.Value == "-n")
+        {
+            txtResponseBody.Value = "";
+            return false;
+        }
+        SessionInfo.CurrentForm = ParentForm;
+        return true;
     }
 }

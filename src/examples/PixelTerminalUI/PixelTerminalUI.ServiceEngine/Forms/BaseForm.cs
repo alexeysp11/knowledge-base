@@ -79,6 +79,7 @@ public abstract class BaseForm
             }
             if (FocusedEditControl != null)
             {
+                Console.WriteLine($"FocusedEditControl: {FocusedEditControl.Name}");
                 ShowTextEditControl(FocusedEditControl);
             }
             else

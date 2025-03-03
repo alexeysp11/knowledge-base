@@ -55,11 +55,7 @@ public class TextEditControl : TextControl
         {
             SessionInfo.UserInput = null;
         }
-
-        if (OnEnterValidation())
-        {
-            return;
-        }
+        OnEnterValidation();
     }
 
     public void AddControlToForm()

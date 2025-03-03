@@ -6,7 +6,6 @@ namespace PixelTerminalUI.ServiceEngine.Resolvers;
 public class MenuFormResolver
 {
     public SessionInfo SessionInfo { get; set; }
-    public BaseForm CurrentForm { get; set; }
     
     private AppSettings _appSettings;
 
@@ -33,7 +32,7 @@ public class MenuFormResolver
     public void ProcessUserInput(string userInput)
     {
         SessionInfo.UserInput = userInput;
-        CurrentForm.Show();
+        SessionInfo.CurrentForm.Show();
     }
 
     public void Start()
@@ -48,7 +47,7 @@ public class MenuFormResolver
             form.Init();
             form.Show();
 
-            CurrentForm = form;
+            SessionInfo.CurrentForm = form;
         }
         catch (Exception ex)
         {

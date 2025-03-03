@@ -69,7 +69,7 @@ class Program
                 ConsoleHelper.WriteStringInColor(responseMessage);
 
                 // Request.
-                string requestMessage = ConsoleHelper.EnterLine(hint: "Enter data:", emptyStringReplacement: "-n");
+                string requestMessage = ConsoleHelper.EnterLine(hint: "Enter data:", emptyStringReplacement: "-n", beforeInputString: ">>>");
                 byte[] requestData = Encoding.UTF8.GetBytes(requestMessage);
                 await stream.WriteAsync(requestData, 0, requestData.Length);
             }
@@ -90,7 +90,7 @@ class Program
                 // Request.
                 if (sessionInfoDto != null)
                 {
-                    string userInput = ConsoleHelper.EnterLine(hint: "Enter data:", emptyStringReplacement: "-n");
+                    string userInput = ConsoleHelper.EnterLine(hint: "Enter data:", emptyStringReplacement: "-n", beforeInputString: ">>>");
                     sessionInfoDto.UserInput = userInput;
                     sessionInfoDto.DisplayedInfo = null;
                     sessionInfoDto.SavedDisplayedInfo = null;
