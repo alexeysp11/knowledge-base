@@ -49,13 +49,17 @@ public class TextEditControl : TextControl
 
     public void GetUserInput()
     {
-        string userInput = SessionInfo?.UserInput ?? "";
-        Value = userInput;
-        if (SessionInfo != null)
+        if (SessionInfo?.UserInputProcessed == false)
         {
-            SessionInfo.UserInput = null;
+            string userInput = SessionInfo?.UserInput ?? "";
+            Value = userInput;
+            if (SessionInfo != null)
+            {
+                SessionInfo.UserInput = null;
+                SessionInfo.UserInputProcessed = true;
+            }
+            OnEnterValidation();
         }
-        OnEnterValidation();
     }
 
     public void AddControlToForm()

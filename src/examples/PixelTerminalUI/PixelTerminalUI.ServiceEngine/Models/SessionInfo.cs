@@ -16,6 +16,7 @@ public class SessionInfo
     public long UserId { get; set; }
     public string UserLogin { get; set; }
     public string? UserInput { get; set; }
+    public bool UserInputProcessed { get; set; }
 
     public BaseForm? CurrentForm { get; set; }
 

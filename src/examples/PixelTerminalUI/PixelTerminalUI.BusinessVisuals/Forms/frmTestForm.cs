@@ -93,6 +93,7 @@ public class frmTestForm : BaseForm
 
     private bool txtRequestBody_EnterValidation()
     {
+        Console.WriteLine($"txtRequestBody_EnterValidation");
         Console.WriteLine($"txtRequestBody.Value: '{txtRequestBody.Value}'");
         if (txtRequestBody.Value == "-n")
         {
@@ -105,6 +106,8 @@ public class frmTestForm : BaseForm
 
     private bool txtResponseBody_EnterValidation()
     {
+        Console.WriteLine($"txtResponseBody_EnterValidation");
+        Console.WriteLine($"txtResponseBody.Value: {txtResponseBody.Value}");
         if (txtResponseBody.Value == "-n")
         {
             txtResponseBody.Value = "";

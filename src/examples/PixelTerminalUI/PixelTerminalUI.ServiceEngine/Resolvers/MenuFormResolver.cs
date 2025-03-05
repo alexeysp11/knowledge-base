@@ -32,6 +32,7 @@ public class MenuFormResolver
     public void ProcessUserInput(string userInput)
     {
         SessionInfo.UserInput = userInput;
+        SessionInfo.UserInputProcessed = false;
         SessionInfo.CurrentForm.Show();
     }
 
@@ -42,6 +43,7 @@ public class MenuFormResolver
             BaseForm form = CreateForm();
 
             form.SessionInfo = SessionInfo;
+            form.SessionInfo.UserInputProcessed = true;
 
             form.FillFormAttributes(_appSettings?.MenuCode);
             form.Init();
