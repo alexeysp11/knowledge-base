@@ -56,8 +56,11 @@ public class frmMenu : BaseForm
 
     private bool txtUserInput_EnterValidation()
     {
-        Console.WriteLine($"txtUserInput_EnterValidation");
-        Console.WriteLine($"txtUserInput.Value: {txtUserInput.Value}");
+        if (txtUserInput.Value == "-n")
+        {
+            txtUserInput.Value = "";
+            return false;
+        }
         switch (txtUserInput.Value)
         {
             case "1":
