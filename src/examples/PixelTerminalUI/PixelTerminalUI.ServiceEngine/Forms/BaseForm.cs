@@ -202,6 +202,11 @@ public abstract class BaseForm
             control.Show();
         }
 
+        if (control.PreviousEditControl != null)
+        {
+            control.PreviousEditControl.Show();
+        }
+
         if (ValidateResultType == ValidateResultType.Next)
         {
             MoveEditControl(control.NextEditControl);
