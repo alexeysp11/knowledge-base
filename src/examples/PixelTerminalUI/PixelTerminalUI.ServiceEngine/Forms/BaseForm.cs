@@ -77,20 +77,31 @@ public abstract class BaseForm
                     .Cast<TextEditControl>()
                     .FirstOrDefault();
             }
-            if (FocusedEditControl != null)
+
+            TextEditControl currentEditControl = null;
+            while (true)
             {
-                Console.WriteLine($"FocusedEditControl: {FocusedEditControl.Name}");
-                ShowTextEditControl(FocusedEditControl);
-            }
-            else
-            {
-                if (FormValidation != null)
+                if (currentEditControl == FocusedEditControl)
                 {
-                    if (FormValidation())
+                    break;
+                }
+                currentEditControl = FocusedEditControl;
+                if (currentEditControl != null)
+                {
+                    Console.WriteLine($"FocusedEditControl: {FocusedEditControl.Name}");
+                    ShowTextEditControl(FocusedEditControl);
+                }
+                else
+                {
+                    if (FormValidation != null)
                     {
-                        SessionInfo.CurrentForm = ParentForm;
-                        return;
+                        if (FormValidation())
+                        {
+                            SessionInfo.CurrentForm = ParentForm;
+                            return;
+                        }
                     }
+                    return;
                 }
             }
         }
