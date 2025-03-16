@@ -9,11 +9,12 @@ public class frmTestForm : BaseForm
     private TextControl? lblOperationName;
     private TextControl? lblRequestNumber;
     private TextControl? lblRequestNumberCount;
-    private TextControl? lblRequestBody;
-    private TextControl? lblResponseBody;
-
-    private TextEditControl? txtRequestBody;
-    private TextEditControl? txtResponseBody;
+    private TextControl? lblValue1;
+    private TextControl? lblValue2;
+    private TextControl? lblValue3;
+    private TextEditControl? txtValue1;
+    private TextEditControl? txtValue2;
+    private TextEditControl? txtValue3;
 
     public frmTestForm() : base()
     {
@@ -56,64 +57,129 @@ public class frmTestForm : BaseForm
         lblRequestNumberCount.Value = "0";
         Controls.Add(lblRequestNumberCount);
 
-        lblRequestBody = new TextControl();
-        lblRequestBody.Name = nameof(lblRequestBody);
-        lblRequestBody.Top = 5;
-        lblRequestBody.Left = 0;
-        lblRequestBody.EntireLine = true;
-        lblRequestBody.Value = "VALUE 1:";
-        Controls.Add(lblRequestBody);
+        lblValue1 = new TextControl();
+        lblValue1.Name = nameof(lblValue1);
+        lblValue1.Top = 5;
+        lblValue1.Left = 0;
+        lblValue1.EntireLine = true;
+        lblValue1.Value = "VALUE 1:";
+        Controls.Add(lblValue1);
 
-        txtRequestBody = new TextEditControl();
-        txtRequestBody.Name = nameof(txtRequestBody);
-        txtRequestBody.Top = 6;
-        txtRequestBody.Left = 0;
-        txtRequestBody.EntireLine = true;
-        txtRequestBody.Hint = "ENTER VALUE 1";
-        txtRequestBody.EnterValidation = txtRequestBody_EnterValidation;
-        Controls.Add(txtRequestBody);
+        txtValue1 = new TextEditControl();
+        txtValue1.Name = nameof(txtValue1);
+        txtValue1.Top = 6;
+        txtValue1.Left = 0;
+        txtValue1.EntireLine = true;
+        txtValue1.Hint = "ENTER VALUE 1";
+        txtValue1.EnterValidation = txtValue1_EnterValidation;
+        Controls.Add(txtValue1);
 
-        lblResponseBody = new TextControl();
-        lblResponseBody.Name = nameof(lblResponseBody);
-        lblResponseBody.Top = 8;
-        lblResponseBody.Left = 0;
-        lblResponseBody.EntireLine = true;
-        lblResponseBody.Value = "VALUE 2:";
-        Controls.Add(lblResponseBody);
+        lblValue2 = new TextControl();
+        lblValue2.Name = nameof(lblValue2);
+        lblValue2.Top = 8;
+        lblValue2.Left = 0;
+        lblValue2.EntireLine = true;
+        lblValue2.Value = "VALUE 2:";
+        Controls.Add(lblValue2);
 
-        txtResponseBody = new TextEditControl();
-        txtResponseBody.Name = nameof(txtResponseBody);
-        txtResponseBody.Top = 9;
-        txtResponseBody.Left = 0;
-        txtResponseBody.EntireLine = true;
-        txtResponseBody.Hint = "ENTER VALUE 2";
-        txtResponseBody.EnterValidation = txtResponseBody_EnterValidation;
-        Controls.Add(txtResponseBody);
+        txtValue2 = new TextEditControl();
+        txtValue2.Name = nameof(txtValue2);
+        txtValue2.Top = 9;
+        txtValue2.Left = 0;
+        txtValue2.EntireLine = true;
+        txtValue2.Hint = "ENTER VALUE 2";
+        txtValue2.EnterValidation = txtValue2_EnterValidation;
+        Controls.Add(txtValue2);
+
+        lblValue3 = new TextControl();
+        lblValue3.Name = nameof(lblValue3);
+        lblValue3.Top = 11;
+        lblValue3.Left = 0;
+        lblValue3.EntireLine = true;
+        lblValue3.Value = "VALUE 3:";
+        Controls.Add(lblValue3);
+
+        txtValue3 = new TextEditControl();
+        txtValue3.Name = nameof(txtValue3);
+        txtValue3.Top = 12;
+        txtValue3.Left = 0;
+        txtValue3.EntireLine = true;
+        txtValue3.Hint = "ENTER VALUE 3";
+        txtValue3.EnterValidation = txtValue3_EnterValidation;
+        Controls.Add(txtValue3);
     }
 
-    private bool txtRequestBody_EnterValidation()
+    private bool txtValue1_EnterValidation()
     {
-        Console.WriteLine($"txtRequestBody_EnterValidation");
-        Console.WriteLine($"txtRequestBody.Value: '{txtRequestBody.Value}'");
-        if (txtRequestBody.Value == "-n")
+        try
         {
-            txtRequestBody.Value = "";
+            switch (txtValue1.Value)
+            {
+                case "-n":
+                    txtValue1.Value = "";
+                    return false;
+                case "-b":
+                    SessionInfo.CurrentForm = ParentForm;
+                    return true;
+            }
+            FocusedEditControl = txtValue2;
+            return true;
+        }
+        catch (Exception ex)
+        {
+            ShowError(ex.Message);
+            txtValue1.Value = "";
             return false;
         }
-        FocusedEditControl = txtResponseBody;
-        return true;
     }
 
-    private bool txtResponseBody_EnterValidation()
+    private bool txtValue2_EnterValidation()
     {
-        Console.WriteLine($"txtResponseBody_EnterValidation");
-        Console.WriteLine($"txtResponseBody.Value: {txtResponseBody.Value}");
-        if (txtResponseBody.Value == "-n")
+        try
         {
-            txtResponseBody.Value = "";
+            switch (txtValue2.Value)
+            {
+                case "-n":
+                    txtValue2.Value = "";
+                    return false;
+                case "-b":
+                    txtValue2.Value = "";
+                    FocusedEditControl = txtValue1;
+                    return true;
+            }
+            FocusedEditControl = txtValue3;
+            return true;
+        }
+        catch (Exception ex)
+        {
+            ShowError(ex.Message);
+            txtValue2.Value = "";
             return false;
         }
-        SessionInfo.CurrentForm = ParentForm;
-        return true;
+    }
+
+    private bool txtValue3_EnterValidation()
+    {
+        try
+        {
+            switch (txtValue3.Value)
+            {
+                case "-n":
+                    txtValue3.Value = "";
+                    return false;
+                case "-b":
+                    txtValue3.Value = "";
+                    FocusedEditControl = txtValue2;
+                    return true;
+            }
+            SessionInfo.CurrentForm = ParentForm;
+            return true;
+        }
+        catch (Exception ex)
+        {
+            ShowError(ex.Message);
+            txtValue3.Value = "";
+            return false;
+        }
     }
 }

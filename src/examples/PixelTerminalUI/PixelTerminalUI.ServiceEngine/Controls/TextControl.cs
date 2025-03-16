@@ -1,6 +1,4 @@
-using System;
 using PixelTerminalUI.ServiceEngine.Forms;
-using PixelTerminalUI.ServiceEngine.Helpers;
 using PixelTerminalUI.ServiceEngine.Models;
 
 namespace PixelTerminalUI.ServiceEngine.Controls;
@@ -100,7 +98,7 @@ public class TextControl
         return true;
     }
 
-    public void AddControlToForm()
+    public virtual void AddControlToForm()
     {
         int width = 0;
         int left = Left;

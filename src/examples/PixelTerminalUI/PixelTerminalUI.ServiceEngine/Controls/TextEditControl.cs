@@ -1,5 +1,3 @@
-using System;
-
 namespace PixelTerminalUI.ServiceEngine.Controls;
 
 public class TextEditControl : TextControl
@@ -24,6 +22,11 @@ public class TextEditControl : TextControl
         if (!OnShowValidation())
         {
             return;
+        }
+
+        if (PreviousEditControl != null)
+        {
+            PreviousEditControl.Show();
         }
 
         AddControlToForm();
@@ -62,7 +65,7 @@ public class TextEditControl : TextControl
         }
     }
 
-    public void AddControlToForm()
+    public override void AddControlToForm()
     {
         int width = 0;
         int left = Left;
@@ -108,12 +111,13 @@ public class TextEditControl : TextControl
         {
             SessionInfo.DisplayedInfo[lastRowIndex, i] = " ";
         }
-        if (!string.IsNullOrEmpty(Hint))
+        string? hint = SessionInfo.CurrentForm?.FocusedEditControl?.Hint;
+        if (!string.IsNullOrEmpty(hint))
         {
             int i = 0;
-            foreach (var ch in Hint)
+            foreach (var ch in hint)
             {
-                if (i >= Width)
+                if (i >= (Form?.Width ?? Width))
                 {
                     break;
                 }

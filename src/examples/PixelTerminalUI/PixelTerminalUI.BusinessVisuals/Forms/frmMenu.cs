@@ -56,25 +56,38 @@ public class frmMenu : BaseForm
 
     private bool txtUserInput_EnterValidation()
     {
-        if (txtUserInput.Value == "-n")
+        try
         {
+            switch (txtUserInput.Value)
+            {
+                case "-n":
+                case "-b":
+                    txtUserInput.Value = "";
+                    return false;
+
+                case "1":
+                    var frmTestForm = new frmTestForm();
+                    SessionInfo.CurrentForm = frmTestForm;
+                    frmTestForm.SessionInfo = SessionInfo;
+                    frmTestForm.ParentForm = this;
+                    frmTestForm.Init();
+                    frmTestForm.Show();
+                    break;
+            
+                default:
+                    FocusedEditControl = txtUserInput;
+                    break;
+            }
+        }
+        catch (Exception ex)
+        {
+            ShowError(ex.Message);
             txtUserInput.Value = "";
             return false;
         }
-        switch (txtUserInput.Value)
+        finally
         {
-            case "1":
-                var frmTestForm = new frmTestForm();
-                SessionInfo.CurrentForm = frmTestForm;
-                frmTestForm.SessionInfo = SessionInfo;
-                frmTestForm.ParentForm = this;
-                frmTestForm.Init();
-                frmTestForm.Show();
-                break;
-            
-            default:
-                FocusedEditControl = txtUserInput;
-                break;
+            txtUserInput.Value = "";
         }
         return true;
     }

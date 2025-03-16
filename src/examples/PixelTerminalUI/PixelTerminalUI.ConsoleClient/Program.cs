@@ -1,9 +1,6 @@
-﻿using System;
-using System.Net.Http;
-using System.Net.Http.Json;
+﻿using System.Net.Http.Json;
 using System.Net.Sockets;
 using System.Text;
-using System.Threading.Tasks;
 using PixelTerminalUI.ConsoleAdapter.Helpers;
 using PixelTerminalUI.ConsoleClient.Models;
 using PixelTerminalUI.ServiceEngine.Dto;
@@ -84,6 +81,7 @@ class Program
         };
         using (var httpClient = new HttpClient(handler))
         {
+            httpClient.Timeout = TimeSpan.FromMinutes(25);
             SessionInfoDto? sessionInfoDto = null;
             while (true)
             {

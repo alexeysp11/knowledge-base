@@ -1,5 +1,4 @@
 using PixelTerminalUI.ServiceEngine.Controls;
-using PixelTerminalUI.ServiceEngine.Helpers;
 using PixelTerminalUI.ServiceEngine.Models;
 
 namespace PixelTerminalUI.ServiceEngine.Forms;
@@ -12,8 +11,6 @@ public abstract class BaseForm
     public int Width { get; set; }
 
     public SessionInfo? SessionInfo { get; set; }
-
-    public ValidateResultType ValidateResultType { get; set; }
 
     public BaseForm? ParentForm { get; set; }
 
@@ -29,7 +26,6 @@ public abstract class BaseForm
         MenuCode = "";
         Height = 0;
         Width = 0;
-        ValidateResultType = ValidateResultType.Show;
         Controls = new List<TextControl>();
     }
 
@@ -88,7 +84,6 @@ public abstract class BaseForm
                 currentEditControl = FocusedEditControl;
                 if (currentEditControl != null)
                 {
-                    Console.WriteLine($"FocusedEditControl: {FocusedEditControl.Name}");
                     ShowTextEditControl(FocusedEditControl);
                 }
                 else
@@ -107,9 +102,7 @@ public abstract class BaseForm
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex);
-
-            // Display error for client.
+            ShowError(ex.Message);
         }
     }
     
@@ -149,6 +142,39 @@ public abstract class BaseForm
     }
 
     protected abstract void InitializeComponent();
+
+    protected void ShowInformation(string message)
+    {
+        ShowDisplayMessageForm("INFORMATION", message);
+    }
+
+    protected void ShowError(string message)
+    {
+        ShowDisplayMessageForm("ERROR", message);
+    }
+
+    protected void ShowWarning(string message)
+    {
+        ShowDisplayMessageForm("WARNING", message);
+    }
+
+    protected void ShowDisplayMessageForm(string header, string message)
+    {
+        try
+        {
+            var frmDisplayMessage = new frmDisplayMessage();
+            frmDisplayMessage.Header = header;
+            frmDisplayMessage.Message = message;
+            frmDisplayMessage.SessionInfo = SessionInfo;
+            frmDisplayMessage.ParentForm = this;
+            frmDisplayMessage.Init();
+            frmDisplayMessage.Show();
+        }
+        catch (Exception ex)
+        {
+            ShowError(ex.Message);
+        }
+    }
 
     private void ConfigureControls(List<TextControl> sortedControls)
     {
@@ -208,50 +234,14 @@ public abstract class BaseForm
         }
 
         control.GetUserInput();
-        if (SessionInfo.CurrentForm == this)
+        control = FocusedEditControl;
+        if (SessionInfo.CurrentForm == this && control != null)
         {
             control.Show();
         }
-
-        if (control.PreviousEditControl != null)
-        {
-            control.PreviousEditControl.Show();
-        }
-
-        if (ValidateResultType == ValidateResultType.Next)
-        {
-            MoveEditControl(control.NextEditControl);
-        }
-        else if (ValidateResultType == ValidateResultType.Back)
-        {
-            MoveEditControl(control.PreviousEditControl);
-        }
-    }
-
-    private void MoveEditControl(TextEditControl control)
-    {
-        if (control == null)
-        {
-            if (ValidateResultType == ValidateResultType.Next && FormValidation != null)
-            {
-                if (FormValidation())
-                {
-                    SessionInfo.CurrentForm = ParentForm;
-                    return;
-                }
-            }
-            else if (ValidateResultType == ValidateResultType.Back && ParentForm != null)
-            {
-                // 
-            }
-            else
-            {
-                return;
-            }
-        }
         else
         {
-            FocusedEditControl = control;
+            SessionInfo.CurrentForm.Show();
         }
     }
 }
