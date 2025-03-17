@@ -11,7 +11,7 @@ class Program
     {
         try
         {
-            string serverIp = ConsoleHelper.EnterLine(hint: "Enter server IP (e.g. 127.0.0.1):", beforeInputString: ">>>");
+            string serverIp = ConsoleHelper.EnterLine(hint: "Enter server IP (e.g. 127.0.0.1):", beforeInputString: ">>>", maxInputCharNumber: 4);
             int port = GetPort("Enter port (e.g. 5000):");
 
             var communicationType = TerminalCommunicationType.Http;
@@ -75,6 +75,10 @@ class Program
 
     static async Task RunHttpAsync(string serverIp, int port)
     {
+        // Start position of the console.
+        int startCursorLeft = Console.CursorLeft;
+        int startCursorTop = Console.CursorTop;
+
         var handler = new SocketsHttpHandler
         {
             PooledConnectionLifetime = TimeSpan.FromMinutes(15)
@@ -88,7 +92,11 @@ class Program
                 // Request.
                 if (sessionInfoDto != null)
                 {
-                    string userInput = ConsoleHelper.EnterLine(hint: "Enter data:", emptyStringReplacement: "-n", beforeInputString: ">>>");
+                    string userInput = ConsoleHelper.EnterLine(
+                        hint: "Enter data:",
+                        emptyStringReplacement: "-n",
+                        beforeInputString: ">>>",
+                        maxInputCharNumber: sessionInfoDto?.UserInputWdith);
                     sessionInfoDto.UserInput = userInput;
                     sessionInfoDto.DisplayedInfo = null;
                     sessionInfoDto.SavedDisplayedInfo = null;
@@ -98,6 +106,8 @@ class Program
                 // // Response.
                 response.EnsureSuccessStatusCode();
                 sessionInfoDto = await response.Content.ReadFromJsonAsync<SessionInfoDto>();
+                Console.CursorLeft = startCursorLeft;
+                Console.CursorTop = startCursorTop;
                 ConsoleHelper.WriteStringInColor(sessionInfoDto?.DisplayedInfo);
             }
         }

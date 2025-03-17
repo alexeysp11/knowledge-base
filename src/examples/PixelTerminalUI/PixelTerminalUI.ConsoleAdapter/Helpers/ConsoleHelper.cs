@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Text;
+using System.Text.RegularExpressions;
 
 namespace PixelTerminalUI.ConsoleAdapter.Helpers;
 
@@ -91,13 +92,15 @@ public static class ConsoleHelper
     public static string EnterLine(
         string? hint = null,
         bool allowEmptyString = false,
-        string emptyStringReplacement = null,
+        string? emptyStringReplacement = null,
         ConsoleColor? hintForegroundColor = null,
-        string? beforeInputString = null)
+        string? beforeInputString = null,
+        int? maxInputCharNumber = null)
     {
         string result = string.Empty;
         while (true)
         {
+            // Write hint.
             if (!string.IsNullOrEmpty(hint))
             {
                 ConsoleColor currentForeground = Console.ForegroundColor;
@@ -114,7 +117,17 @@ public static class ConsoleHelper
                 Console.Write($"{beforeInputString} ");
             }
 
-            string input = Console.ReadLine();
+            // Clear previous input.
+            int startCursorLeft = Console.CursorLeft;
+            int startCursorTop = Console.CursorTop;
+            Console.Write(new string(' ', Console.WindowWidth));
+            Console.CursorLeft = startCursorLeft;
+            Console.CursorTop = startCursorTop;
+
+            // Read input.
+            string input = Console.ReadLine() ?? "";
+            
+            // Process user input.
             if (!string.IsNullOrEmpty(emptyStringReplacement) && string.IsNullOrEmpty(input))
             {
                 input = emptyStringReplacement;
@@ -128,7 +141,7 @@ public static class ConsoleHelper
             {
                 if (allowEmptyString)
                 {
-                    result = input;
+                    result = input ?? "";
                     break;
                 }
             }
