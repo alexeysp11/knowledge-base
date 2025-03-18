@@ -8,6 +8,10 @@ public class frmMenu : BaseForm
     private TextControl? lblHeader;
     private TextControl? lblOperationName;
     private TextControl? lblMenu01;
+    private TextControl? lblMenu02;
+    private TextControl? lblMenu03;
+    private TextControl? lblMenu04;
+    private TextControl? lblMenu05;
     
     private TextEditControl? txtUserInput;
 
@@ -43,6 +47,38 @@ public class frmMenu : BaseForm
         lblMenu01.EntireLine = true;
         lblMenu01.Value = "1. TEST FORM";
         Controls.Add(lblMenu01);
+        
+        lblMenu02 = new TextControl();
+        lblMenu02.Name = nameof(lblMenu02);
+        lblMenu02.Top = 4;
+        lblMenu02.Left = 0;
+        lblMenu02.EntireLine = true;
+        lblMenu02.Value = "2. USERS";
+        Controls.Add(lblMenu02);
+        
+        lblMenu03 = new TextControl();
+        lblMenu03.Name = nameof(lblMenu03);
+        lblMenu03.Top = 5;
+        lblMenu03.Left = 0;
+        lblMenu03.EntireLine = true;
+        lblMenu03.Value = "3. APPLICATIONS";
+        Controls.Add(lblMenu03);
+        
+        lblMenu04 = new TextControl();
+        lblMenu04.Name = nameof(lblMenu04);
+        lblMenu04.Top = 6;
+        lblMenu04.Left = 0;
+        lblMenu04.EntireLine = true;
+        lblMenu04.Value = "4. CONFIGURATION VARIABLES";
+        Controls.Add(lblMenu04);
+        
+        lblMenu05 = new TextControl();
+        lblMenu05.Name = nameof(lblMenu05);
+        lblMenu05.Top = 7;
+        lblMenu05.Left = 0;
+        lblMenu05.EntireLine = true;
+        lblMenu05.Value = "5. TASKS";
+        Controls.Add(lblMenu05);
         
         txtUserInput = new TextEditControl();
         txtUserInput.Name = nameof(txtUserInput);
