@@ -43,6 +43,19 @@ public class TextEditControl : TextControl
 
     public virtual bool OnEnterValidation()
     {
+        if (Value == null)
+        {
+            Value = "";
+        }
+        if (Value.Length > Width)
+        {
+            if (Form != null)
+            {
+                Form.ShowWarning($"Entered string is too long.\nAcceptable string:\n\n{Value.Substring(0, Width)}");
+            }
+            Value = "";
+            return true;
+        }
         if (EnterValidation != null)
         {
             return EnterValidation();

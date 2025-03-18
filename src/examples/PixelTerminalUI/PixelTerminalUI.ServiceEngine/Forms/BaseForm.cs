@@ -143,22 +143,22 @@ public abstract class BaseForm
 
     protected abstract void InitializeComponent();
 
-    protected void ShowInformation(string message)
+    public void ShowInformation(string message)
     {
-        ShowDisplayMessageForm("INFORMATION", message);
+        ShowMessageForm("INFORMATION", message);
     }
 
-    protected void ShowError(string message)
+    public void ShowError(string message)
     {
-        ShowDisplayMessageForm("ERROR", message);
+        ShowMessageForm("ERROR", message);
     }
 
-    protected void ShowWarning(string message)
+    public void ShowWarning(string message)
     {
-        ShowDisplayMessageForm("WARNING", message);
+        ShowMessageForm("WARNING", message);
     }
 
-    protected void ShowDisplayMessageForm(string header, string message)
+    public void ShowMessageForm(string header, string message)
     {
         try
         {
