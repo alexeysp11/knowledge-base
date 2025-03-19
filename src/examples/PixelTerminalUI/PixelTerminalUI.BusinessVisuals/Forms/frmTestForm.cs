@@ -18,11 +18,12 @@ public class frmTestForm : BaseForm
 
     public frmTestForm() : base()
     {
-        Name = nameof(frmTestForm);
     }
 
     protected override void InitializeComponent()
     {
+        Name = nameof(frmTestForm);
+        
         lblHeader = new TextControl();
         lblHeader.Name = nameof(lblHeader);
         lblHeader.Top = 0;

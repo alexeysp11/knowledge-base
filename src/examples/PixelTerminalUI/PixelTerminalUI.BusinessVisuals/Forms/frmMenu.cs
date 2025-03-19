@@ -5,23 +5,33 @@ namespace PixelTerminalUI.BusinessVisuals.Forms;
 
 public class frmMenu : BaseForm
 {
-    private TextControl? lblHeader;
-    private TextControl? lblOperationName;
-    private TextControl? lblMenu01;
-    private TextControl? lblMenu02;
-    private TextControl? lblMenu03;
-    private TextControl? lblMenu04;
-    private TextControl? lblMenu05;
+    protected TextControl? lblHeader;
+    protected TextControl? lblOperationName;
+    protected TextControl? lblMenu01;
+    protected TextControl? lblMenu02;
+    protected TextControl? lblMenu03;
+    protected TextControl? lblMenu04;
+    protected TextControl? lblMenu05;
+    protected TextControl? lblMenu06;
+    protected TextControl? lblMenu07;
+    protected TextControl? lblMenu08;
+    protected TextControl? lblMenu09;
+    protected TextControl? lblMenu00;
     
-    private TextEditControl? txtUserInput;
+    protected TextEditControl? txtUserInput;
+
+    protected string _currentMenuPath;
 
     public frmMenu() : base()
     {
-        Name = nameof(frmMenu);
     }
     
     protected override void InitializeComponent()
     {
+        Name = nameof(frmMenu);
+
+        _currentMenuPath = "/";
+
         lblHeader = new TextControl();
         lblHeader.Name = nameof(lblHeader);
         lblHeader.Top = 0;
@@ -90,41 +100,148 @@ public class frmMenu : BaseForm
         Controls.Add(txtUserInput);
     }
 
-    private bool txtUserInput_EnterValidation()
+    protected bool txtUserInput_EnterValidation()
     {
         try
         {
             switch (txtUserInput.Value)
             {
+                case "":
                 case "-n":
                 case "-b":
-                    txtUserInput.Value = "";
                     return false;
 
-                case "1":
-                    var frmTestForm = new frmTestForm();
-                    SessionInfo.CurrentForm = frmTestForm;
-                    frmTestForm.SessionInfo = SessionInfo;
-                    frmTestForm.ParentForm = this;
-                    frmTestForm.Init();
-                    frmTestForm.Show();
-                    break;
-            
                 default:
-                    FocusedEditControl = txtUserInput;
-                    break;
+                    string menuFullPath = GetMenuFullPath(txtUserInput.Value);
+                    return GetFormByFullPath(menuFullPath) || GetMenuByFullPath(menuFullPath);
             }
         }
         catch (Exception ex)
         {
             ShowError(ex.Message);
-            txtUserInput.Value = "";
             return false;
         }
         finally
         {
+            FocusedEditControl = txtUserInput;
             txtUserInput.Value = "";
         }
         return true;
+    }
+
+    private bool GetFormByFullPath(string fullPath)
+    {
+        switch (fullPath)
+        {
+            case "/1":
+                // Test form.
+                var frmTestForm = new frmTestForm();
+                SessionInfo.CurrentForm = frmTestForm;
+                frmTestForm.SessionInfo = SessionInfo;
+                frmTestForm.ParentForm = this;
+                frmTestForm.Init();
+                frmTestForm.Show();
+                return true;
+            
+            case "/2/1":
+                // Users. Search
+                return true;
+            
+            case "/2/2":
+                // Users. Access rights
+                return true;
+            
+            case "/2/3":
+                // Users. Edit
+                return true;
+            
+            case "/3/1":
+                // Applications. Search
+                return true;
+            
+            case "/3/2":
+                // Applications. Access rights
+                return true;
+            
+            case "/3/3":
+                // Applications. Menu
+                return true;
+            
+            case "/3/4":
+                // Applications. Deploy
+                return true;
+            
+            case "/3/5":
+                // Applications. Local DB copy
+                return true;
+            
+            case "/3/6":
+                // Applications. Release
+                return true;
+            
+            case "/3/7":
+                // Applications. Services
+                return true;
+            
+            case "/4/1":
+                // Configuration variables. Common
+                return true;
+            
+            case "/4/2":
+                // Configuration variables. Applications
+                return true;
+            
+            case "/5/1":
+                // Tasks. Search/Edit
+                return true;
+            
+            case "/5/2":
+                // Tasks. Set responsible employee
+                return true;
+            
+            case "/5/3":
+                // Tasks. Cancel
+                return true;
+        }
+        return false;
+    }
+
+    private bool GetMenuByFullPath(string fullPath)
+    {
+        switch (fullPath)
+        {
+            case "/2":
+                // Users.
+                return true;
+            
+            case "/3":
+                // Applications.
+                return true;
+            
+            case "/4":
+                // Configuration variables.
+                return true;
+            
+            case "/5":
+                // Tasks.
+                return true;
+        }
+        return false;
+    }
+
+    private string GetMenuFullPath(string path)
+    {
+        if (path.StartsWith('/'))
+        {
+            return path;
+        }
+        if (path.StartsWith('.'))
+        {
+            return _currentMenuPath + path.Substring(1);
+        }
+        else
+        {
+            return !path.Contains('/') ? _currentMenuPath + path : throw new Exception("Relative path should start with '.'");
+        }
     }
 }
