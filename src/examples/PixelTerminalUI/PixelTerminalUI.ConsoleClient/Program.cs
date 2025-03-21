@@ -11,7 +11,10 @@ class Program
     {
         try
         {
-            string serverIp = ConsoleHelper.EnterLine(hint: "Enter server IP (e.g. 127.0.0.1):", beforeInputString: ">>>", maxInputCharNumber: 4);
+            Console.WriteLine("PIXEL TERMINAL UI");
+            Console.WriteLine();
+
+            string serverIp = ConsoleHelper.EnterLine(hint: "Enter server IP (e.g. 127.0.0.1):", beforeInputString: ">>>");
             int port = GetPort("Enter port (e.g. 5000):");
 
             var communicationType = TerminalCommunicationType.Http;
@@ -75,9 +78,8 @@ class Program
 
     static async Task RunHttpAsync(string serverIp, int port)
     {
-        // Start position of the console.
-        int startCursorLeft = Console.CursorLeft;
-        int startCursorTop = Console.CursorTop;
+        // Enter session UID to be able to restore previous session.
+        string sessionUid = ConsoleHelper.EnterLine(hint: "Enter session UID:", beforeInputString: ">>>", allowEmptyString: true);
 
         var handler = new SocketsHttpHandler
         {
@@ -86,7 +88,21 @@ class Program
         using (var httpClient = new HttpClient(handler))
         {
             httpClient.Timeout = TimeSpan.FromMinutes(25);
+
             SessionInfoDto? sessionInfoDto = null;
+            if (!string.IsNullOrEmpty(sessionUid))
+            {
+                sessionInfoDto = new SessionInfoDto
+                {
+                    SessionUid = sessionUid
+                };
+            }
+
+            // Start position of the console.
+            Console.WriteLine();
+            int startCursorLeft = Console.CursorLeft;
+            int startCursorTop = Console.CursorTop;
+
             while (true)
             {
                 // Request.
@@ -98,8 +114,8 @@ class Program
                         beforeInputString: ">>>",
                         maxInputCharNumber: sessionInfoDto?.UserInputWdith);
                     sessionInfoDto.UserInput = userInput;
-                    sessionInfoDto.DisplayedInfo = null;
-                    sessionInfoDto.SavedDisplayedInfo = null;
+                    sessionInfoDto.DisplayedInfo = string.Empty;
+                    sessionInfoDto.SavedDisplayedInfo = string.Empty;
                 }
                 using HttpResponseMessage response = await httpClient.PostAsJsonAsync($"http://{serverIp}:{port}/pixelterminalui/go", sessionInfoDto);
 
@@ -108,6 +124,7 @@ class Program
                 sessionInfoDto = await response.Content.ReadFromJsonAsync<SessionInfoDto>();
                 Console.CursorLeft = startCursorLeft;
                 Console.CursorTop = startCursorTop;
+                Console.WriteLine("Session UID: " + sessionInfoDto?.SessionUid);
                 ConsoleHelper.WriteStringInColor(sessionInfoDto?.DisplayedInfo);
             }
         }
