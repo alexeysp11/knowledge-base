@@ -235,9 +235,9 @@ public class frmMenu : BaseForm
         {
             return path;
         }
-        if (path.StartsWith('.'))
+        if (path.StartsWith("./"))
         {
-            return _currentMenuPath + path.Substring(1);
+            return _currentMenuPath + path.Substring(2);
         }
         else
         {
