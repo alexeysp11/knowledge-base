@@ -4,11 +4,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 
-namespace TestSamples {
+namespace TestSamples
+{
     [TestClass]
-    public class Tests {
+    public class Tests
+    {
         [TestMethod]
-        public void TestComparer() {
+        public void TestComparer()
+        {
             var list = new List<string> { "b@", "b", "a", "c", "@", "a@" };
             var expected = new[] { "a", "b", "c", "@", "a@", "b@" };
             list.Sort(new TestComparer());
@@ -16,25 +19,39 @@ namespace TestSamples {
         }
 
         [TestMethod]
-        public void TestGetFilteredMeals() {
+        public void TestGetFilteredMeals()
+        {
             TestGetFilteredMealsCore(Helper.GetFilteredMeals);
         }
+
         [TestMethod]
-        public void TestGetFilteredMealsLINQ() {
+        public void TestGetFilteredMealsLINQ()
+        {
             TestGetFilteredMealsCore(Helper.GetFilteredMealsLINQ);
         }
-        static void TestGetFilteredMealsCore(Func<IEnumerable<Group>, decimal, IEnumerable<Meal>> getFilteredMeals) {
+        
+        static void TestGetFilteredMealsCore(Func<IEnumerable<Group>, decimal, IEnumerable<Meal>> getFilteredMeals)
+        {
             var meal1 = new Meal { Price = 500 };
             var meal2 = new Meal { Price = 600 };
-            var groups = new List<Group> {
-                new Group { Meals = new List<Meal> {
-                    meal1,
-                    new Meal { Price = 400 },
-                    new Meal { Price = 300 }
-                } },
-                new Group { Meals = new List<Meal> {
-                    meal2,
-                } },
+            var groups = new List<Group>
+            {
+                new Group
+                {
+                    Meals = new List<Meal>
+                    {
+                        meal1,
+                        new Meal { Price = 400 },
+                        new Meal { Price = 300 }
+                    }
+                },
+                new Group
+                {
+                    Meals = new List<Meal>
+                    {
+                        meal2,
+                    }
+                },
                 new Group { Meals = new List<Meal>() },
                 new Group ()
             };
@@ -44,7 +61,8 @@ namespace TestSamples {
         }
 
         [TestMethod]
-        public void TestINotifyPropertyChanged() {
+        public void TestINotifyPropertyChanged()
+        {
             var employee = new Employee();
             List<string> updatedProperties = new List<string>();
             ((INotifyPropertyChanged)employee).PropertyChanged += (d, e) => updatedProperties.Add(e.PropertyName);
