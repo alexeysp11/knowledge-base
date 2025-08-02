@@ -25,11 +25,14 @@ namespace TestSamples
             List<Meal> filteredMeals = new List<Meal>();
             foreach (var group in categories)
             {
-                foreach (var meal in group.Meals)
+                if (group.Meals != null && group.Meals.Any())
                 {
-                    if (meal.Price >= minPrice)
+                    foreach (var meal in group.Meals)
                     {
-                        filteredMeals.Add(meal);
+                        if (meal.Price >= minPrice)
+                        {
+                            filteredMeals.Add(meal);
+                        }
                     }
                 }
             }
@@ -39,7 +42,10 @@ namespace TestSamples
         // То же самое, но с использованием LINQ
         public static IEnumerable<Meal> GetFilteredMealsLINQ(IEnumerable<Group> categories, decimal minPrice)
         {
-            return categories.SelectMany(g => g.Meals).Where(m => m.Price >= minPrice);
+            return categories
+                .Where(g => g.Meals != null && g.Meals.Any())
+                .SelectMany(g => g.Meals)
+                .Where(m => m.Price >= minPrice);
         }
 
         // Переработайте метод GetFilteredMeals так, чтобы в нем можно было использовать любое условие
