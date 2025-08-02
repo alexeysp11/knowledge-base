@@ -1,4 +1,10 @@
-﻿using System.Text;
+﻿//-----------------------------------------------------------------------------
+// Reversing a String (Simple):
+// Write an algorithm that reverses a string.
+// For example, "hello" -> "olleh".
+//-----------------------------------------------------------------------------
+
+using System.Text;
 
 namespace KnowledgeBase.DataStructuresAlgorithms.StringProc
 {

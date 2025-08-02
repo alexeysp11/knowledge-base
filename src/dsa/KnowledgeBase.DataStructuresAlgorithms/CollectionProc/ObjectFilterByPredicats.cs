@@ -1,4 +1,10 @@
-﻿namespace KnowledgeBase.DataStructuresAlgorithms.CollectionProc
+﻿//-----------------------------------------------------------------------------
+// Implementing a simple list filter (simple):
+// Write an algorithm that takes a list of objects and a predicate (`Func<T, bool>`)
+// and returns a new list containing only the elements that satisfy the predicate.
+//-----------------------------------------------------------------------------
+
+namespace KnowledgeBase.DataStructuresAlgorithms.CollectionProc
 {
     public static class ObjectFilterByPredicats
     {

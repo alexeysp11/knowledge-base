@@ -1,4 +1,15 @@
-﻿namespace KnowledgeBase.DataStructuresAlgorithms.StringProc
+﻿//-----------------------------------------------------------------------------
+// 1. Anagram Grouping (Intermediate):
+// Write an algorithm that takes a list of strings and groups the anagrams into separate lists.
+// For example, `["eat", "tea", "tan", "ate", "nat", "bat"]` -> `[["eat", "tea", "ate"], ["tan", "nat"], ["bat"]]`.
+
+// 2. Anagram Finding (Intermediate):
+// Write an algorithm that determines whether two strings are anagrams
+// (contain the same characters in different orders).
+// For example, "listen" and "silent".
+//-----------------------------------------------------------------------------
+
+namespace KnowledgeBase.DataStructuresAlgorithms.StringProc
 {
     public static class AnagramsGrouping
     {
