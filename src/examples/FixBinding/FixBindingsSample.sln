@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FixBindingsSample", "FixBindingsSample.csproj", "{DC0D052F-290D-4E0C-8269-CEDBF884F980}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DC0D052F-290D-4E0C-8269-CEDBF884F980}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC0D052F-290D-4E0C-8269-CEDBF884F980}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC0D052F-290D-4E0C-8269-CEDBF884F980}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC0D052F-290D-4E0C-8269-CEDBF884F980}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E1BBF5E7-B0F4-4D11-B0BE-961F36744503}
+	EndGlobalSection
+EndGlobal
