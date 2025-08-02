@@ -8,8 +8,7 @@
     Title="MainWindow"
     Width="800"
     Height="450"
-    mc:Ignorable="d"
-    x:Name="MyWindow">
+    mc:Ignorable="d">
 
     <Window.DataContext>
         <local:MainViewModel />
@@ -19,7 +18,7 @@
         <ContentControl DockPanel.Dock="Bottom">
             <ContentControl.ContentTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding DataContext.Property, ElementName=MyWindow}" />
+                    <TextBlock Text="{Binding DataContext.Property, RelativeSource={RelativeSource AncestorType=Window}}" />
                 </DataTemplate>
             </ContentControl.ContentTemplate>
         </ContentControl>
@@ -30,7 +29,7 @@
                         <DataTemplate>
                             <DockPanel>
                                 <TextBlock Text="{Binding Name}" />
-                                <TextBlock Text="{Binding DataContext.Property, ElementName=MyWindow}" />
+                                <TextBlock Text="{Binding DataContext.Property, RelativeSource={RelativeSource AncestorType=Window}}" />
                             </DockPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
