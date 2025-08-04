@@ -5,8 +5,80 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SnoopWpf.MainView"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Test application: Snoop" Height="450" Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Menu -->
+            <Menu Grid.Column="0">
+                <MenuItem Header="File"/>
+                <MenuItem Header="Settings"/>
+                <MenuItem Header="Tracking options"/>
+                <MenuItem Header="Debug"/>
+                <MenuItem Header="?"/>
+            </Menu>
+
+            <!-- Theme Options -->
+            <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="5">
+                <TextBlock Text="Theme:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                <ComboBox Width="100" SelectedIndex="0">
+                    <ComboBoxItem Content="Auto"/>
+                    <ComboBoxItem Content="Dark"/>
+                    <ComboBoxItem Content="Light"/>
+                </ComboBox>
+            </StackPanel>
+        </Grid>
+
+        <!-- Main Content -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- TreeView -->
+            <TreeView Grid.Column="0" Width="200" Margin="5">
+                <TreeViewItem Header="Item 1">
+                    <TreeViewItem Header="Sub Item 1"/>
+                    <TreeViewItem Header="Sub Item 2"/>
+                </TreeViewItem>
+                <TreeViewItem Header="Item 2"/>
+            </TreeView>
+
+            <!-- Right Content -->
+            <Grid Grid.Column="1" Margin="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Top Right Element -->
+                <Border Grid.Row="0" BorderBrush="Gray" BorderThickness="1" Margin="2">
+                  <TextBlock Text="Top Right Content" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </Border>
+
+                <!-- Bottom Right Element -->
+                <Border Grid.Row="1" BorderBrush="Gray" BorderThickness="1" Margin="2">
+                   <TextBlock Text="Bottom Right Content" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </Border>
+            </Grid>
+        </Grid>
+
+        <!-- Footer -->
+        <StatusBar Grid.Row="2">
+            <StatusBarItem>
+                <TextBlock Text="Status bar"/>
+            </StatusBarItem>
+        </StatusBar>
     </Grid>
 </Window>
