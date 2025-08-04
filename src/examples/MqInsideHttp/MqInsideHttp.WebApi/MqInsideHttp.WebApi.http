@@ -1,0 +1,6 @@
+@MqInsideHttp.WebApi_HostAddress = http://localhost:5089
+
+GET {{MqInsideHttp.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
