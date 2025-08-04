@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SnoopWpf.MainView"
         mc:Ignorable="d"
-        Title="Test application: Snoop" Height="450" Width="800">
+        Title="Test application: Snoop" Height="450" Width="800"
+        Loaded="MainWindow_OnLoaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -62,15 +63,36 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <!-- Top Right Element -->
-                <Border Grid.Row="0" BorderBrush="Gray" BorderThickness="1" Margin="2">
-                  <TextBlock Text="Top Right Content" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                </Border>
+                <!-- Top Right Element - TabControl -->
+                <TabControl Grid.Row="0" Margin="2">
+                    <TabItem Header="Properties">
+                        <DataGrid x:Name="PropertiesDataGrid" AutoGenerateColumns="False" IsReadOnly="True">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
+                                <DataGridTextColumn Header="Value" Binding="{Binding Value}" Width="*"/>
+                                <DataGridTextColumn Header="Value source" Binding="{Binding ValueSource}" Width="*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
+                    <TabItem Header="Data context"/>
+                    <TabItem Header="Events"/>
+                    <TabItem Header="Methods"/>
+                </TabControl>
 
-                <!-- Bottom Right Element -->
-                <Border Grid.Row="1" BorderBrush="Gray" BorderThickness="1" Margin="2">
-                   <TextBlock Text="Bottom Right Content" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                </Border>
+                <!-- Bottom Right Element - TabControl -->
+                <TabControl Grid.Row="1" Margin="2">
+                    <TabItem Header="Diagnostics">
+                        <DataGrid x:Name="DiagnosticsDataGrid" AutoGenerateColumns="False" IsReadOnly="True">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Level" Binding="{Binding Level}" Width="*"/>
+                                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
+                                <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="*"/>
+                                <DataGridTextColumn Header="Area" Binding="{Binding Area}" Width="*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
+                    <TabItem Header="Preview"/>
+                </TabControl>
             </Grid>
         </Grid>
 
