@@ -94,4 +94,5 @@ $$ LANGUAGE plpgsql;
 
 
 -- Пример выполнения
---CALL Country_Edit();
+--SELECT * FROM Country_Edit();
+--SELECT * FROM Country;
