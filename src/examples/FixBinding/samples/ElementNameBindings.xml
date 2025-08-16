@@ -1,0 +1,42 @@
+<Window
+    x:Class="FixBindingsSample.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:FixBindingsSample"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d"
+    x:Name="MyWindow">
+
+    <Window.DataContext>
+        <local:MainViewModel />
+    </Window.DataContext>
+
+    <DockPanel>
+        <ContentControl DockPanel.Dock="Bottom">
+            <ContentControl.ContentTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding DataContext.Property, ElementName=MyWindow}" />
+                </DataTemplate>
+            </ContentControl.ContentTemplate>
+        </ContentControl>
+        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Items}">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <DockPanel>
+                                <TextBlock Text="{Binding Name}" />
+                                <TextBlock Text="{Binding DataContext.Property, ElementName=MyWindow}" />
+                            </DockPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
+
+</Window>
